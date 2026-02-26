@@ -105,3 +105,16 @@ All `JOIN` functions require `ON` as well. Note also that `ON` assumes the left 
 | `HAVING` | `HAVING {group condition}` | Same as `WHERE` but <u>only works if you first use `GROUP BY`</u>. If not using `GROUP BY`, use `WHERE` instead | 
 
 :::
+
+## {{< fa arrow-down-wide-short >}} SQL Order of Operations
+
+The general order of operations for a SQL query is as follows:
+
+1. `FROM` / `JOIN`
+2. `WHERE` & subordinates
+3. `GROUP BY`
+4. `HAVING` & subordinates
+5. `SELECT` & subordinates
+7. `ORDER BY` & subordinates
+8. `OFFSET` & subordinates
+
