@@ -9,14 +9,29 @@ execute:
   freeze: auto
 
 website:
-  title: "My Website"
-  repo-url: TBD
+  title: "Miscellaneous Tutorials"
+  favicon: content/images/logo_lyon.png
+  repo-url: https://github.com/njlyon0/teach_tutorials
   repo-actions: [issue]
   navbar:
     background: primary
     right: 
+      - text: "People"
+        menu:
+          - text: "Nick J Lyon"
+            href: https://njlyon0.github.io/
       - icon: github
-        href: TBD
+        href: https://github.com/njlyon0/teach_tutorials
+  sidebar: 
+    style: docked
+    collapse-level: 2
+    contents:
+      - section: "Team Science"
+        contents: 
+          - text: "TBD"
+      - section: "Data Science"
+        contents:
+          - text: "TBD"
   page-footer: 
     center: "Copyright &copy; 2026, Nick J Lyon"
     background: secondary
