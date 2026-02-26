@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>SQL Tutorials – Miscellaneous Tutorials</title>
+<title>Structured Query Language Tutorials – Miscellaneous Tutorials</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -360,7 +360,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#under-construction" id="toc-under-construction" class="nav-link active" data-scroll-target="#under-construction"><i class="fa-solid fa-person-digging" aria-label="person-digging"></i> Under Construction</a></li>
+  <li><a href="#sql-term-glossary" id="toc-sql-term-glossary" class="nav-link active" data-scroll-target="#sql-term-glossary"><i class="fa-solid fa-book-bookmark" aria-label="book-bookmark"></i> SQL Term Glossary</a>
+  <ul class="collapse">
+  <li><a href="#core-terms" id="toc-core-terms" class="nav-link" data-scroll-target="#core-terms">Core Terms</a></li>
+  <li><a href="#subordinate-terms" id="toc-subordinate-terms" class="nav-link" data-scroll-target="#subordinate-terms">Subordinate Terms</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/njlyon0/teach_tutorials/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -370,7 +374,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/version-control.html">Data Science</a></li><li class="breadcrumb-item"><a href="../content/sql.html">SQL</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">SQL Tutorials</h1>
+<h1 class="title">Structured Query Language Tutorials</h1>
 </div>
 
 
@@ -387,11 +391,345 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="under-construction" class="level2">
-<h2 class="anchored" data-anchor-id="under-construction"><i class="fa-solid fa-person-digging" aria-label="person-digging"></i> Under Construction</h2>
-<p>Check back later!</p>
+<p>The below tutorials are all focused on SQL. See sub-headings for more specifics! Acronyms used in this page include:</p>
+<ul>
+<li>SQL = <u>S</u>tructured <u>Q</u>uery <u>L</u>anguage</li>
+</ul>
+<section id="sql-term-glossary" class="level2">
+<h2 class="anchored" data-anchor-id="sql-term-glossary"><i class="fa-solid fa-book-bookmark" aria-label="book-bookmark"></i> SQL Term Glossary</h2>
+<p>I don’t do much SQL in my day-to-day (at time of writing anyway) so having a term glossary will prove useful in brushing up periodically. Note that SQL is mostly not case sensitive but I find it easier to keep all SQL verbs fully capitalized for some visual distinction between functions versus data objects/variables.</p>
+<section id="core-terms" class="level3">
+<h3 class="anchored" data-anchor-id="core-terms">Core Terms</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 32%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Function</th>
+<th style="text-align: center;">Syntax</th>
+<th style="text-align: left;">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>;</code></td>
+<td style="text-align: center;"><code>{other fxns};</code></td>
+<td style="text-align: left;">A semicolon indicates the end of a clause/set of clauses in SQL. Including it is necessary to indicate that a query should be executed</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>SELECT</code></td>
+<td style="text-align: center;"><code>SELECT {column name(s)}</code></td>
+<td style="text-align: left;">Pick only some columns from a given data table. Comparable to the function of the same name from the <code>dplyr</code> package in <i class="fa-brands fa-r-project" aria-label="r-project"></i> R</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>FROM</code></td>
+<td style="text-align: center;"><code>FROM {table name}</code></td>
+<td style="text-align: left;">Specify on which table the query should be operating. This is comparable to a <code>data</code> argument in <i class="fa-brands fa-r-project" aria-label="r-project"></i> R or parameter in <i class="fa-brands fa-python" aria-label="python"></i> Python</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>WHERE</code></td>
+<td style="text-align: center;"><code>WHERE {conditions}</code></td>
+<td style="text-align: left;">Impose conditions to restrict which rows of the table should be returned. Uses a number of conditional verbs</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>ORDER BY</code></td>
+<td style="text-align: center;"><code>ORDER BY {column}</code></td>
+<td style="text-align: left;">Sort the rows of the returned table by the specified column</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>OFFSET</code></td>
+<td style="text-align: center;"><code>OFFSET {number of rows}</code></td>
+<td style="text-align: left;">Return only the specified number of rows</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>GROUP BY</code></td>
+<td style="text-align: center;"><code>GROUP BY {column}</code></td>
+<td style="text-align: left;">Perform subsequent operations within unique levels of the specified column. Comparable to the function of the same name from the <code>dplyr</code> package in <i class="fa-brands fa-r-project" aria-label="r-project"></i> R</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="subordinate-terms" class="level3">
+<h3 class="anchored" data-anchor-id="subordinate-terms">Subordinate Terms</h3>
+<p>To my knowledge, the following SQL verbs can only be used in combination with one of the ‘core’ verbs included in the table above. Where possible, I’ve separated the subordinate terms into separate tabs depending on to which core term they are subordinate.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href=""><code>SELECT</code> Subordinates</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href=""><code>WHERE</code> Subordinates</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href=""><code>FROM</code> Subordinates</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Other Subordinates</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<section id="aliasing-with-select" class="level4">
+<h4 class="anchored" data-anchor-id="aliasing-with-select">Aliasing with <code>SELECT</code></h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 32%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Function</th>
+<th style="text-align: center;">Syntax</th>
+<th style="text-align: left;">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>AS</code></td>
+<td style="text-align: center;"><code>SELECT {column} AS {alias}</code></td>
+<td style="text-align: left;">Create an alias of the specified column. Aliases can be used to increase clarity of column names. Subsequent code can then use the alias instead of the original/actual column name. This also works for <code>FROM</code></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</section>
+<section id="summarizing-with-select" class="level4">
+<h4 class="anchored" data-anchor-id="summarizing-with-select">Summarizing with <code>SELECT</code></h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 32%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Function</th>
+<th style="text-align: center;">Syntax</th>
+<th style="text-align: left;">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>DISTINCT</code></td>
+<td style="text-align: center;"><code>SELECT DISTINCT {column name}</code></td>
+<td style="text-align: left;">Keep only rows with unique values in the specified column. Comparable to the function of the same name from the <code>dplyr</code> package in <i class="fa-brands fa-r-project" aria-label="r-project"></i> R</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>COUNT</code></td>
+<td style="text-align: center;"><code>SELECT COUNT({column}) AS {new column}</code></td>
+<td style="text-align: left;">Counts the number of each unique entity in the specified column</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>MIN</code>/<code>MAX</code>/<code>AVG</code>/<code>SUM</code></td>
+<td style="text-align: center;"><code>SELECT AVG({column}) AS {new column}</code></td>
+<td style="text-align: left;">Computes the minimum/maximum/mean/sum (respectively) of the specified column</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 32%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Function</th>
+<th style="text-align: center;">Syntax</th>
+<th style="text-align: left;">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>=</code>/<code>!=</code></td>
+<td style="text-align: center;"><code>WHERE {column} != "{character}"</code></td>
+<td style="text-align: left;">Conditional operator for numbers <em>and</em> characters. Note that <u>character conditions are case-sensitive and must be in quotes</u>! Operators mean:, ‘equal to’ and ‘not equal to’ respectively</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>&lt;</code>/<code>&gt;</code>/<code>&lt;=</code>/<code>&gt;=</code></td>
+<td style="text-align: center;"><code>WHERE {column} &gt;= {#}</code></td>
+<td style="text-align: left;">Conditional operators for <u>numbers <em>only</em></u>. Operators mean:, ‘less than’, ‘greater than’, ‘less than or equal to’, and ‘greater than or equal to’ respectively</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>AND</code></td>
+<td style="text-align: center;"><code>WHERE {condition} AND {condition}</code></td>
+<td style="text-align: left;">Keep rows where <u>both/all</u> conditions are met. Comparable to <i class="fa-brands fa-r-project" aria-label="r-project"></i> R’s <code>&amp;</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>OR</code></td>
+<td style="text-align: center;"><code>WHERE {condition} OR {condition}</code></td>
+<td style="text-align: left;">Keep rows where <u>either/at least one</u> condition is met. Comparable to <i class="fa-brands fa-r-project" aria-label="r-project"></i> R’s <code>|</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>BETWEEN</code> / <code>NOT BETWEEN</code></td>
+<td style="text-align: center;"><code>WHERE {column} BETWEEN {#} AND {#}</code></td>
+<td style="text-align: left;">Keep rows where the value is/is not between the specified numbers</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>IN</code> / <code>NOT IN</code></td>
+<td style="text-align: center;"><code>WHERE {column} IN ({#}, {#}, {#})</code></td>
+<td style="text-align: left;">Keep rows where the value is/is not in the provided set of numbers. Comparable to <i class="fa-brands fa-r-project" aria-label="r-project"></i> R’s <code>%in%</code> operator. <u>Works for bare numbers or quoted characters</u></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>LIKE</code> / <code>NOT LIKE</code></td>
+<td style="text-align: center;"><code>WHERE {column} LIKE "%{character}%"</code></td>
+<td style="text-align: left;">Keeps rows where the value has/doesn’t have at least a partial string match to the provided character (e.g., “mar” in “march”). This is <u>case <em>insenstive</em></u><em>!</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>LIKE</code> / <code>NOT LIKE</code></td>
+<td style="text-align: center;"><code>WHERE {column} LIKE "{character}_"</code></td>
+<td style="text-align: left;">Keeps rows where the value matches the string plus one character. Excludes an exact string match without that additional character. This is <u>case <em>insenstive</em></u><em>!</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>IS NULL</code> / <code>IS NOT NULL</code></td>
+<td style="text-align: center;"><code>WHERE {column} IS NULL</code></td>
+<td style="text-align: left;">Keep rows where the specified column is/is not NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<section id="aliasing-data" class="level4">
+<h4 class="anchored" data-anchor-id="aliasing-data">Aliasing Data</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 32%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Function</th>
+<th style="text-align: center;">Syntax</th>
+<th style="text-align: left;">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>AS</code></td>
+<td style="text-align: center;"><code>FROM {table} AS {alias}</code></td>
+<td style="text-align: left;">Create an alias of the specified table. Aliases can be used to increase clarity of tables. Subsequent code can then use the alias instead of the original/actual table name. This also works for <code>SELECT</code></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</section>
+<section id="joining-data" class="level4">
+<h4 class="anchored" data-anchor-id="joining-data">Joining Data</h4>
+<p>All <code>JOIN</code> functions require <code>ON</code> as well. Note also that <code>ON</code> assumes the left column name(s) corresponds to the left table and vice versa but you can also specify the second table’s key explicitly with a period separating the table from its key (e.g., <code>{table B}.{table B key}</code>).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 32%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Function</th>
+<th style="text-align: center;">Syntax</th>
+<th style="text-align: left;">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>INNER JOIN</code></td>
+<td style="text-align: center;"><code>FROM {table A} INNER JOIN {table B} ON {table A key} = {table B key}</code></td>
+<td style="text-align: left;">Returns only rows where a <u>given value is found in <em>both</em> tables’ key columns</u>. Returns all columns from both tables where the relevant match is found. Note also that <code>JOIN</code> is equivalent to <code>INNER JOIN</code> but the longer form is retained here for the sake of precision</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>LEFT JOIN</code></td>
+<td style="text-align: center;"><code>FROM {table A} LEFT JOIN {table B} ON {table A key} = {table B key}</code></td>
+<td style="text-align: left;">Returns only rows where a <u>given value is found in <em>table A’s key column</em></u>. Returns all columns from both tables where the relevant match is found</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>RIGHT JOIN</code></td>
+<td style="text-align: center;"><code>FROM {table A} RIGHT JOIN {table B} ON {table A key} = {table B key}</code></td>
+<td style="text-align: left;">Returns only rows where a <u>given value is found in <em>table B’s key column</em></u>. Returns all columns from both tables where the relevant match is found</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>FULL JOIN</code></td>
+<td style="text-align: center;"><code>FROM {table A} FULL JOIN {table B} ON {table A key} = {table B key}</code></td>
+<td style="text-align: left;">Returns only rows where a <u>given value is found in <em>either</em> tables’ key column</u>. Returns all columns from both tables where the relevant match is found</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<section id="order-by-subordinates" class="level4">
+<h4 class="anchored" data-anchor-id="order-by-subordinates"><code>ORDER BY</code> Subordinates</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 32%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Function</th>
+<th style="text-align: center;">Syntax</th>
+<th style="text-align: left;">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>ASC</code> / <code>DESC</code></td>
+<td style="text-align: center;"><code>ORDER BY {column} ASC</code></td>
+<td style="text-align: left;">Order the rows in ascending/descending order of the provided column</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</section>
+<section id="offset-subordinates" class="level4">
+<h4 class="anchored" data-anchor-id="offset-subordinates"><code>OFFSET</code> Subordinates</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 32%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Function</th>
+<th style="text-align: center;">Syntax</th>
+<th style="text-align: left;">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>LIMIT</code></td>
+<td style="text-align: center;"><code>OFFSET {number of rows} LIMIT {row number}</code></td>
+<td style="text-align: left;">Specify from which row the offset rows should begin</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</section>
+<section id="group-by-subordinates" class="level4">
+<h4 class="anchored" data-anchor-id="group-by-subordinates"><code>GROUP BY</code> Subordinates</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 32%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Function</th>
+<th style="text-align: center;">Syntax</th>
+<th style="text-align: left;">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>HAVING</code></td>
+<td style="text-align: center;"><code>HAVING {group condition}</code></td>
+<td style="text-align: left;">Same as <code>WHERE</code> but <u>only works if you first use <code>GROUP BY</code></u>. If not using <code>GROUP BY</code>, use <code>WHERE</code> instead</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
