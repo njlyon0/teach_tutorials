@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Version Control Tutorials – Miscellaneous Tutorials</title>
+<title>SQL Tutorials – Miscellaneous Tutorials</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -286,7 +286,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/version-control.html">Data Science</a></li><li class="breadcrumb-item"><a href="../content/version-control.html">Version Control</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/version-control.html">Data Science</a></li><li class="breadcrumb-item"><a href="../content/sql.html">SQL</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -315,13 +315,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/version-control.html" class="sidebar-item-text sidebar-link active">
+  <a href="../content/version-control.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Version Control</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/sql.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/sql.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">SQL</span></a>
   </div>
 </li>
@@ -360,7 +360,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#git-command-line-snippets" id="toc-git-command-line-snippets" class="nav-link active" data-scroll-target="#git-command-line-snippets"><i class="fa-solid fa-code-branch" aria-label="code-branch"></i> Git Command Line Snippets</a></li>
+  <li><a href="#under-construction" id="toc-under-construction" class="nav-link active" data-scroll-target="#under-construction"><i class="fa-solid fa-person-digging" aria-label="person-digging"></i> Under Construction</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/njlyon0/teach_tutorials/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -368,9 +368,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/version-control.html">Data Science</a></li><li class="breadcrumb-item"><a href="../content/version-control.html">Version Control</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/version-control.html">Data Science</a></li><li class="breadcrumb-item"><a href="../content/sql.html">SQL</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Version Control Tutorials</h1>
+<h1 class="title">SQL Tutorials</h1>
 </div>
 
 
@@ -387,63 +387,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The below tutorials are all focused on version control (especially Git and GitHub). See sub-headings for more specifics! Acronyms used in this page include:</p>
-<ul>
-<li>IDE = <u>I</u>ntegrated <u>D</u>evelopment <u>E</u>nvironment</li>
-<li>PAT = <u>P</u>ersonal <u>A</u>ccess <u>T</u>oken</li>
-</ul>
-<section id="git-command-line-snippets" class="level2">
-<h2 class="anchored" data-anchor-id="git-command-line-snippets"><i class="fa-solid fa-code-branch" aria-label="code-branch"></i> Git Command Line Snippets</h2>
-<p>There are a few Git operations I need infrequently enough that I haven’t committed them to memory but would like an easy place to quickly reference as needed. Each tab below separates Git commands useful in different circumstances. Note that the tab order–and content within each tab–is ordered based on how often <em>I</em> need to refer to these snippets so I hope that doesn’t diminish their usefulness to you.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Remote Repository</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Branches</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Local Repository</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Server</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<section id="failed-pushsync-due-to-too-much-data" class="level4">
-<h4 class="anchored" data-anchor-id="failed-pushsync-due-to-too-much-data">Failed Push/Sync Due to Too Much Data</h4>
-<p>If you commit too much data on your local repository, your push/sync to GitHub will fail. You can force your machine to allow a larger amount of data in a single push/sync if need be. Ideally, you’d avoid committing too much data at once but this solve works if you forget.</p>
-<p><strong>Allow a single push/sync to include more/larger files</strong> <br> <code>git config http.postBuffer 524288000</code></p>
-</section>
-<section id="changed-remote-name" class="level4">
-<h4 class="anchored" data-anchor-id="changed-remote-name">Changed Remote Name</h4>
-<p>If you change your GitHub repository’s name after cloning it, you may get a warning in your IDE that your ‘remote has moved to a new location’. Many IDEs are savvy enough for this not to cause a real error but it’s good practice to tweak things so that the only warnings you get are the ones to which you want to pay attention.</p>
-<p><strong>Update existing local repository with new remote URL:</strong> <br> <code>git remote set-url origin {new URL}</code></p>
-</section>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<section id="branch-housekeeping" class="level4">
-<h4 class="anchored" data-anchor-id="branch-housekeeping">Branch Housekeeping</h4>
-<p>Once you are done working in a branch (i.e., have merged it with ‘main’), there are a few good houskeeping steps to follow:</p>
-<ol type="1">
-<li>In your IDE, switch back to ‘main’ and pull/sync</li>
-<li>Delete the branch in your remote repository</li>
-<li><strong>Delete the branch in your local repository</strong>
-<ul>
-<li><code>git branch -d {branch name}</code></li>
-</ul></li>
-<li><strong>Update your local repository’s list of the branches it thinks are in your remote repository</strong>
-<ul>
-<li><code>git remote update origin --prune</code></li>
-</ul></li>
-</ol>
-</section>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<section id="check-current-settings" class="level4">
-<h4 class="anchored" data-anchor-id="check-current-settings">Check Current Settings</h4>
-<p>It can be helpful to see what your current Git settings are. Fortunately, there’s an easy way to check your global Git settings on your machine.</p>
-<p><strong>List Git information on your computer</strong> <br> <code>git config --global --list</code></p>
-</section>
-</div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<section id="credential-caching" class="level4">
-<h4 class="anchored" data-anchor-id="credential-caching">Credential Caching</h4>
-<p>On some remote servers (e.g., those used by <a href="https://www.nceas.ucsb.edu/">NCEAS</a>), you must specify how long you want your credentials to be “cached” (i.e., remembered). It is a pain if you forget to cache your credentials as–in the worst case–it may mean that you’d need to make a new PAT if your old one is not cached and you didn’t save it elsewhere.</p>
-<p><strong>Cache your credentials for 10 million seconds</strong> <br> <code>git config --global credential.helper 'cache --timeout=10000000'</code></p>
-</section>
-</div>
-</div>
-</div>
+<section id="under-construction" class="level2">
+<h2 class="anchored" data-anchor-id="under-construction"><i class="fa-solid fa-person-digging" aria-label="person-digging"></i> Under Construction</h2>
+<p>Check back later!</p>
 
 
 </section>

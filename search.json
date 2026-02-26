@@ -4,14 +4,20 @@
     "href": "index.html",
     "title": "Tutorial Home",
     "section": "",
-    "text": "This repository hosts any tutorials or mini-workshops that are not big enough to warrant their own, standalone websites. If any do start here but eventually cross that threshold, I’ll remove them from here and instead link to the respective website."
+    "text": "This repository hosts any tutorials or mini-workshops that are not big enough to warrant their own, standalone websites. If any do start here but eventually cross that threshold, I’ll remove them from here and instead link to the respective website.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#navigating-the-website",
     "href": "index.html#navigating-the-website",
     "title": "Tutorial Home",
     "section": " Navigating the Website",
-    "text": "Navigating the Website\nCheck out the section headers in the sidebar on the left side of this website. More specific themes for tutorials are listed beneath each so feel free to follow your curiosity as you browse."
+    "text": "Navigating the Website\nCheck out the section headers in the sidebar on the left side of this website. More specific themes for tutorials are listed beneath each so feel free to follow your curiosity as you browse.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "content/statistics.html",
@@ -29,7 +35,7 @@
     "href": "content/statistics.html#multivariate-statistics",
     "title": "Statistics Tutorials",
     "section": "Multivariate Statistics",
-    "text": "Multivariate Statistics\n\nMultivariate Statistics Slides – Full Screen",
+    "text": "Multivariate Statistics\nThis slide deck includes:\n\nBrief introduction to multivariate statistics\nExplanation of resampling/permutation methods\nMultivariate data visualization explanation with some non-ordination examples\nCode demonstration for PCA, PCoA, and NMS in  R\n\n\nMultivariate Statistics Slides – Full Screen",
     "crumbs": [
       "Data Science",
       "Statistics"
@@ -40,10 +46,95 @@
     "href": "content/statistics.html#random-forest",
     "title": "Statistics Tutorials",
     "section": "Random Forest",
-    "text": "Random Forest\n\nRandom Forest Slides – Full Screen",
+    "text": "Random Forest\nThis slide deck includes: - Code demo for performing random forest in  R\n\nRandom Forest Slides – Full Screen",
     "crumbs": [
       "Data Science",
       "Statistics"
+    ]
+  },
+  {
+    "objectID": "content/slides_random-forest.html#prepare",
+    "href": "content/slides_random-forest.html#prepare",
+    "title": "Random Forest in R",
+    "section": "Prepare",
+    "text": "Prepare\n\nFirst, you’ll need to install and load a few  R packages\n\nWhile not technically necessary, the librarian package makes library management much simpler\n\n\n\n\n\n# Install librarian (if you need to)\n# install.packages(\"librarian\")\n\n# Install (if not already present) and load needed libraries\nlibrarian::shelf(tidyverse, randomForest, permimp, vegan)"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#lichen-data",
+    "href": "content/slides_random-forest.html#lichen-data",
+    "title": "Random Forest in R",
+    "section": "Lichen Data",
+    "text": "Lichen Data\n\nThe vegan package includes some lichen community composition data we can use for exploratory purposes\n\n\n\n\nWe’ll begin by loading that data (with some minor wrangling)\n\n\n# Load vegan's lichen dataset & associated chemistry dataset\nutils::data(\"varespec\", package = 'vegan')\nutils::data(\"varechem\", package = 'vegan')\n\n# Get one lichen species' cover information separate\nlichen_sp &lt;- dplyr::select(varespec, Callvulg)\n\n# Attach the single species to the chemistry data\nlichen_df &lt;- cbind(lichen_sp, varechem)"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#data-structure",
+    "href": "content/slides_random-forest.html#data-structure",
+    "title": "Random Forest in R",
+    "section": "Data Structure",
+    "text": "Data Structure\n\nThis data object now has the following structure:\n\n\n# Check lichen data structure\nstr(lichen_df)\n\n'data.frame':   24 obs. of  15 variables:\n $ Callvulg: num  0.55 0.67 0.1 0 0 ...\n $ N       : num  19.8 13.4 20.2 20.6 23.8 22.8 26.6 24.2 29.8 28.1 ...\n $ P       : num  42.1 39.1 67.7 60.8 54.5 40.9 36.7 31 73.5 40.5 ...\n $ K       : num  140 167 207 234 181 ...\n $ Ca      : num  519 357 973 834 777 ...\n $ Mg      : num  90 70.7 209.1 127.2 125.8 ...\n $ S       : num  32.3 35.2 58.1 40.7 39.5 40.8 33.8 27.1 42.5 60.2 ...\n $ Al      : num  39 88.1 138 15.4 24.2 ...\n $ Fe      : num  40.9 39 35.4 4.4 3 ...\n $ Mn      : num  58.1 52.4 32.1 132 50.1 ...\n $ Zn      : num  4.5 5.4 16.8 10.7 6.6 9.1 7.4 5.2 9.3 9.1 ...\n $ Mo      : num  0.3 0.3 0.8 0.2 0.3 0.4 0.3 0.3 0.3 0.5 ...\n $ Baresoil: num  43.9 23.6 21.2 18.7 46 40.5 23 29.8 17.6 29.9 ...\n $ Humdepth: num  2.2 2.2 2 2.9 3 3.8 2.8 2 3 2.2 ...\n $ pH      : num  2.7 2.8 3 2.8 2.7 2.7 2.8 2.8 2.8 2.8 ..."
+  },
+  {
+    "objectID": "content/slides_random-forest.html#random-forest",
+    "href": "content/slides_random-forest.html#random-forest",
+    "title": "Random Forest in R",
+    "section": "Random Forest",
+    "text": "Random Forest\n\nRun the random forest with the function and package of the same name\n\n\n# Actually do the random forest\nlich_rf &lt;- randomForest::randomForest(Callvulg ~ ., data = lichen_df, \n                                      ntree = 1000, mtry = 2, \n                                      na.action = na.omit,\n                                      keep.forest = T, keep.inbag = T)\n\n\n\n\nQuick argument explanation\n\n‘Y ~ .’ format of model means all other columns are (potential) predictors\nntree is the number of trees in the forest\nmtry is the number of variables per node in the tree"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#variable-importance-plot",
+    "href": "content/slides_random-forest.html#variable-importance-plot",
+    "title": "Random Forest in R",
+    "section": "Variable Importance Plot",
+    "text": "Variable Importance Plot\n\nWe can now generate a variable importance plot based on that random forest\n\n\n# Create variable importance plot\nrandomForest::varImpPlot(x = lich_rf, sort = T,\n                         n.var = (ncol(lichen_df) - 1),\n                         main = \"Variable Importance\")"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#conditional-permutation-importance-cpi",
+    "href": "content/slides_random-forest.html#conditional-permutation-importance-cpi",
+    "title": "Random Forest in R",
+    "section": "Conditional Permutation Importance (CPI)",
+    "text": "Conditional Permutation Importance (CPI)\n\nWe can use that random forest to perform conditional permutation\n\n\n# Implement conditional permutation\nhigh_thresh &lt;- permimp::permimp(object = lich_rf, conditional = T,\n                                # Note the threshold is set to 0.95\n                               threshold = 0.95, do_check = F, progressBar = F)\n\n# Make CPI plot\nplot(high_thresh, type = \"box\", horizontal = T)"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#cpi---thresholds",
+    "href": "content/slides_random-forest.html#cpi---thresholds",
+    "title": "Random Forest in R",
+    "section": "CPI - Thresholds",
+    "text": "CPI - Thresholds\n\nAs you might imagine, the threshold you pick can have a dramatic effect!\n\n\n# Implement conditional permutation\nlow_thresh &lt;- permimp::permimp(object = lich_rf, conditional = T,\n                               # Note the lower threshold\n                               threshold = 0.50, do_check = F, progressBar = F)\n\n# Make CPI plot\nplot(low_thresh, type = \"box\", horizontal = T)"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#exploratory-plotting",
+    "href": "content/slides_random-forest.html#exploratory-plotting",
+    "title": "Random Forest in R",
+    "section": "Exploratory Plotting",
+    "text": "Exploratory Plotting\n\nLet’s graph the response against the four ‘most important’ variables\n\nThis part is just for fun!"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#thanks-questions",
+    "href": "content/slides_random-forest.html#thanks-questions",
+    "title": "Random Forest in R",
+    "section": "Thanks! Questions?",
+    "text": "Thanks! Questions?"
+  },
+  {
+    "objectID": "content/facilitation.html",
+    "href": "content/facilitation.html",
+    "title": "Inclusive Facilitation Tutorials",
+    "section": "",
+    "text": "Check back later!",
+    "crumbs": [
+      "Team Science",
+      "Facilitation"
+    ]
+  },
+  {
+    "objectID": "content/facilitation.html#under-construction",
+    "href": "content/facilitation.html#under-construction",
+    "title": "Inclusive Facilitation Tutorials",
+    "section": "",
+    "text": "Check back later!",
+    "crumbs": [
+      "Team Science",
+      "Facilitation"
     ]
   },
   {
@@ -257,89 +348,26 @@
     "text": "Thanks! Questions?"
   },
   {
-    "objectID": "content/facilitation.html",
-    "href": "content/facilitation.html",
-    "title": "Inclusive Facilitation Tutorials",
+    "objectID": "content/sql.html",
+    "href": "content/sql.html",
+    "title": "SQL Tutorials",
     "section": "",
     "text": "Check back later!",
     "crumbs": [
-      "Team Science",
-      "Facilitation"
+      "Data Science",
+      "SQL"
     ]
   },
   {
-    "objectID": "content/facilitation.html#under-construction",
-    "href": "content/facilitation.html#under-construction",
-    "title": "Inclusive Facilitation Tutorials",
+    "objectID": "content/sql.html#under-construction",
+    "href": "content/sql.html#under-construction",
+    "title": "SQL Tutorials",
     "section": "",
     "text": "Check back later!",
     "crumbs": [
-      "Team Science",
-      "Facilitation"
+      "Data Science",
+      "SQL"
     ]
-  },
-  {
-    "objectID": "content/slides_random-forest.html#prepare",
-    "href": "content/slides_random-forest.html#prepare",
-    "title": "Random Forest in R",
-    "section": "Prepare",
-    "text": "Prepare\n\nFirst, you’ll need to install and load a few  R packages\n\nWhile not technically necessary, the librarian package makes library management much simpler\n\n\n\n\n\n# Install librarian (if you need to)\n# install.packages(\"librarian\")\n\n# Install (if not already present) and load needed libraries\nlibrarian::shelf(tidyverse, randomForest, permimp, vegan)"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#lichen-data",
-    "href": "content/slides_random-forest.html#lichen-data",
-    "title": "Random Forest in R",
-    "section": "Lichen Data",
-    "text": "Lichen Data\n\nThe vegan package includes some lichen community composition data we can use for exploratory purposes\n\n\n\n\nWe’ll begin by loading that data (with some minor wrangling)\n\n\n# Load vegan's lichen dataset & associated chemistry dataset\nutils::data(\"varespec\", package = 'vegan')\nutils::data(\"varechem\", package = 'vegan')\n\n# Get one lichen species' cover information separate\nlichen_sp &lt;- dplyr::select(varespec, Callvulg)\n\n# Attach the single species to the chemistry data\nlichen_df &lt;- cbind(lichen_sp, varechem)"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#data-structure",
-    "href": "content/slides_random-forest.html#data-structure",
-    "title": "Random Forest in R",
-    "section": "Data Structure",
-    "text": "Data Structure\n\nThis data object now has the following structure:\n\n\n# Check lichen data structure\nstr(lichen_df)\n\n'data.frame':   24 obs. of  15 variables:\n $ Callvulg: num  0.55 0.67 0.1 0 0 ...\n $ N       : num  19.8 13.4 20.2 20.6 23.8 22.8 26.6 24.2 29.8 28.1 ...\n $ P       : num  42.1 39.1 67.7 60.8 54.5 40.9 36.7 31 73.5 40.5 ...\n $ K       : num  140 167 207 234 181 ...\n $ Ca      : num  519 357 973 834 777 ...\n $ Mg      : num  90 70.7 209.1 127.2 125.8 ...\n $ S       : num  32.3 35.2 58.1 40.7 39.5 40.8 33.8 27.1 42.5 60.2 ...\n $ Al      : num  39 88.1 138 15.4 24.2 ...\n $ Fe      : num  40.9 39 35.4 4.4 3 ...\n $ Mn      : num  58.1 52.4 32.1 132 50.1 ...\n $ Zn      : num  4.5 5.4 16.8 10.7 6.6 9.1 7.4 5.2 9.3 9.1 ...\n $ Mo      : num  0.3 0.3 0.8 0.2 0.3 0.4 0.3 0.3 0.3 0.5 ...\n $ Baresoil: num  43.9 23.6 21.2 18.7 46 40.5 23 29.8 17.6 29.9 ...\n $ Humdepth: num  2.2 2.2 2 2.9 3 3.8 2.8 2 3 2.2 ...\n $ pH      : num  2.7 2.8 3 2.8 2.7 2.7 2.8 2.8 2.8 2.8 ..."
-  },
-  {
-    "objectID": "content/slides_random-forest.html#random-forest",
-    "href": "content/slides_random-forest.html#random-forest",
-    "title": "Random Forest in R",
-    "section": "Random Forest",
-    "text": "Random Forest\n\nRun the random forest with the function and package of the same name\n\n\n# Actually do the random forest\nlich_rf &lt;- randomForest::randomForest(Callvulg ~ ., data = lichen_df, \n                                      ntree = 1000, mtry = 2, \n                                      na.action = na.omit,\n                                      keep.forest = T, keep.inbag = T)\n\n\n\n\nQuick argument explanation\n\n‘Y ~ .’ format of model means all other columns are (potential) predictors\nntree is the number of trees in the forest\nmtry is the number of variables per node in the tree"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#variable-importance-plot",
-    "href": "content/slides_random-forest.html#variable-importance-plot",
-    "title": "Random Forest in R",
-    "section": "Variable Importance Plot",
-    "text": "Variable Importance Plot\n\nWe can now generate a variable importance plot based on that random forest\n\n\n# Create variable importance plot\nrandomForest::varImpPlot(x = lich_rf, sort = T,\n                         n.var = (ncol(lichen_df) - 1),\n                         main = \"Variable Importance\")"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#conditional-permutation-importance-cpi",
-    "href": "content/slides_random-forest.html#conditional-permutation-importance-cpi",
-    "title": "Random Forest in R",
-    "section": "Conditional Permutation Importance (CPI)",
-    "text": "Conditional Permutation Importance (CPI)\n\nWe can use that random forest to perform conditional permutation\n\n\n# Implement conditional permutation\nhigh_thresh &lt;- permimp::permimp(object = lich_rf, conditional = T,\n                                # Note the threshold is set to 0.95\n                               threshold = 0.95, do_check = F, progressBar = F)\n\n# Make CPI plot\nplot(high_thresh, type = \"box\", horizontal = T)"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#cpi---thresholds",
-    "href": "content/slides_random-forest.html#cpi---thresholds",
-    "title": "Random Forest in R",
-    "section": "CPI - Thresholds",
-    "text": "CPI - Thresholds\n\nAs you might imagine, the threshold you pick can have a dramatic effect!\n\n\n# Implement conditional permutation\nlow_thresh &lt;- permimp::permimp(object = lich_rf, conditional = T,\n                               # Note the lower threshold\n                               threshold = 0.50, do_check = F, progressBar = F)\n\n# Make CPI plot\nplot(low_thresh, type = \"box\", horizontal = T)"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#exploratory-plotting",
-    "href": "content/slides_random-forest.html#exploratory-plotting",
-    "title": "Random Forest in R",
-    "section": "Exploratory Plotting",
-    "text": "Exploratory Plotting\n\nLet’s graph the response against the four ‘most important’ variables\n\nThis part is just for fun!"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#thanks-questions",
-    "href": "content/slides_random-forest.html#thanks-questions",
-    "title": "Random Forest in R",
-    "section": "Thanks! Questions?",
-    "text": "Thanks! Questions?"
   },
   {
     "objectID": "content/version-control.html",
