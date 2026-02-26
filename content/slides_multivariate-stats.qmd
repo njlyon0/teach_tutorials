@@ -1,0 +1,526 @@
+---
+title: "Multivariate Statistics 101"
+author: "Nick J Lyon"
+engine: knitr
+format: 
+  revealjs: 
+    slide-number: c
+    scrollable: false
+    code-overflow: wrap
+    code-line-numbers: false
+    code-copy: hover
+    theme: [night, slides.scss]
+    reference-location: document
+---
+
+## Caveat Before We Begin {.smaller}
+
+::::{.columns}
+:::{.column width="60%"}
+
+- Read this book {{< fa arrow-right >}}
+
+\
+
+- Has a complete R appendix for:
+    - Every example
+    - Every figure
+    - Every operation
+
+\
+
+- Essentially the book is written in R Markdown
+
+\
+
+- Bonus: actually pretty engaging to read!
+    - Despite subject matter
+
+:::
+:::{.column width="40%"}
+
+<img src="images_tutorials/manly-navarro_multivar-primer-cover.jpg" alt="Cover of the fourth edition of 'Multivariate Statistical Methods: A Primer' by Bryan FJ Manly and Jorge A Navarro Alberto">
+
+:::
+::::
+
+## Tutorial Outline
+
+\
+
+### [Background]{.purple}
+### [Resampling & Permutation]{.orange}
+### [Multivariate Data Visualization]{.gold}
+### [Principle Components Analysis]{.pink}
+### [Non-Metric Multidimensional Scaling]{.blue}
+
+## [Multivariate Background]{.purple} {.smaller}
+
+- **Multivariate data have more variables (_p_) than observations (_q_)**
+
+\
+
+. . .
+
+- I.e., more columns than rows
+    - True of most ecology/evolution datasets
+
+\
+
+. . .
+
+- Differs from univariate statistics
+    - Univariate explores variation in _one_ variable
+    - Multivariate explores variation in _many_ variables (plus potential inter-relationships)
+
+## [Resampling Methods]{.orange}
+
+- Frequentist statistics uses distributions _from theory_
+
+<p align="center">
+<img src="images_tutorials/distributions_theoretical.png" alt="Graphs of several common data distributions found in theory" width="80%">
+</p>
+
+. . .
+
+- Resampling statistics uses distributions _from data_
+
+<p align="center">
+<img src="images_tutorials/distributions_from-data.png" alt="Graph of a sort of irregular histogram" width="15%">
+</p>
+
+## [Theoretical Process]{.orange} 
+
+1. Take samples from data (i.e., "re-sample")
+
+. . .
+
+2. Compare real observations to re-sampled groups
+
+. . .
+
+3. Evaluate significance
+
+## [Permutation Notes]{.orange} 
+
+- Permutation methods are **non-parametric**
+    - Because they don't rely on a theoretical distribution
+
+\
+
+. . .
+
+- Permutation methods are **flexible**
+    - Can assess standard & non-standard experimental designs
+    - Handle high-dimensional data (more variables than observations)
+
+## [Two Major "Flavors"]{.orange}{.smaller} 
+
+::::{.columns}
+:::{.column width="50%"}
+### Full Permutation
+
+- Permute whole dataset
+
+:::
+:::{.column width="50%"}
+### Residual Permutation
+
+- Fit desired model
+- Permute the _residuals_
+    - Less sensitive to outliers
+:::
+::::
+
+<p align="center">
+<img src="images_tutorials/diagram_resid-perm-process.png" alt="Diagram showing two X variables groups with a measured response (Y), model is fit and residuals are observed and compared to many different permutations (different group assignments) of the same residuals" width="90%">
+</p>
+
+## [Multivariate Visualization]{.gold} {.smaller} 
+
+- Typically involves "ordination"
+
+\
+
+. . . 
+
+- Frequently uses "multidimensional scaling"
+    - I.e., getting from many variables to fewer, more easily visualizable variables
+    - Still representative of multivariate nature of data
+
+\
+
+. . . 
+
+- Common ordination methods include:
+    - <u>P</u>rincipal <u>C</u>omponents <u>A</u>nalysis (PCA)
+    - <u>P</u>rincipal **<u>Co</u>ordinates** <u>A</u>nalysis (PC**o**A)
+    - <u>N</u>onmetric <u>M</u>ultidimensional <u>S</u>caling (NMS)
+
+## [Principle Components Analysis]{.pink} {.smaller}
+
+- Goal: reduce number of variables
+
+\
+
+. . . 
+
+- Mechanism: create combinations of existing variables to summarize variation
+    - Want each combination to contain as much variation as possible
+    - Such that you approach 100% variation summarized in only a few combinations
+
+\
+
+. . . 
+
+- Result: number of principal components equal to number of observations
+    - Each principle component has a known % variation explained
+
+
+## [PCA Process]{.pink} {.smaller}
+
+- For variables (X~i~) you want to create indices (I~k~)
+
+\
+
+. . .
+
+- Consider the following example:
+    - I~1~ = X~1~ + X~2~ + X~3~ + X~4~ + X~5~
+    - I~2~ = X~1~ [**-**]{.pink} X~2~ + X~3~ + X~4~ + X~5~
+    - I~3~ = X~1~ [**-**]{.pink} X~2~ [**-**]{.pink} X~3~ + X~4~ + X~5~
+    - ...
+    - I~k~ = X~1~ [**-**]{.pink} X~2~ [**-**]{.pink} X~3~ [**-**]{.pink} X~4~ [**-**]{.pink} X~5~
+
+
+## [PCA Special Consideration 1]{.pink} {.smaller}
+
+1. Axis orthogonality
+    - Axes are "constrained to orthogonality" because of goal of maximized explained variation
+    - Plain language: PC axes are perpendicular to one another
+
+\
+
+. . .
+
+- Means PC~3~ through PC~_n_~ are defined _as soon as PC~1~ and PC~2~ are_
+    - Focusing on early PCs reduces the relevance of this issue
+
+## [PCA Special Consideration 2]{.pink} {.smaller}
+
+2. Not a hypothesis test
+
+\
+
+. . .
+
+- PCA is great for visualizing patterns in data
+    - Not good for statistical evaluation
+
+\
+
+. . .
+
+- I.e., PCA cannot--by itself--show support for your hypothesis
+
+
+## [Nonmetric Multidimensional Scaling]{.blue} {.smaller}
+
+- Goal: reduce number of variables
+    - Same as PCA!
+
+\
+
+. . . 
+
+- Mechanism: scale dissimilarity of points to minimize "stress"
+    - "dissimilarity" != "distance"
+    - Stress is a metric for tension between true spatial configuration of points versus the arrangement of their dissimilarity
+
+\
+
+. . . 
+
+- Result: number of NMS axes is defined by the user
+    - NMS reports stress of "best" solution (essentially a goodness of fit metric)
+
+## [NMS Process]{.blue} {.smaller}
+
+1. Choose a starting configuration of points (randomly)
+
+\
+
+2. Move points around and measure stress at each configuration
+
+\
+
+3. Repeat until stress has been minimized
+
+\
+
+4. Return to step 1 with different starting points
+    - Necessary to avoid local stress minima
+
+\
+
+5. Continue 1-4 until confident true minimum stress configuration has been found
+
+## [NMS Helicopter Analogy]{.blue} 
+
+:::{.r-stack}
+
+![](images_tutorials/nms_heli-1.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images_tutorials/nms_heli-2a.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images_tutorials/nms_heli-2b.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images_tutorials/nms_heli-3.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images_tutorials/nms_heli-4.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images_tutorials/nms_heli-5.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images_tutorials/nms_heli-6.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images_tutorials/nms_heli-7.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images_tutorials/nms_heli-8.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images_tutorials/nms_heli-9.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images_tutorials/nms_heli-10.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images_tutorials/nms_heli-11.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images_tutorials/nms_heli-12.jpg){.absolute top=150 left=25 .fragment .fade-in}
+
+:::
+
+# Multivariate Code Demo 
+
+## Prepare {.smaller}
+
+- First, you'll need to install and load a few {{< fa brands r-project >}} R packages
+    - While not technically necessary, the `librarian` package makes library management _much_ simpler
+
+\
+
+```{r libs}
+#| echo: true
+
+# Install librarian (if you need to)
+# install.packages("librarian")
+
+# Install (if not already present) and load needed libraries
+librarian::shelf(vegan, RRPP, scatterplot3d, TeachingDemos, supportR)
+```
+
+## Lichen Data {.smaller}
+
+- The `vegan` package includes some lichen community composition data we can use for exploratory purposes
+
+\
+
+- We'll begin by loading that and creating artificial groups for later analysis
+
+\
+
+```{r data-prep}
+#| echo: true
+
+# Load vegan's lichen dataset
+utils::data("varespec", package = 'vegan')
+
+# Make some columns of known number of groups
+treatment <- c(rep.int("Trt1", (nrow(varespec)/4)),
+               rep.int("Trt2", (nrow(varespec)/4)),
+               rep.int("Trt3", (nrow(varespec)/4)),
+               rep.int("Trt4", (nrow(varespec)/4)))
+
+# And combine them into a single data object
+lichen_df <- cbind(treatment, varespec)
+```
+
+## Data Structure {.smaller}
+
+- This data object now has the following structure:
+```{r data-str}
+#| echo: true
+
+# Check lichen data structure
+str(lichen_df)
+```
+
+- Each column is an abbreviated lichen species name and the values are % cover
+
+## [Permutation Analysis]{.orange} {.smaller}
+
+- First, we'll use the `RRPP` package to use permutation analysis
+    - H~A~: lichen community composition differs between at least two groups
+    - H~0~: lichen community composition _does not_ differ
+
+\
+
+- Note that `RRPP` does require a special class of data object to perform analysis
+
+```{r perm-fit}
+#| echo: true
+
+# Make the special data object class required by RRPP
+lichen_rpdf <- RRPP::rrpp.data.frame("community" = as.matrix(varespec),
+                                     "treatment" = lichen_df$treatment)
+
+# Fit permutation model
+lich_fit <- RRPP::lm.rrpp(community ~ treatment, data = lichen_rpdf, iter = 999, RRPP = T)
+```
+
+- Quick argument explanation:
+    - The `iter` argument is the number of permutations
+    - The `RRPP` _argument_ is whether to permute residuals (`TRUE`) or the full data (`FALSE`) 
+
+## [Permutation Analysis Results]{.orange} {.smaller}
+
+- To check the results, we can use the `anova` function
+    - This also allows us to specify the desired effect type
+
+```{r perm-results}
+#| echo: true
+
+# Check out the results of the analysis!
+RRPP::anova.lm.rrpp(lich_fit, effect.type = "F", print.progress = F)
+```
+
+- Now we get a fairly standard ANOVA table
+    - The `Z` column is the "Z score" and is essentially the effect size
+
+## [Permutation Pairwise Comparisons]{.orange} {.smaller}
+
+
+- Once we have our main results, we can also get pairwise comparison results
+```{r perm-pairs}
+#| echo: true
+
+# Perform pairwise comparisons
+lich_pairs <- RRPP::pairwise(fit = lich_fit, groups = treatment)
+
+# Check results
+summary(lich_pairs)
+```
+
+- These show that the fourth treatment significantly differs from the other three
+    - And the third marginally differs from the first and second
+
+## [Multivariate Data Visualization]{.gold} {.smaller}
+
+- There are a few non-ordination ways of doing multivariate visualization
+    - Note that these are mostly for exploratory purposes
+
+\
+
+- They're still helpful for checking the general 'vibe' of the data
+    - but they may not hold up to formal review processes
+
+## [3D Scatterplot]{.gold} {.smaller}
+
+- Perhaps the simplest mode of multivariate data visualization is just to make a 3D scatterplot!
+    - Still technically counts as "multivariate" visualization
+
+\
+
+- Primary benefit is that interpretation is pretty straightforward
+
+```{r viz-3d}
+#| echo: true
+#| fig-align: center
+
+# Make 3D scatterplot with `scatterplot3d` library
+scatterplot3d::scatterplot3d(lichen_df$Callvulg, lichen_df$Empenigr, lichen_df$Rhodtome,
+                     xlab = "Callvulg", ylab = "Empenigr", zlab = "Rhodtome")
+```
+
+## [Chernoff Faces]{.gold} {.smaller}
+
+- Some people have tried to make human's capacity for comparing faces into a tool for data visualization
+    - Data are transformed into human(-ish) faces with different dimensions
+    - I find these _very_ scary
+
+```{r viz-faces}
+#| echo: true
+#| fig-align: center
+
+# Make a matrix out of your desired data
+lich_mat <- data.matrix(varespec)
+
+# Generate Chernoff face graph
+TeachingDemos::faces2(lich_mat, labels = lichen_df$treatment, scale = "center")
+```
+
+## [Star Plots]{.gold} {.smaller}
+
+- Perhaps most usefully, you can just make "star plots" to check multivariate data
+
+```{r viz-stars}
+#| echo: true
+#| fig-align: center
+
+# Create star plots
+graphics::stars(x = varespec, labels = lichen_df$treatment, key.loc = c(16, 9))
+```
+
+## [Principal Components]{.pink} {.smaller}
+
+- Before we can visualize PCA results, we need to actually identify PC axes!
+
+```{r pca}
+#| echo: true
+
+# Perform Principal Components Analysis
+lich_pc <- prcomp(x = varespec)
+
+# Summarize it to calculate '% variation explained' for each PC axis
+lich_pc_smry <- summary(lich_pc)
+
+# Check the structure of the summarized object
+str(lich_pc_smry)
+```
+
+## [Principal Components Ordination]{.pink} {.smaller}
+
+```{r pca-ord}
+#| echo: true
+#| fig-align: center
+
+# With that done, we can make a graph of that information!
+plot(x = lich_pc$x[,1], y = lich_pc$x[,2], pch = 20, 
+     ## And do some fancy axis labels to get 'variation explained' in the plot
+     xlab = paste0("PC1 (", (lich_pc_smry$importance[2, 1] * 100), " % variation explained)"), 
+     ylab = paste0("PC2 (", (lich_pc_smry$importance[2, 2] * 100), " % variation explained)"))
+```
+
+## [Non-Metric Multidimensional Scaling]{.blue} {.smaller}
+
+- Just like PCA, we need to start by actually performing the scaling step
+
+\
+
+- See here:
+
+```{r nms}
+#| echo: true
+#| output: false
+
+# Perform NMS ordination
+lich_mds <- vegan::metaMDS(comm = varespec, distance = "bray", k = 2, try = 50,
+                           autotransform = F, expand = F)
+```
+
+\
+
+- Quick explanation of (some of) the arguments
+    - `distance` is your preferred metric for dissimilarity
+    - `k` is the number of axes to scale to (typically 2 for standard plotting)
+    - `try` is the number of starting data configurations (remember the helicopter analogy!)
+
+## [NMS Ordination]{.blue} {.smaller}
+
+- Fortunately, we can use a nice ordination function from the `supportR` package to make the graph
+
+```{r nms-ord}
+#| echo: true
+#| fig-align: center
+#| fig-height: 4
+
+# Create NMS ordination
+supportR::nms_ord(mod = lich_mds, groupcol = lichen_df$treatment)
+```
+
+## [Thanks! Questions?]{.cream} {background-image="images_general/pic-question-mark-bfly.jpg"}

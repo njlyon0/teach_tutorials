@@ -1,0 +1,177 @@
+---
+title: "Random Forest in R"
+author: "Nick J Lyon"
+engine: knitr
+format: 
+  revealjs: 
+    slide-number: c
+    scrollable: false
+    code-overflow: wrap
+    code-line-numbers: false
+    code-copy: hover
+    theme: [night, slides.scss]
+    reference-location: document
+---
+
+## Prepare {.smaller}
+
+- First, you'll need to install and load a few {{< fa brands r-project >}} R packages
+    - While not technically necessary, the `librarian` package makes library management _much_ simpler
+
+\
+
+```{r libs}
+#| echo: true
+
+# Install librarian (if you need to)
+# install.packages("librarian")
+
+# Install (if not already present) and load needed libraries
+librarian::shelf(tidyverse, randomForest, permimp, vegan)
+```
+
+## Lichen Data {.smaller}
+
+- The `vegan` package includes some lichen community composition data we can use for exploratory purposes
+
+\
+
+- We'll begin by loading that data (with some minor wrangling)
+
+```{r data-prep}
+#| echo: true
+
+# Load vegan's lichen dataset & associated chemistry dataset
+utils::data("varespec", package = 'vegan')
+utils::data("varechem", package = 'vegan')
+
+# Get one lichen species' cover information separate
+lichen_sp <- dplyr::select(varespec, Callvulg)
+
+# Attach the single species to the chemistry data
+lichen_df <- cbind(lichen_sp, varechem)
+```
+
+## Data Structure {.smaller}
+
+- This data object now has the following structure:
+```{r data-str}
+#| echo: true
+
+# Check lichen data structure
+str(lichen_df)
+```
+
+## [Random Forest]{.edu-pink} {.smaller}
+
+- Run the random forest with the function and package of the same name
+
+```{r random-forest}
+#| echo: true
+
+# Actually do the random forest
+lich_rf <- randomForest::randomForest(Callvulg ~ ., data = lichen_df, 
+                                      ntree = 1000, mtry = 2, 
+                                      na.action = na.omit,
+                                      keep.forest = T, keep.inbag = T)
+```
+
+\
+
+- Quick argument explanation
+    - 'Y ~ .' format of model means all other columns are (potential) predictors
+    - `ntree` is the number of trees in the forest
+    - `mtry` is the number of variables per node in the tree
+
+## Variable Importance Plot {.smaller}
+
+- We can now generate a [variable importance plot]{.edu-gold} based on that random forest
+
+```{r var-imp-plot}
+#| echo: true
+#| fig-align: center
+
+# Create variable importance plot
+randomForest::varImpPlot(x = lich_rf, sort = T,
+                         n.var = (ncol(lichen_df) - 1),
+                         main = "Variable Importance")
+```
+
+## Conditional Permutation Importance (CPI) {.smaller}
+
+- We can use that random forest to perform conditional permutation
+
+```{r cpi-1}
+#| echo: true
+#| fig-align: center
+#| fig-height: 4
+
+# Implement conditional permutation
+high_thresh <- permimp::permimp(object = lich_rf, conditional = T,
+                                # Note the threshold is set to 0.95
+                               threshold = 0.95, do_check = F, progressBar = F)
+
+# Make CPI plot
+plot(high_thresh, type = "box", horizontal = T)
+```
+
+## CPI - Thresholds {.smaller}
+
+- As you might imagine, the threshold you pick can have a dramatic effect!
+
+```{r cpi-2}
+#| echo: true
+#| fig-align: center
+#| fig-height: 4
+
+# Implement conditional permutation
+low_thresh <- permimp::permimp(object = lich_rf, conditional = T,
+                               # Note the lower threshold
+                               threshold = 0.50, do_check = F, progressBar = F)
+
+# Make CPI plot
+plot(low_thresh, type = "box", horizontal = T)
+```
+
+## Exploratory Plotting {.smaller}
+
+- Let's graph the response against the four 'most important' variables
+    - This part is just for fun!
+
+```{r explore}
+# Load the cowplot library
+librarian::shelf(cowplot)
+
+# First graph
+g1 <- ggplot(lichen_df, aes(y = Callvulg, x = pH)) +
+  geom_smooth(formula = "y ~ x", method = "lm", color = "black", se = F) +
+  geom_point(color = "black", fill = "#bfd3e6", pch = 21, size = 3) +
+  labs(x = "pH", y = "Callvulg Cover (%)") +
+  supportR::theme_lyon()
+  
+# Second graph
+g2 <- ggplot(lichen_df, aes(y = Callvulg, x = Al)) +
+  geom_smooth(formula = "y ~ x", method = "lm", color = "black", se = F) +
+  geom_point(color = "black", fill = "#8c96c6", pch = 22, size = 3) +
+  labs(x = "Aluminum", y = "Callvulg Cover (%)") +
+  supportR::theme_lyon()
+
+# Third
+g3 <- ggplot(lichen_df, aes(y = Callvulg, x = P)) +
+  geom_smooth(formula = "y ~ x", method = "lm", color = "black", se = F) +
+  geom_point(color = "black", fill = "#88419d", pch = 23, size = 3) +
+  labs(x = "Phosphorus", y = "Callvulg Cover (%)") +
+  supportR::theme_lyon()
+
+# Final
+g4 <- ggplot(lichen_df, aes(y = Callvulg, x = Baresoil)) +
+  geom_smooth(formula = "y ~ x", method = "lm", color = "black", se = F) +
+  geom_point(color = "black", fill = "#4d004b", pch = 24, size = 3) +
+  labs(x = "Bare Soil", y = "Callvulg Cover (%)") +
+  supportR::theme_lyon()
+
+# Assemble and present
+cowplot::plot_grid(g1, g2, g3, g4, ncol = 2, nrow = 2, labels = "AUTO")
+```
+
+## [Thanks! Questions?]{.cream} {background-image="images_general/pic-question-mark-bfly.jpg"}
