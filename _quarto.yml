@@ -30,6 +30,8 @@ website:
         contents:
           - text: "Statistics"
             href: content/statistics.qmd
+          - text: "Version Control"
+            href: content/version-control.qmd
       - section: "Team Science"
         contents: 
           - text: "Facilitation"
