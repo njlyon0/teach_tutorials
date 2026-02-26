@@ -5,12 +5,18 @@ title: "Structured Query Language Tutorials"
 The below tutorials are all focused on SQL. See sub-headings for more specifics! Acronyms used in this page include:
 
 - SQL = <u>S</u>tructured <u>Q</u>uery <u>L</u>anguage
+- QA = <u>Q</u>uality <u>A</u>ssurance
 
 ## {{< fa book-bookmark >}} SQL Term Glossary
 
 I don't do much SQL in my day-to-day (at time of writing anyway) so having a term glossary will prove useful in brushing up periodically. Note that SQL is mostly not case sensitive but I find it easier to keep all SQL verbs fully capitalized for some visual distinction between functions versus data objects/variables.
 
 ### Core Terms
+
+I'm dividing the core terms based on a general category for their purpose.
+
+:::{.panel-tabset}
+### Query Existing Tables
 
 | Function | Syntax | Explanation |
 |:--:|:-------------:|:--------------------------|
@@ -22,7 +28,27 @@ I don't do much SQL in my day-to-day (at time of writing anyway) so having a ter
 | `OFFSET` | `OFFSET {number of rows}` | Return only the specified number of rows |
 | `GROUP BY` | `GROUP BY {column}` | Perform subsequent operations within unique levels of the specified column. Comparable to the function of the same name from the `dplyr` package in {{< fa brands r-project >}} R |
 
-### Subordinate Terms
+### Create a New Table
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `CREATE TABLE` | `CREATE TABLE {new table} ({column} {DataType} {TableConstraint} DEFAULT {default value}, ...)` | Make a new table by naming each column, deciding on its data type, giving it a constraint (optional), and setting the default value (optional) |
+
+### Alter an Existing Table
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `ALTER TABLE` | `ALTER TABLE {table}` | Similar syntax to `CREATE TABLE`, same facets that were optional for that term are still optional here |
+
+### Delete a Table
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `DROP TABLE` | `DROP TABLE {table}` | Like `CREATE TABLE`, can be used with or without a `IF EXISTS` clause. If you have tables that are dependent upon other tables (e.g., because of `FOREIGN KEY`), then you must remove that dependency before you can drop the table |
+
+:::
+
+### Subordinates to Core Terms
 
 To my knowledge, the following SQL verbs can only be used in combination with one of the 'core' verbs included in the table above. Where possible, I've separated the subordinate terms into separate tabs depending on to which core term they are subordinate.
 
@@ -103,6 +129,34 @@ All `JOIN` functions require `ON` as well. Note also that `ON` assumes the left 
 | Function | Syntax | Explanation |
 |:--:|:-------------:|:--------------------------|
 | `HAVING` | `HAVING {group condition}` | Same as `WHERE` but <u>only works if you first use `GROUP BY`</u>. If not using `GROUP BY`, use `WHERE` instead | 
+
+<br> 
+
+#### `CREATE TABLE` Subordinates
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `IF NOT EXISTS` | `CREATE TABLE IF NOT EXISTS {new table} ...` | Avoids the error that SQL will return if you try to make a new table with the same name as an existing one. |
+| `BOOLEAN` / `INTEGER` / `FLOAT` / `DOUBLE` / `REAL` | `CREATE TABLE {new table} ({column} {DataType}, ...)` | Allowed types of number data (boolean is 0-1, others are self-explanatory) |
+| `CHARACTER` / `VARCHAR` / `TEXT` | `CREATE TABLE {new table} ({column} {DataType}, ...)` | Allowed types of text data |
+| `DATE` / `DATETIME` | `CREATE TABLE {new table} ({column} {DataType}, ...)` | Allowed types of date data. Note that there are similar formatting issues here that you may experience with this type of data in other programming languages |
+| `PRIMARY KEY` / `AUTOINCREMENT` / `UNIQUE` / `NOT NULL` | `CREATE TABLE {new table} ({column} {DataType} {TableConstraint}, ...)` | Constraints that can be placed on a new column. The "primary key" is the row that uniquely identifies each row and ties it to some other relational table.  |
+| `PRIMARY KEY` | `CREATE TABLE {new table} ({column} {DataType} PRIMARY KEY, ...)` | Constraints that can be placed on a new column. The "primary key" is the column that uniquely identifies each row and ties it to some other relational table |
+| `AUTOINCREMENT` | `CREATE TABLE {new table} ({column} {DataType} AUTOINCREMENT, ...)` | Constraints that can be placed on a new column. Only applies to integers. Only supported by some databases  |
+| `UNIQUE` | `CREATE TABLE {new table} ({column} {DataType} UNIQUE, ...)` | Constraints that can be placed on a new column. Doesn't allow repeated entries when inserting rows into this table. Differs from the "primary key" because it doesn't necessarily have to be able to identify a specific row |
+| `NOT NULL` | `CREATE TABLE {new table} ({column} {DataType} NOT NULL, ...)` | Constraints that can be placed on a new column. Self-explanatory |
+| `CHECK` | `CREATE TABLE {new table} ({column} {DataType} CHECK({expression}), ...)` | Allows for checking of whether values to be inserted match some user-specified expression. Good for QA of new data |
+| `FOREIGN KEY` | `CREATE TABLE {new table} ({column} {DataType} FOREIGN KEY, ...)` | Guarantees that each value in this column is found in a column in another table |
+
+<br> 
+
+#### `ALTER TABLE` Subordinates
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `ADD` | `ALTER TABLE {table} ADD {column} {DataType} {TableConstraint} DEFAULT {default value}` | Similar syntax to `CREATE TABLE`. Features that were optional for that function are still optional here |
+| `DROP` | `ALTER TABLE {table} DROP {column}` | Simpler than some alternatives because you just have to name the function to be deleted |
+| `RENAME` | `ALTER TABLE {table} RENAME {column} AS {column}` | More permanent than the alias conferred by `AS` when used with `SELECT` |
 
 :::
 
