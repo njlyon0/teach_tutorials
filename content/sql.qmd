@@ -1,10 +1,107 @@
 ---
-title: "SQL Tutorials"
+title: "Structured Query Language Tutorials"
 ---
 
-## {{< fa person-digging >}} Under Construction
+The below tutorials are all focused on SQL. See sub-headings for more specifics! Acronyms used in this page include:
 
-Check back later!
+- SQL = <u>S</u>tructured <u>Q</u>uery <u>L</u>anguage
 
+## {{< fa book-bookmark >}} SQL Term Glossary
 
+I don't do much SQL in my day-to-day (at time of writing anyway) so having a term glossary will prove useful in brushing up periodically. Note that SQL is mostly not case sensitive but I find it easier to keep all SQL verbs fully capitalized for some visual distinction between functions versus data objects/variables.
 
+### Core Terms
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `;` | `{other fxns};` | A semicolon indicates the end of a clause/set of clauses in SQL. Including it is necessary to indicate that a query should be executed |
+| `SELECT` | `SELECT {column name(s)}` | Pick only some columns from a given data table. Comparable to the function of the same name from the `dplyr` package in {{< fa brands r-project >}} R |
+| `FROM` | `FROM {table name}` | Specify on which table the query should be operating. This is comparable to a `data` argument in {{< fa brands r-project >}} R or parameter in {{< fa brands python >}} Python |
+| `WHERE` | `WHERE {conditions}` | Impose conditions to restrict which rows of the table should be returned. Uses a number of conditional verbs |
+| `ORDER BY` | `ORDER BY {column}` | Sort the rows of the returned table by the specified column |
+| `OFFSET` | `OFFSET {number of rows}` | Return only the specified number of rows |
+| `GROUP BY` | `GROUP BY {column}` | Perform subsequent operations within unique levels of the specified column. Comparable to the function of the same name from the `dplyr` package in {{< fa brands r-project >}} R |
+
+### Subordinate Terms
+
+To my knowledge, the following SQL verbs can only be used in combination with one of the 'core' verbs included in the table above. Where possible, I've separated the subordinate terms into separate tabs depending on to which core term they are subordinate.
+
+:::{.panel-tabset}
+### `SELECT` Subordinates
+
+#### Aliasing with `SELECT`
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `AS` | `SELECT {column} AS {alias}` | Create an alias of the specified column. Aliases can be used to increase clarity of column names. Subsequent code can then use the alias instead of the original/actual column name. This also works for `FROM`|
+
+<br> 
+
+#### Summarizing with `SELECT`
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `DISTINCT` | `SELECT DISTINCT {column name}` | Keep only rows with unique values in the specified column. Comparable to the function of the same name from the `dplyr` package in {{< fa brands r-project >}} R |
+| `COUNT` | `SELECT COUNT({column}) AS {new column}` | Counts the number of each unique entity in the specified column |
+| `MIN`/`MAX`/`AVG`/`SUM` | `SELECT AVG({column}) AS {new column}` | Computes the minimum/maximum/mean/sum (respectively) of the specified column | 
+
+### `WHERE` Subordinates
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `=`/`!=` | `WHERE {column} != "{character}"` | Conditional operator for numbers _and_ characters. Note that <u>character conditions are case-sensitive and must be in quotes</u>! Operators mean:, 'equal to' and 'not equal to' respectively |
+| `<`/`>`/`<=`/`>=` | `WHERE {column} >= {#}` | Conditional operators for <u>numbers _only_</u>. Operators mean:, 'less than', 'greater than', 'less than or equal to', and 'greater than or equal to' respectively |
+| `AND` | `WHERE {condition} AND {condition}` | Keep rows where <u>both/all</u> conditions are met. Comparable to {{< fa brands r-project >}} R's `&` |
+| `OR` | `WHERE {condition} OR {condition}` | Keep rows where <u>either/at least one</u> condition is met. Comparable to {{< fa brands r-project >}} R's `|` |
+| `BETWEEN` / `NOT BETWEEN` | `WHERE {column} BETWEEN {#} AND {#}` | Keep rows where the value is/is not between the specified numbers |
+| `IN` / `NOT IN` | `WHERE {column} IN ({#}, {#}, {#})` | Keep rows where the value is/is not in the provided set of numbers. Comparable to {{< fa brands r-project >}} R's `%in%` operator. <u>Works for bare numbers or quoted characters</u> |
+| `LIKE` / `NOT LIKE` | `WHERE {column} LIKE "%{character}%"` | Keeps rows where the value has/doesn't have at least a partial string match to the provided character (e.g., "mar" in "march"). This is <u>case _insenstive</u>!_ |
+| `LIKE` / `NOT LIKE` | `WHERE {column} LIKE "{character}_"` | Keeps rows where the value matches the string plus one character. Excludes an exact string match without that additional character. This is <u>case _insenstive</u>!_ | 
+| `IS NULL` / `IS NOT NULL` | `WHERE {column} IS NULL` | Keep rows where the specified column is/is not NA |
+
+### `FROM` Subordinates
+
+#### Aliasing Data
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `AS` | `FROM {table} AS {alias}` | Create an alias of the specified table. Aliases can be used to increase clarity of tables. Subsequent code can then use the alias instead of the original/actual table name. This also works for `SELECT` |
+
+<br> 
+
+#### Joining Data
+
+All `JOIN` functions require `ON` as well. Note also that `ON` assumes the left column name(s) corresponds to the left table and vice versa but you can also specify the second table's key explicitly with a period separating the table from its key (e.g., `{table B}.{table B key}`).
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `INNER JOIN` | `FROM {table A} INNER JOIN {table B} ON {table A key} = {table B key}` | Returns only rows where a <u>given value is found in _both_ tables' key columns</u>. Returns all columns from both tables where the relevant match is found. Note also that `JOIN` is equivalent to `INNER JOIN` but the longer form is retained here for the sake of precision |
+| `LEFT JOIN` | `FROM {table A} LEFT JOIN {table B} ON {table A key} = {table B key}` | Returns only rows where a <u>given value is found in _table A's key column_</u>. Returns all columns from both tables where the relevant match is found |
+| `RIGHT JOIN` | `FROM {table A} RIGHT JOIN {table B} ON {table A key} = {table B key}` | Returns only rows where a <u>given value is found in _table B's key column_</u>. Returns all columns from both tables where the relevant match is found |
+| `FULL JOIN` | `FROM {table A} FULL JOIN {table B} ON {table A key} = {table B key}` | Returns only rows where a <u>given value is found in _either_ tables' key column</u>. Returns all columns from both tables where the relevant match is found |
+
+### Other Subordinates
+
+#### `ORDER BY` Subordinates
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `ASC` / `DESC` | `ORDER BY {column} ASC` | Order the rows in ascending/descending order of the provided column | 
+
+<br> 
+
+#### `OFFSET` Subordinates
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `LIMIT` | `OFFSET {number of rows} LIMIT {row number}` | Specify from which row the offset rows should begin | 
+
+<br> 
+
+#### `GROUP BY` Subordinates
+
+| Function | Syntax | Explanation |
+|:--:|:-------------:|:--------------------------|
+| `HAVING` | `HAVING {group condition}` | Same as `WHERE` but <u>only works if you first use `GROUP BY`</u>. If not using `GROUP BY`, use `WHERE` instead | 
+
+:::
