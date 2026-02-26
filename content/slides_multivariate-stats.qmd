@@ -523,4 +523,4 @@ lich_mds <- vegan::metaMDS(comm = varespec, distance = "bray", k = 2, try = 50,
 supportR::nms_ord(mod = lich_mds, groupcol = lichen_df$treatment)
 ```
 
-## [Thanks! Questions?]{.cream} {background-image="images_general/pic-question-mark-bfly.jpg"}
+## [Thanks! Questions?]{.cream} {background-image="images/photo_flea-beetle.jpg"}
