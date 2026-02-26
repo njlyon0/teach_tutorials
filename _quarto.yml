@@ -26,13 +26,14 @@ website:
     style: docked
     collapse-level: 2
     contents:
-      - section: "Team Science"
-        contents: 
-          - text: "TBD"
       - section: "Data Science"
         contents:
           - text: "Statistics"
             href: content/statistics.qmd
+      - section: "Team Science"
+        contents: 
+          - text: "Facilitation"
+            href: content/facilitation.qmd
   page-footer: 
     center: "Copyright &copy; 2026, Nick J Lyon"
     background: secondary
