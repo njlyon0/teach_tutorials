@@ -370,6 +370,17 @@
     ]
   },
   {
+    "objectID": "content/sql.html#sql-order-of-operations",
+    "href": "content/sql.html#sql-order-of-operations",
+    "title": "Structured Query Language Tutorials",
+    "section": " SQL Order of Operations",
+    "text": "SQL Order of Operations\nThe general order of operations for a SQL query is as follows:\n\nFROM / JOIN\nWHERE & subordinates\nGROUP BY\nHAVING & subordinates\nSELECT & subordinates\nORDER BY & subordinates\nOFFSET & subordinates",
+    "crumbs": [
+      "Data Science",
+      "SQL"
+    ]
+  },
+  {
     "objectID": "content/version-control.html",
     "href": "content/version-control.html",
     "title": "Version Control Tutorials",

@@ -365,6 +365,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#core-terms" id="toc-core-terms" class="nav-link" data-scroll-target="#core-terms">Core Terms</a></li>
   <li><a href="#subordinate-terms" id="toc-subordinate-terms" class="nav-link" data-scroll-target="#subordinate-terms">Subordinate Terms</a></li>
   </ul></li>
+  <li><a href="#sql-order-of-operations" id="toc-sql-order-of-operations" class="nav-link" data-scroll-target="#sql-order-of-operations"><i class="fa-solid fa-arrow-down-wide-short" aria-label="arrow-down-wide-short"></i> SQL Order of Operations</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/njlyon0/teach_tutorials/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -727,9 +728,22 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="sql-order-of-operations" class="level2">
+<h2 class="anchored" data-anchor-id="sql-order-of-operations"><i class="fa-solid fa-arrow-down-wide-short" aria-label="arrow-down-wide-short"></i> SQL Order of Operations</h2>
+<p>The general order of operations for a SQL query is as follows:</p>
+<ol type="1">
+<li><code>FROM</code> / <code>JOIN</code></li>
+<li><code>WHERE</code> &amp; subordinates</li>
+<li><code>GROUP BY</code></li>
+<li><code>HAVING</code> &amp; subordinates</li>
+<li><code>SELECT</code> &amp; subordinates</li>
+<li><code>ORDER BY</code> &amp; subordinates</li>
+<li><code>OFFSET</code> &amp; subordinates</li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->
