@@ -49,11 +49,6 @@ vignettes/*.pdf
 ~$*.xlsx
 ~$*.docx
 
-# Image file types
-*.png
-*.jpeg
-*.jpg
-
 # Spatial data file types
 ## Shapefile components
 *.shp
