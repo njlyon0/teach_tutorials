@@ -4,7 +4,6 @@
 
 # Session Data files
 .RData
-.RDataTmp
 
 # User-specific files
 .Ruserdata
@@ -39,11 +38,50 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# pkgdown site
+# Mac stuff
+.DS_Store
+
+# Project file
+*.Rproj
+
+# Microsoft Office partial files
+~$*.pptx
+~$*.xlsx
+~$*.docx
+
+# Image file types
+*.png
+*.jpeg
+*.jpg
+
+# Spatial data file types
+## Shapefile components
+*.shp
+*.shx
+*.sbn
+*.sbx
+*.shp.xml
+*.shx.xml
+*.prj
+*.dbf
+*.cpg
+## Non-shapefile spatial data
+*.nc
+*.tif
+*.geojson
+
+# Other file types
+*.pdf
+*.zip
+
+# Data file types
+*.csv
+*.xlsx
+*.xls
+*.txt
+
+# Folders to ignore
+/.quarto/
 docs/
-
-# translation temp files
-po/*~
-
-# RStudio Connect folder
-rsconnect/
+data/
+graphs/
