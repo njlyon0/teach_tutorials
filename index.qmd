@@ -4,6 +4,6 @@ title: "Tutorial Home"
 
 This repository hosts any tutorials or mini-workshops that are not big enough to warrant their own, standalone websites. If any do start here but eventually cross that threshold, I'll remove them from here and instead link to the respective website.
 
-## Navigating the Website
+## {{< fa compass >}} Navigating the Website
 
 Check out the section headers in the sidebar on the left side of this website. More specific themes for tutorials are listed beneath each so feel free to follow your curiosity as you browse.
