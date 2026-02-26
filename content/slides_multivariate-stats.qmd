@@ -39,7 +39,7 @@ format:
 :::
 :::{.column width="40%"}
 
-<img src="images_tutorials/manly-navarro_multivar-primer-cover.jpg" alt="Cover of the fourth edition of 'Multivariate Statistical Methods: A Primer' by Bryan FJ Manly and Jorge A Navarro Alberto">
+<img src="images/statistics/manly-navarro_multivar-primer-cover.jpg" alt="Cover of the fourth edition of 'Multivariate Statistical Methods: A Primer' by Bryan FJ Manly and Jorge A Navarro Alberto">
 
 :::
 ::::
@@ -78,7 +78,7 @@ format:
 - Frequentist statistics uses distributions _from theory_
 
 <p align="center">
-<img src="images_tutorials/distributions_theoretical.png" alt="Graphs of several common data distributions found in theory" width="80%">
+<img src="images/statistics/distributions_theoretical.png" alt="Graphs of several common data distributions found in theory" width="80%">
 </p>
 
 . . .
@@ -86,7 +86,7 @@ format:
 - Resampling statistics uses distributions _from data_
 
 <p align="center">
-<img src="images_tutorials/distributions_from-data.png" alt="Graph of a sort of irregular histogram" width="15%">
+<img src="images/statistics/distributions_from-data.png" alt="Graph of a sort of irregular histogram" width="15%">
 </p>
 
 ## [Theoretical Process]{.orange} 
@@ -133,7 +133,7 @@ format:
 ::::
 
 <p align="center">
-<img src="images_tutorials/diagram_resid-perm-process.png" alt="Diagram showing two X variables groups with a measured response (Y), model is fit and residuals are observed and compared to many different permutations (different group assignments) of the same residuals" width="90%">
+<img src="images/statistics/diagram_resid-perm-process.png" alt="Diagram showing two X variables groups with a measured response (Y), model is fit and residuals are observed and compared to many different permutations (different group assignments) of the same residuals" width="90%">
 </p>
 
 ## [Multivariate Visualization]{.gold} {.smaller} 
@@ -269,19 +269,19 @@ format:
 
 :::{.r-stack}
 
-![](images_tutorials/nms_heli-1.jpg){.absolute top=150 left=25 .fragment .fade-in}
-![](images_tutorials/nms_heli-2a.jpg){.absolute top=150 left=25 .fragment .fade-in}
-![](images_tutorials/nms_heli-2b.jpg){.absolute top=150 left=25 .fragment .fade-in}
-![](images_tutorials/nms_heli-3.jpg){.absolute top=150 left=25 .fragment .fade-in}
-![](images_tutorials/nms_heli-4.jpg){.absolute top=150 left=25 .fragment .fade-in}
-![](images_tutorials/nms_heli-5.jpg){.absolute top=150 left=25 .fragment .fade-in}
-![](images_tutorials/nms_heli-6.jpg){.absolute top=150 left=25 .fragment .fade-in}
-![](images_tutorials/nms_heli-7.jpg){.absolute top=150 left=25 .fragment .fade-in}
-![](images_tutorials/nms_heli-8.jpg){.absolute top=150 left=25 .fragment .fade-in}
-![](images_tutorials/nms_heli-9.jpg){.absolute top=150 left=25 .fragment .fade-in}
-![](images_tutorials/nms_heli-10.jpg){.absolute top=150 left=25 .fragment .fade-in}
-![](images_tutorials/nms_heli-11.jpg){.absolute top=150 left=25 .fragment .fade-in}
-![](images_tutorials/nms_heli-12.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images/statistics/nms_heli-01.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images/statistics/nms_heli-02.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images/statistics/nms_heli-03.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images/statistics/nms_heli-04.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images/statistics/nms_heli-05.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images/statistics/nms_heli-06.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images/statistics/nms_heli-07.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images/statistics/nms_heli-08.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images/statistics/nms_heli-09.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images/statistics/nms_heli-10.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images/statistics/nms_heli-11.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images/statistics/nms_heli-12.jpg){.absolute top=150 left=25 .fragment .fade-in}
+![](images/statistics/nms_heli-13.jpg){.absolute top=150 left=25 .fragment .fade-in}
 
 :::
 

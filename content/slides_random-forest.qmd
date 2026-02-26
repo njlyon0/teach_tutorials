@@ -174,4 +174,4 @@ g4 <- ggplot(lichen_df, aes(y = Callvulg, x = Baresoil)) +
 cowplot::plot_grid(g1, g2, g3, g4, ncol = 2, nrow = 2, labels = "AUTO")
 ```
 
-## [Thanks! Questions?]{.cream} {background-image="images_general/pic-question-mark-bfly.jpg"}
+## [Thanks! Questions?]{.cream} {background-image="images/photo_question-mark-bfly.jpg"}
