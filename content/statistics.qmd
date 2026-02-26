@@ -5,6 +5,14 @@ title: "Statistics Tutorials"
 The below tutorials are all focused on statistics. See sub-headings for more specifics!
 
 ## Multivariate Statistics
+
+This slide deck includes:
+
+- Brief introduction to multivariate statistics
+- Explanation of resampling/permutation methods
+- Multivariate data visualization explanation with some non-ordination examples
+- Code demonstration for PCA, PCoA, and NMS in {{< fa brands r-project >}} R
+
 ```{=html}
 <iframe class="slide-deck" src="slides_multivariate-stats.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
 ```
@@ -12,6 +20,9 @@ The below tutorials are all focused on statistics. See sub-headings for more spe
 Multivariate Statistics Slides -- [Full Screen](slides_multivariate-stats.qmd)
 
 ## Random Forest
+
+This slide deck includes:
+- Code demo for performing random forest in {{< fa brands r-project >}} R
 
 ```{=html}
 <iframe class="slide-deck" src="slides_random-forest.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
