@@ -6,15 +6,15 @@ The below tutorials are all focused on statistics. See sub-headings for more spe
 
 ## Multivariate Statistics
 ```{=html}
-<iframe class="slide-deck" src="content/slides_multivar-stats.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
+<iframe class="slide-deck" src="slides_multivariate-stats.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
 ```
 
-Multivariate Statistics Slides -- [Full Screen](content/slides_multivar-stats.qmd)
+Multivariate Statistics Slides -- [Full Screen](slides_multivariate-stats.qmd)
 
 ## Random Forest
 
 ```{=html}
-<iframe class="slide-deck" src="content/slides_random-forest.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
+<iframe class="slide-deck" src="slides_random-forest.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
 ```
 
-Random Forest Slides -- [Full Screen](content/slides_random-forest.qmd)
+Random Forest Slides -- [Full Screen](slides_random-forest.qmd)
