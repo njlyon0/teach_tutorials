@@ -2,7 +2,62 @@
 title: "Version Control Tutorials"
 ---
 
-## {{< fa person-digging >}} Under Construction
+The below tutorials are all focused on version control (especially Git and GitHub). See sub-headings for more specifics! Acronyms used in this page include:
 
-Check back later!
+- IDE = <u>I</u>ntegrated <u>D</u>evelopment <u>E</u>nvironment
+- PAT = <u>P</u>ersonal <u>A</u>ccess <u>T</u>oken
+
+## {{< fa code-branch >}} Git Command Line Snippets
+
+There are a few Git operations I need infrequently enough that I haven't committed them to memory but would like an easy place to quickly reference as needed. Each tab below separates Git commands useful in different circumstances. Note that the tab order--and content within each tab--is ordered based on how often _I_ need to refer to these snippets so I hope that doesn't diminish their usefulness to you.
+
+:::{.panel-tabset}
+### Remote Repository
+
+#### Failed Push/Sync Due to Too Much Data
+
+If you commit too much data on your local repository, your push/sync to GitHub will fail. You can force your machine to allow a larger amount of data in a single push/sync if need be. Ideally, you'd avoid committing too much data at once but this solve works if you forget.
+
+**Allow a single push/sync to include more/larger files** <br>
+`git config http.postBuffer 524288000`
+
+#### Changed Remote Name
+
+If you change your GitHub repository's name after cloning it, you may get a warning in your IDE that your 'remote has moved to a new location'. Many IDEs are savvy enough for this not to cause a real error but it's good practice to tweak things so that the only warnings you get are the ones to which you want to pay attention.
+
+**Update existing local repository with new remote URL:** <br>
+`git remote set-url origin {new URL}`
+
+### Branches
+
+#### Branch Housekeeping
+
+Once you are done working in a branch (i.e., have merged it with 'main'), there are a few good houskeeping steps to follow:
+
+1. In your IDE, switch back to 'main' and pull/sync
+2. Delete the branch in your remote repository
+3. **Delete the branch in your local repository**
+    - `git branch -d {branch name}`
+4. **Update your local repository's list of the branches it thinks are in your remote repository**
+    - `git remote update origin --prune`
+
+### Local Repository
+
+#### Check Current Settings
+
+It can be helpful to see what your current Git settings are. Fortunately, there's an easy way to check your global Git settings on your machine.
+
+**List Git information on your computer** <br>
+`git config --global --list`
+
+### Server
+
+#### Credential Caching
+
+On some remote servers (e.g., those used by [NCEAS](https://www.nceas.ucsb.edu/)), you must specify how long you want your credentials to be "cached" (i.e., remembered). It is a pain if you forget to cache your credentials as--in the worst case--it may mean that you'd need to make a new PAT if your old one is not cached and you didn't save it elsewhere.
+
+**Cache your credentials for 10 million seconds** <br>
+`git config --global credential.helper 'cache --timeout=10000000'`
+
+:::
 
