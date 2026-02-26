@@ -12,5 +12,311 @@
     "title": "Tutorial Home",
     "section": " Navigating the Website",
     "text": "Navigating the Website\nCheck out the section headers in the sidebar on the left side of this website. More specific themes for tutorials are listed beneath each so feel free to follow your curiosity as you browse."
+  },
+  {
+    "objectID": "content/slides_random-forest.html#prepare",
+    "href": "content/slides_random-forest.html#prepare",
+    "title": "Random Forest in R",
+    "section": "Prepare",
+    "text": "Prepare\n\nFirst, you’ll need to install and load a few  R packages\n\nWhile not technically necessary, the librarian package makes library management much simpler\n\n\n\n\n\n# Install librarian (if you need to)\n# install.packages(\"librarian\")\n\n# Install (if not already present) and load needed libraries\nlibrarian::shelf(tidyverse, randomForest, permimp, vegan)"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#lichen-data",
+    "href": "content/slides_random-forest.html#lichen-data",
+    "title": "Random Forest in R",
+    "section": "Lichen Data",
+    "text": "Lichen Data\n\nThe vegan package includes some lichen community composition data we can use for exploratory purposes\n\n\n\n\nWe’ll begin by loading that data (with some minor wrangling)\n\n\n# Load vegan's lichen dataset & associated chemistry dataset\nutils::data(\"varespec\", package = 'vegan')\nutils::data(\"varechem\", package = 'vegan')\n\n# Get one lichen species' cover information separate\nlichen_sp &lt;- dplyr::select(varespec, Callvulg)\n\n# Attach the single species to the chemistry data\nlichen_df &lt;- cbind(lichen_sp, varechem)"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#data-structure",
+    "href": "content/slides_random-forest.html#data-structure",
+    "title": "Random Forest in R",
+    "section": "Data Structure",
+    "text": "Data Structure\n\nThis data object now has the following structure:\n\n\n# Check lichen data structure\nstr(lichen_df)\n\n'data.frame':   24 obs. of  15 variables:\n $ Callvulg: num  0.55 0.67 0.1 0 0 ...\n $ N       : num  19.8 13.4 20.2 20.6 23.8 22.8 26.6 24.2 29.8 28.1 ...\n $ P       : num  42.1 39.1 67.7 60.8 54.5 40.9 36.7 31 73.5 40.5 ...\n $ K       : num  140 167 207 234 181 ...\n $ Ca      : num  519 357 973 834 777 ...\n $ Mg      : num  90 70.7 209.1 127.2 125.8 ...\n $ S       : num  32.3 35.2 58.1 40.7 39.5 40.8 33.8 27.1 42.5 60.2 ...\n $ Al      : num  39 88.1 138 15.4 24.2 ...\n $ Fe      : num  40.9 39 35.4 4.4 3 ...\n $ Mn      : num  58.1 52.4 32.1 132 50.1 ...\n $ Zn      : num  4.5 5.4 16.8 10.7 6.6 9.1 7.4 5.2 9.3 9.1 ...\n $ Mo      : num  0.3 0.3 0.8 0.2 0.3 0.4 0.3 0.3 0.3 0.5 ...\n $ Baresoil: num  43.9 23.6 21.2 18.7 46 40.5 23 29.8 17.6 29.9 ...\n $ Humdepth: num  2.2 2.2 2 2.9 3 3.8 2.8 2 3 2.2 ...\n $ pH      : num  2.7 2.8 3 2.8 2.7 2.7 2.8 2.8 2.8 2.8 ..."
+  },
+  {
+    "objectID": "content/slides_random-forest.html#random-forest",
+    "href": "content/slides_random-forest.html#random-forest",
+    "title": "Random Forest in R",
+    "section": "Random Forest",
+    "text": "Random Forest\n\nRun the random forest with the function and package of the same name\n\n\n# Actually do the random forest\nlich_rf &lt;- randomForest::randomForest(Callvulg ~ ., data = lichen_df, \n                                      ntree = 1000, mtry = 2, \n                                      na.action = na.omit,\n                                      keep.forest = T, keep.inbag = T)\n\n\n\n\nQuick argument explanation\n\n‘Y ~ .’ format of model means all other columns are (potential) predictors\nntree is the number of trees in the forest\nmtry is the number of variables per node in the tree"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#variable-importance-plot",
+    "href": "content/slides_random-forest.html#variable-importance-plot",
+    "title": "Random Forest in R",
+    "section": "Variable Importance Plot",
+    "text": "Variable Importance Plot\n\nWe can now generate a variable importance plot based on that random forest\n\n\n# Create variable importance plot\nrandomForest::varImpPlot(x = lich_rf, sort = T,\n                         n.var = (ncol(lichen_df) - 1),\n                         main = \"Variable Importance\")"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#conditional-permutation-importance-cpi",
+    "href": "content/slides_random-forest.html#conditional-permutation-importance-cpi",
+    "title": "Random Forest in R",
+    "section": "Conditional Permutation Importance (CPI)",
+    "text": "Conditional Permutation Importance (CPI)\n\nWe can use that random forest to perform conditional permutation\n\n\n# Implement conditional permutation\nhigh_thresh &lt;- permimp::permimp(object = lich_rf, conditional = T,\n                                # Note the threshold is set to 0.95\n                               threshold = 0.95, do_check = F, progressBar = F)\n\n# Make CPI plot\nplot(high_thresh, type = \"box\", horizontal = T)"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#cpi---thresholds",
+    "href": "content/slides_random-forest.html#cpi---thresholds",
+    "title": "Random Forest in R",
+    "section": "CPI - Thresholds",
+    "text": "CPI - Thresholds\n\nAs you might imagine, the threshold you pick can have a dramatic effect!\n\n\n# Implement conditional permutation\nlow_thresh &lt;- permimp::permimp(object = lich_rf, conditional = T,\n                               # Note the lower threshold\n                               threshold = 0.50, do_check = F, progressBar = F)\n\n# Make CPI plot\nplot(low_thresh, type = \"box\", horizontal = T)"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#exploratory-plotting",
+    "href": "content/slides_random-forest.html#exploratory-plotting",
+    "title": "Random Forest in R",
+    "section": "Exploratory Plotting",
+    "text": "Exploratory Plotting\n\nLet’s graph the response against the four ‘most important’ variables\n\nThis part is just for fun!"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#thanks-questions",
+    "href": "content/slides_random-forest.html#thanks-questions",
+    "title": "Random Forest in R",
+    "section": "Thanks! Questions?",
+    "text": "Thanks! Questions?"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#caveat-before-we-begin",
+    "href": "content/slides_multivariate-stats.html#caveat-before-we-begin",
+    "title": "Multivariate Statistics 101",
+    "section": "Caveat Before We Begin",
+    "text": "Caveat Before We Begin\n\n\n\nRead this book \n\n\n\n\nHas a complete R appendix for:\n\nEvery example\nEvery figure\nEvery operation\n\n\n\n\n\nEssentially the book is written in R Markdown\n\n\n\n\nBonus: actually pretty engaging to read!\n\nDespite subject matter"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#tutorial-outline",
+    "href": "content/slides_multivariate-stats.html#tutorial-outline",
+    "title": "Multivariate Statistics 101",
+    "section": "Tutorial Outline",
+    "text": "Tutorial Outline\n\n\nBackground\nResampling & Permutation\nMultivariate Data Visualization\nPrinciple Components Analysis\nNon-Metric Multidimensional Scaling"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#multivariate-background",
+    "href": "content/slides_multivariate-stats.html#multivariate-background",
+    "title": "Multivariate Statistics 101",
+    "section": "Multivariate Background",
+    "text": "Multivariate Background\n\nMultivariate data have more variables (p) than observations (q)\n\n\n\n\n\nI.e., more columns than rows\n\nTrue of most ecology/evolution datasets\n\n\n\n\n\n\n\nDiffers from univariate statistics\n\nUnivariate explores variation in one variable\nMultivariate explores variation in many variables (plus potential inter-relationships)"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#resampling-methods",
+    "href": "content/slides_multivariate-stats.html#resampling-methods",
+    "title": "Multivariate Statistics 101",
+    "section": "Resampling Methods",
+    "text": "Resampling Methods\n\nFrequentist statistics uses distributions from theory\n\n\n\n\n\n\nResampling statistics uses distributions from data"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#theoretical-process",
+    "href": "content/slides_multivariate-stats.html#theoretical-process",
+    "title": "Multivariate Statistics 101",
+    "section": "Theoretical Process",
+    "text": "Theoretical Process\n\nTake samples from data (i.e., “re-sample”)\n\n\n\nCompare real observations to re-sampled groups\n\n\n\n\nEvaluate significance"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#permutation-notes",
+    "href": "content/slides_multivariate-stats.html#permutation-notes",
+    "title": "Multivariate Statistics 101",
+    "section": "Permutation Notes",
+    "text": "Permutation Notes\n\nPermutation methods are non-parametric\n\nBecause they don’t rely on a theoretical distribution\n\n\n\n\n\n\nPermutation methods are flexible\n\nCan assess standard & non-standard experimental designs\nHandle high-dimensional data (more variables than observations)"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#two-major-flavors",
+    "href": "content/slides_multivariate-stats.html#two-major-flavors",
+    "title": "Multivariate Statistics 101",
+    "section": "Two Major “Flavors”",
+    "text": "Two Major “Flavors”\n\n\nFull Permutation\n\nPermute whole dataset\n\n\nResidual Permutation\n\nFit desired model\nPermute the residuals\n\nLess sensitive to outliers"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#multivariate-visualization",
+    "href": "content/slides_multivariate-stats.html#multivariate-visualization",
+    "title": "Multivariate Statistics 101",
+    "section": "Multivariate Visualization",
+    "text": "Multivariate Visualization\n\nTypically involves “ordination”\n\n\n\n\n\nFrequently uses “multidimensional scaling”\n\nI.e., getting from many variables to fewer, more easily visualizable variables\nStill representative of multivariate nature of data\n\n\n\n\n\n\n\nCommon ordination methods include:\n\nPrincipal Components Analysis (PCA)\nPrincipal Coordinates Analysis (PCoA)\nNonmetric Multidimensional Scaling (NMS)"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#principle-components-analysis-1",
+    "href": "content/slides_multivariate-stats.html#principle-components-analysis-1",
+    "title": "Multivariate Statistics 101",
+    "section": "Principle Components Analysis",
+    "text": "Principle Components Analysis\n\nGoal: reduce number of variables\n\n\n\n\n\nMechanism: create combinations of existing variables to summarize variation\n\nWant each combination to contain as much variation as possible\nSuch that you approach 100% variation summarized in only a few combinations\n\n\n\n\n\n\n\nResult: number of principal components equal to number of observations\n\nEach principle component has a known % variation explained"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#pca-process",
+    "href": "content/slides_multivariate-stats.html#pca-process",
+    "title": "Multivariate Statistics 101",
+    "section": "PCA Process",
+    "text": "PCA Process\n\nFor variables (Xi) you want to create indices (Ik)\n\n\n\n\n\nConsider the following example:\n\nI1 = X1 + X2 + X3 + X4 + X5\nI2 = X1 - X2 + X3 + X4 + X5\nI3 = X1 - X2 - X3 + X4 + X5\n…\nIk = X1 - X2 - X3 - X4 - X5"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#pca-special-consideration-1",
+    "href": "content/slides_multivariate-stats.html#pca-special-consideration-1",
+    "title": "Multivariate Statistics 101",
+    "section": "PCA Special Consideration 1",
+    "text": "PCA Special Consideration 1\n\nAxis orthogonality\n\nAxes are “constrained to orthogonality” because of goal of maximized explained variation\nPlain language: PC axes are perpendicular to one another\n\n\n\n\n\n\nMeans PC3 through PCn are defined as soon as PC1 and PC2 are\n\nFocusing on early PCs reduces the relevance of this issue"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#pca-special-consideration-2",
+    "href": "content/slides_multivariate-stats.html#pca-special-consideration-2",
+    "title": "Multivariate Statistics 101",
+    "section": "PCA Special Consideration 2",
+    "text": "PCA Special Consideration 2\n\nNot a hypothesis test\n\n\n\n\n\nPCA is great for visualizing patterns in data\n\nNot good for statistical evaluation\n\n\n\n\n\n\n\nI.e., PCA cannot–by itself–show support for your hypothesis"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#nonmetric-multidimensional-scaling",
+    "href": "content/slides_multivariate-stats.html#nonmetric-multidimensional-scaling",
+    "title": "Multivariate Statistics 101",
+    "section": "Nonmetric Multidimensional Scaling",
+    "text": "Nonmetric Multidimensional Scaling\n\nGoal: reduce number of variables\n\nSame as PCA!\n\n\n\n\n\n\nMechanism: scale dissimilarity of points to minimize “stress”\n\n“dissimilarity” != “distance”\nStress is a metric for tension between true spatial configuration of points versus the arrangement of their dissimilarity\n\n\n\n\n\n\n\nResult: number of NMS axes is defined by the user\n\nNMS reports stress of “best” solution (essentially a goodness of fit metric)"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#nms-process",
+    "href": "content/slides_multivariate-stats.html#nms-process",
+    "title": "Multivariate Statistics 101",
+    "section": "NMS Process",
+    "text": "NMS Process\n\nChoose a starting configuration of points (randomly)\n\n\n\n\nMove points around and measure stress at each configuration\n\n\n\n\nRepeat until stress has been minimized\n\n\n\n\nReturn to step 1 with different starting points\n\nNecessary to avoid local stress minima\n\n\n\n\n\nContinue 1-4 until confident true minimum stress configuration has been found"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#nms-helicopter-analogy",
+    "href": "content/slides_multivariate-stats.html#nms-helicopter-analogy",
+    "title": "Multivariate Statistics 101",
+    "section": "NMS Helicopter Analogy",
+    "text": "NMS Helicopter Analogy"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#prepare",
+    "href": "content/slides_multivariate-stats.html#prepare",
+    "title": "Multivariate Statistics 101",
+    "section": "Prepare",
+    "text": "Prepare\n\nFirst, you’ll need to install and load a few  R packages\n\nWhile not technically necessary, the librarian package makes library management much simpler\n\n\n\n\n\n# Install librarian (if you need to)\n# install.packages(\"librarian\")\n\n# Install (if not already present) and load needed libraries\nlibrarian::shelf(vegan, RRPP, scatterplot3d, TeachingDemos, supportR)"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#lichen-data",
+    "href": "content/slides_multivariate-stats.html#lichen-data",
+    "title": "Multivariate Statistics 101",
+    "section": "Lichen Data",
+    "text": "Lichen Data\n\nThe vegan package includes some lichen community composition data we can use for exploratory purposes\n\n\n\n\nWe’ll begin by loading that and creating artificial groups for later analysis\n\n\n\n\n# Load vegan's lichen dataset\nutils::data(\"varespec\", package = 'vegan')\n\n# Make some columns of known number of groups\ntreatment &lt;- c(rep.int(\"Trt1\", (nrow(varespec)/4)),\n               rep.int(\"Trt2\", (nrow(varespec)/4)),\n               rep.int(\"Trt3\", (nrow(varespec)/4)),\n               rep.int(\"Trt4\", (nrow(varespec)/4)))\n\n# And combine them into a single data object\nlichen_df &lt;- cbind(treatment, varespec)"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#data-structure",
+    "href": "content/slides_multivariate-stats.html#data-structure",
+    "title": "Multivariate Statistics 101",
+    "section": "Data Structure",
+    "text": "Data Structure\n\nThis data object now has the following structure:\n\n\n# Check lichen data structure\nstr(lichen_df)\n\n'data.frame':   24 obs. of  45 variables:\n $ treatment: chr  \"Trt1\" \"Trt1\" \"Trt1\" \"Trt1\" ...\n $ Callvulg : num  0.55 0.67 0.1 0 0 ...\n $ Empenigr : num  11.13 0.17 1.55 15.13 12.68 ...\n $ Rhodtome : num  0 0 0 2.42 0 0 1.55 0 0.35 0.07 ...\n $ Vaccmyrt : num  0 0.35 0 5.92 0 ...\n $ Vaccviti : num  17.8 12.1 13.5 16 23.7 ...\n $ Pinusylv : num  0.07 0.12 0.25 0 0.03 0.12 0.1 0.1 0.05 0.12 ...\n $ Descflex : num  0 0 0 3.7 0 0.02 0.78 0 0.4 0 ...\n $ Betupube : num  0 0 0 0 0 0 0.02 0 0 0 ...\n $ Vacculig : num  1.6 0 0 1.12 0 0 2 0 0.2 0 ...\n $ Diphcomp : num  2.07 0 0 0 0 0 0 0 0 0.07 ...\n $ Dicrsp   : num  0 0.33 23.43 0 0 ...\n $ Dicrfusc : num  1.62 10.92 0 3.63 3.42 ...\n $ Dicrpoly : num  0 0.02 1.68 0 0.02 0.02 0 0.23 0.2 0 ...\n $ Hylosple : num  0 0 0 6.7 0 0 0 0 9.97 0 ...\n $ Pleuschr : num  4.67 37.75 32.92 58.07 19.42 ...\n $ Polypili : num  0.02 0.02 0 0 0.02 0.02 0 0 0 0 ...\n $ Polyjuni : num  0.13 0.23 0.23 0 2.12 1.58 0 0.02 0.08 0.02 ...\n $ Polycomm : num  0 0 0 0.13 0 0.18 0 0 0 0 ...\n $ Pohlnuta : num  0.13 0.03 0.32 0.02 0.17 0.07 0.1 0.13 0.07 0.03 ...\n $ Ptilcili : num  0.12 0.02 0.03 0.08 1.8 0.27 0.03 0.1 0.03 0.25 ...\n $ Barbhatc : num  0 0 0 0.08 0.02 0.02 0 0 0 0.07 ...\n $ Cladarbu : num  21.73 12.05 3.58 1.42 9.08 ...\n $ Cladrang : num  21.47 8.13 5.52 7.63 9.22 ...\n $ Cladstel : num  3.5 0.18 0.07 2.55 0.05 ...\n $ Cladunci : num  0.3 2.65 8.93 0.15 0.73 0.25 2.38 0.82 0.05 0.95 ...\n $ Cladcocc : num  0.18 0.13 0 0 0.08 0.1 0.17 0.15 0.02 0.17 ...\n $ Cladcorn : num  0.23 0.18 0.2 0.38 1.42 0.25 0.13 0.05 0.03 0.05 ...\n $ Cladgrac : num  0.25 0.23 0.48 0.12 0.5 0.18 0.18 0.22 0.07 0.23 ...\n $ Cladfimb : num  0.25 0.25 0 0.1 0.17 0.1 0.2 0.22 0.1 0.18 ...\n $ Cladcris : num  0.23 1.23 0.07 0.03 1.78 0.12 0.2 0.17 0.02 0.57 ...\n $ Cladchlo : num  0 0 0.1 0 0.05 0.05 0.02 0 0 0.02 ...\n $ Cladbotr : num  0 0 0.02 0.02 0.05 0.02 0 0 0.02 0.07 ...\n $ Cladamau : num  0.08 0 0 0 0 0 0 0 0 0 ...\n $ Cladsp   : num  0.02 0 0 0.02 0 0 0.02 0.02 0 0.07 ...\n $ Cetreric : num  0.02 0.15 0.78 0 0 0 0.02 0.18 0 0.18 ...\n $ Cetrisla : num  0 0.03 0.12 0 0 0 0 0.08 0.02 0.02 ...\n $ Flavniva : num  0.12 0 0 0 0.02 0.02 0 0 0 0 ...\n $ Nepharct : num  0.02 0 0 0 0 0 0 0 0 0 ...\n $ Stersp   : num  0.62 0.85 0.03 0 1.58 0.28 0 0.03 0.02 0.03 ...\n $ Peltapht : num  0.02 0 0 0.07 0.33 0 0 0 0 0.02 ...\n $ Icmaeric : num  0 0 0 0 0 0 0 0.07 0 0 ...\n $ Cladcerv : num  0 0 0 0 0 0 0 0 0 0 ...\n $ Claddefo : num  0.25 1 0.33 0.15 1.97 0.37 0.15 0.67 0.08 0.47 ...\n $ Cladphyl : num  0 0 0 0 0 0 0 0 0 0 ...\n\n\n\nEach column is an abbreviated lichen species name and the values are % cover"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#permutation-analysis",
+    "href": "content/slides_multivariate-stats.html#permutation-analysis",
+    "title": "Multivariate Statistics 101",
+    "section": "Permutation Analysis",
+    "text": "Permutation Analysis\n\nFirst, we’ll use the RRPP package to use permutation analysis\n\nHA: lichen community composition differs between at least two groups\nH0: lichen community composition does not differ\n\n\n\n\n\nNote that RRPP does require a special class of data object to perform analysis\n\n\n# Make the special data object class required by RRPP\nlichen_rpdf &lt;- RRPP::rrpp.data.frame(\"community\" = as.matrix(varespec),\n                                     \"treatment\" = lichen_df$treatment)\n\n# Fit permutation model\nlich_fit &lt;- RRPP::lm.rrpp(community ~ treatment, data = lichen_rpdf, iter = 999, RRPP = T)\n\n\nQuick argument explanation:\n\nThe iter argument is the number of permutations\nThe RRPP argument is whether to permute residuals (TRUE) or the full data (FALSE)"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#permutation-analysis-results",
+    "href": "content/slides_multivariate-stats.html#permutation-analysis-results",
+    "title": "Multivariate Statistics 101",
+    "section": "Permutation Analysis Results",
+    "text": "Permutation Analysis Results\n\nTo check the results, we can use the anova function\n\nThis also allows us to specify the desired effect type\n\n\n\n# Check out the results of the analysis!\nRRPP::anova.lm.rrpp(lich_fit, effect.type = \"F\", print.progress = F)\n\n\nAnalysis of Variance, using Residual Randomization\nPermutation procedure: Randomization of null model residuals \nNumber of permutations: 1000 \nEstimation method: Ordinary Least Squares \nSums of Squares and Cross-products: Type I \nEffect sizes (Z) based on F distributions\n\n          Df    SS     MS     Rsq      F     Z Pr(&gt;F)    \ntreatment  3 19602 6533.9 0.46682 5.8369 3.655  0.001 ***\nResiduals 20 22388 1119.4 0.53318                        \nTotal     23 41990                                       \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nCall: RRPP::lm.rrpp(f1 = community ~ treatment, iter = 999, RRPP = T,  \n    data = lichen_rpdf)\n\n\n\nNow we get a fairly standard ANOVA table\n\nThe Z column is the “Z score” and is essentially the effect size"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#permutation-pairwise-comparisons",
+    "href": "content/slides_multivariate-stats.html#permutation-pairwise-comparisons",
+    "title": "Multivariate Statistics 101",
+    "section": "Permutation Pairwise Comparisons",
+    "text": "Permutation Pairwise Comparisons\n\nOnce we have our main results, we can also get pairwise comparison results\n\n\n# Perform pairwise comparisons\nlich_pairs &lt;- RRPP::pairwise(fit = lich_fit, groups = treatment)\n\n# Check results\nsummary(lich_pairs)\n\n\nPairwise comparisons\n\nGroups: Trt1 Trt2 Trt3 Trt4 \n\nRRPP: 1000 permutations\n\nLS means:\nVectors hidden (use show.vectors = TRUE to view)\n\nPairwise distances between means, plus statistics\n                 d UCL (95%)          Z Pr &gt; d\nTrt1:Trt2 16.48128  39.64863 -0.7289177  0.760\nTrt1:Trt3 38.04299  40.10757  1.5478150  0.067\nTrt1:Trt4 59.41369  38.99550  2.9255939  0.001\nTrt2:Trt3 37.15261  38.01919  1.5148939  0.063\nTrt2:Trt4 62.40360  39.28595  3.0093479  0.001\nTrt3:Trt4 50.44284  40.37863  2.2553908  0.005\n\n\n\nThese show that the fourth treatment significantly differs from the other three\n\nAnd the third marginally differs from the first and second"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#multivariate-data-visualization-1",
+    "href": "content/slides_multivariate-stats.html#multivariate-data-visualization-1",
+    "title": "Multivariate Statistics 101",
+    "section": "Multivariate Data Visualization",
+    "text": "Multivariate Data Visualization\n\nThere are a few non-ordination ways of doing multivariate visualization\n\nNote that these are mostly for exploratory purposes\n\n\n\n\n\nThey’re still helpful for checking the general ‘vibe’ of the data\n\nbut they may not hold up to formal review processes"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#d-scatterplot",
+    "href": "content/slides_multivariate-stats.html#d-scatterplot",
+    "title": "Multivariate Statistics 101",
+    "section": "3D Scatterplot",
+    "text": "3D Scatterplot\n\nPerhaps the simplest mode of multivariate data visualization is just to make a 3D scatterplot!\n\nStill technically counts as “multivariate” visualization\n\n\n\n\n\nPrimary benefit is that interpretation is pretty straightforward\n\n\n# Make 3D scatterplot with `scatterplot3d` library\nscatterplot3d::scatterplot3d(lichen_df$Callvulg, lichen_df$Empenigr, lichen_df$Rhodtome,\n                     xlab = \"Callvulg\", ylab = \"Empenigr\", zlab = \"Rhodtome\")"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#chernoff-faces",
+    "href": "content/slides_multivariate-stats.html#chernoff-faces",
+    "title": "Multivariate Statistics 101",
+    "section": "Chernoff Faces",
+    "text": "Chernoff Faces\n\nSome people have tried to make human’s capacity for comparing faces into a tool for data visualization\n\nData are transformed into human(-ish) faces with different dimensions\nI find these very scary\n\n\n\n# Make a matrix out of your desired data\nlich_mat &lt;- data.matrix(varespec)\n\n# Generate Chernoff face graph\nTeachingDemos::faces2(lich_mat, labels = lichen_df$treatment, scale = \"center\")"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#star-plots",
+    "href": "content/slides_multivariate-stats.html#star-plots",
+    "title": "Multivariate Statistics 101",
+    "section": "Star Plots",
+    "text": "Star Plots\n\nPerhaps most usefully, you can just make “star plots” to check multivariate data\n\n\n# Create star plots\ngraphics::stars(x = varespec, labels = lichen_df$treatment, key.loc = c(16, 9))"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#principal-components",
+    "href": "content/slides_multivariate-stats.html#principal-components",
+    "title": "Multivariate Statistics 101",
+    "section": "Principal Components",
+    "text": "Principal Components\n\nBefore we can visualize PCA results, we need to actually identify PC axes!\n\n\n# Perform Principal Components Analysis\nlich_pc &lt;- prcomp(x = varespec)\n\n# Summarize it to calculate '% variation explained' for each PC axis\nlich_pc_smry &lt;- summary(lich_pc)\n\n# Check the structure of the summarized object\nstr(lich_pc_smry)\n\nList of 6\n $ sdev      : num [1:24] 31.35 21.55 11.5 8.6 6.96 ...\n $ rotation  : num [1:44, 1:24] -0.01399 0.01566 -0.00646 -0.05168 0.00858 ...\n  ..- attr(*, \"dimnames\")=List of 2\n  .. ..$ : chr [1:44] \"Callvulg\" \"Empenigr\" \"Rhodtome\" \"Vaccmyrt\" ...\n  .. ..$ : chr [1:24] \"PC1\" \"PC2\" \"PC3\" \"PC4\" ...\n $ center    : Named num [1:44] 1.88 6.33 0.35 2.11 11.46 ...\n  ..- attr(*, \"names\")= chr [1:44] \"Callvulg\" \"Empenigr\" \"Rhodtome\" \"Vaccmyrt\" ...\n $ scale     : logi FALSE\n $ x         : num [1:24, 1:24] -10.8 -27.8 -25.7 -31.8 -19.6 ...\n  ..- attr(*, \"dimnames\")=List of 2\n  .. ..$ : chr [1:24] \"18\" \"15\" \"24\" \"27\" ...\n  .. ..$ : chr [1:24] \"PC1\" \"PC2\" \"PC3\" \"PC4\" ...\n $ importance: num [1:3, 1:24] 31.352 0.538 0.538 21.548 0.254 ...\n  ..- attr(*, \"dimnames\")=List of 2\n  .. ..$ : chr [1:3] \"Standard deviation\" \"Proportion of Variance\" \"Cumulative Proportion\"\n  .. ..$ : chr [1:24] \"PC1\" \"PC2\" \"PC3\" \"PC4\" ...\n - attr(*, \"class\")= chr \"summary.prcomp\""
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#principal-components-ordination",
+    "href": "content/slides_multivariate-stats.html#principal-components-ordination",
+    "title": "Multivariate Statistics 101",
+    "section": "Principal Components Ordination",
+    "text": "Principal Components Ordination\n\n# With that done, we can make a graph of that information!\nplot(x = lich_pc$x[,1], y = lich_pc$x[,2], pch = 20, \n     ## And do some fancy axis labels to get 'variation explained' in the plot\n     xlab = paste0(\"PC1 (\", (lich_pc_smry$importance[2, 1] * 100), \" % variation explained)\"), \n     ylab = paste0(\"PC2 (\", (lich_pc_smry$importance[2, 2] * 100), \" % variation explained)\"))"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#non-metric-multidimensional-scaling-1",
+    "href": "content/slides_multivariate-stats.html#non-metric-multidimensional-scaling-1",
+    "title": "Multivariate Statistics 101",
+    "section": "Non-Metric Multidimensional Scaling",
+    "text": "Non-Metric Multidimensional Scaling\n\nJust like PCA, we need to start by actually performing the scaling step\n\n\n\n\nSee here:\n\n\n# Perform NMS ordination\nlich_mds &lt;- vegan::metaMDS(comm = varespec, distance = \"bray\", k = 2, try = 50,\n                           autotransform = F, expand = F)\n\n\n\n\nQuick explanation of (some of) the arguments\n\ndistance is your preferred metric for dissimilarity\nk is the number of axes to scale to (typically 2 for standard plotting)\ntry is the number of starting data configurations (remember the helicopter analogy!)"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#nms-ordination",
+    "href": "content/slides_multivariate-stats.html#nms-ordination",
+    "title": "Multivariate Statistics 101",
+    "section": "NMS Ordination",
+    "text": "NMS Ordination\n\nFortunately, we can use a nice ordination function from the supportR package to make the graph\n\n\n# Create NMS ordination\nsupportR::nms_ord(mod = lich_mds, groupcol = lichen_df$treatment)"
+  },
+  {
+    "objectID": "content/slides_multivariate-stats.html#thanks-questions",
+    "href": "content/slides_multivariate-stats.html#thanks-questions",
+    "title": "Multivariate Statistics 101",
+    "section": "Thanks! Questions?",
+    "text": "Thanks! Questions?"
+  },
+  {
+    "objectID": "content/statistics.html",
+    "href": "content/statistics.html",
+    "title": "Statistics Tutorials",
+    "section": "",
+    "text": "The below tutorials are all focused on statistics. See sub-headings for more specifics!",
+    "crumbs": [
+      "Data Science",
+      "Statistics"
+    ]
+  },
+  {
+    "objectID": "content/statistics.html#multivariate-statistics",
+    "href": "content/statistics.html#multivariate-statistics",
+    "title": "Statistics Tutorials",
+    "section": "Multivariate Statistics",
+    "text": "Multivariate Statistics\n\nMultivariate Statistics Slides – Full Screen",
+    "crumbs": [
+      "Data Science",
+      "Statistics"
+    ]
+  },
+  {
+    "objectID": "content/statistics.html#random-forest",
+    "href": "content/statistics.html#random-forest",
+    "title": "Statistics Tutorials",
+    "section": "Random Forest",
+    "text": "Random Forest\n\nRandom Forest Slides – Full Screen",
+    "crumbs": [
+      "Data Science",
+      "Statistics"
+    ]
   }
 ]
