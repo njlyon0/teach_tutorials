@@ -31,7 +31,8 @@ website:
           - text: "TBD"
       - section: "Data Science"
         contents:
-          - text: "TBD"
+          - text: "Statistics"
+            href: content/statistics.qmd
   page-footer: 
     center: "Copyright &copy; 2026, Nick J Lyon"
     background: secondary
