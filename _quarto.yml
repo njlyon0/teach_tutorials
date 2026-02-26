@@ -26,12 +26,16 @@ website:
     style: docked
     collapse-level: 2
     contents:
+      - text: "Home"
+        href: index.qmd
       - section: "Data Science"
         contents:
-          - text: "Statistics"
-            href: content/statistics.qmd
           - text: "Version Control"
             href: content/version-control.qmd
+          - text: "SQL"
+            href: content/sql.qmd
+          - text: "Statistics"
+            href: content/statistics.qmd
       - section: "Team Science"
         contents: 
           - text: "Facilitation"
