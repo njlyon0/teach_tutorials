@@ -123,6 +123,8 @@ The model identifies four actions of effective communication:
 
 ## [Stuck - Serial Moves]{.pink}{.smaller}
 
+![](images/facilitation/stuck-communication_serial-moves.jpg){.absolute top=100 left=650 width="45%" fig-alt="Four circles with a running person icon in interior (all labeled 'MOVE'), each with an arrow going a different direction than the others"}
+
 ::::{.columns}
 :::{.column width="50%"}
 
@@ -135,13 +137,6 @@ The model identifies four actions of effective communication:
 \
 
 - No clear thread, decision, or follow through
-
-:::
-:::{.column width="50%"}
-
-<p align="center">
-<img src="images/facilitation/stuck-communication_serial-moves.jpg" alt="Four circles with a running person icon in interior (all labeled 'MOVE'), each with an arrow going a different direction than the others" width="100%"/>
-</p>
 
 :::
 :::
@@ -184,6 +179,8 @@ For example:
 
 ## [Stuck - Polite Discussion]{.pink}{.smaller}
 
+![](images/facilitation/stuck-communication_polite-discussion.jpg){.absolute top=150 left=700 width="40%" fig-alt="A circle with a running person icon in the interior labeled 'MOVE' connected to three circles with a 'plus one' icon labeled 'FOLLOW' by arrows"}
+
 ::::{.columns}
 :::{.column width="50%"}
 
@@ -192,16 +189,6 @@ For example:
 \
 
 - A.k.a. "Courteous Compliance"
-
-:::
-:::{.column width="50%"}
-
-\
-\
-
-<p align="center">
-<img src="images/facilitation/stuck-communication_polite-discussion.jpg" alt="A circle with a running person icon in the interior labeled 'MOVE' connected to three circles with a 'plus one' icon labeled 'FOLLOW' by arrows" width="100%"/>
-</p>
 
 :::
 :::
@@ -241,6 +228,8 @@ For example:
 
 ## [Stuck - Debate]{.pink}{.smaller}
 
+![](images/facilitation/stuck-communication_debate.jpg){.absolute top=50 left=800 width="15%" fig-alt="Four circles connected in a line by arrows, alternating either with a running person icon (labeled 'MOVE') or a handshake icon crossed out (labeled 'OPPOSE')"}
+
 ::::{.columns}
 :::{.column width="50%"}
 
@@ -253,11 +242,6 @@ For example:
 
 :::
 :::{.column width="50%"}
-
-<p align="center">
-<img src="images/facilitation/stuck-communication_debate.jpg" alt="Four circles connected in a line by arrows, alternating either with a running person icon (labeled 'MOVE') or a handshake icon crossed out (labeled 'OPPOSE')" width="30%"/>
-</p>
-
 :::
 :::
 
@@ -307,6 +291,8 @@ For example:
 
 ## [Stuck - Covert Opposition]{.pink}{.smaller}
 
+![](images/facilitation/stuck-communication_covert-opposition.jpg){.absolute top=150 left=700 width="40%" fig-alt="A circle with a running person icon in the interior labeled 'MOVE' connected by arrows to three circles with a 'plus one' icon labeled 'FOLLOW', another 'move' circle, and a 'BYSTAND' circle with an icon of an eye. Partially-hidden beneath these lower three circles are three circles with a handshake-crossed-out icon labeled 'OPPOSE'"}
+
 ::::{.columns}
 :::{.column width="50%"}
 
@@ -324,15 +310,6 @@ For example:
     - Group members defer to those with more power or seniority
 
 :::
-
-:::
-:::{.column width="50%"}
-
-\
-
-<p align="center">
-<img src="images/facilitation/stuck-communication_covert-opposition.jpg" alt="A circle with a running person icon in the interior labeled 'MOVE' connected by arrows to three circles with a 'plus one' icon labeled 'FOLLOW', another 'move' circle, and a 'BYSTAND' circle with an icon of an eye. Partially-hidden beneath these lower three circles are three circles with a handshake-crossed-out icon labeled 'OPPOSE'" width="90%"/>
-</p>
 
 :::
 :::
