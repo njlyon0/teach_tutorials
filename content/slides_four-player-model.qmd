@@ -101,7 +101,7 @@ The model identifies four actions of effective communication:
 ## [The Model]{.orange}
 
 <p align="center">
-<img src="four-player-model.png" alt="Figure of four modes of communication, arrayed on two axes - Move versus Oppose on the axis of Advocacy and Follow vs. Bystand on the axis of Inquiry." width="95%"/>
+<img src="images/facilitation/four-player-model.jpg" alt="Figure of four modes of communication, arrayed on two axes - Move versus Oppose on the axis of Advocacy and Follow vs. Bystand on the axis of Inquiry." width="75%"/>
 </p>
 
 ## [Group Conversations]{.orange}{.smaller}
