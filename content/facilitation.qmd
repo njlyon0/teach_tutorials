@@ -2,6 +2,18 @@
 title: "Inclusive Facilitation Tutorials"
 ---
 
-## {{< fa person-digging >}} Under Construction
+The below tutorials are all focused on facilitation and team science topics. See sub-headings for more specifics!
 
-Check back later!
+## David Kantor's Four Player Model
+
+This slide deck includes:
+
+- Brief background on the four player model
+- Explanation of major components
+- Identification of some "stuck" communication patterns and suggestions for how to resolve them
+
+```{=html}
+<iframe class="slide-deck" src="slides_four-player-model.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
+```
+
+Four Player Model Slides -- [Full Screen](slides_four-player-model.qmd)
