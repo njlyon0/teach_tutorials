@@ -330,23 +330,67 @@ Nick J Lyon
 <h2><span class="purple">Anatomy of a Graph - P3</span></h2>
 
 <img data-src="images/visualization/graph-anatomy-03.png" class="quarto-figure quarto-figure-center r-stretch" alt="Same scatterplot as in prior image but with a box around the axis labels, another around the axis tick labels, and a final category of box around the tick marks themselves"></section>
-<section id="visualization-goal-roadmap" class="slide level2">
-<h2><span class="purple">Visualization Goal Roadmap</span></h2>
-<ol type="1">
-<li>Response &amp; explanatory are continuous: scatterplot
+<section id="choosing-the-right-graph" class="slide level2">
+<h2><span class="orange">Choosing the Right Graph</span></h2>
 <ul>
-<li>Care about trend? Add “best-fit” line</li>
-</ul></li>
-</ol>
+<li>There are a <em>lot</em> of different types of graphs you can make</li>
+</ul>
 <p><br>
 </p>
-<ol start="2" type="1">
-<li>Response is continuous but explanatory is categorical:
 <ul>
-<li>Care about each data point or data range: boxplot / violin plot</li>
-<li>Care about single summary value within each category: bar graph</li>
-</ul></li>
-</ol>
+<li>As you work more with data, you will hone your intuition for which is correct for a given context</li>
+</ul>
+<p><br>
+</p>
+<ul>
+<li>For now, let’s consider a simplified ‘roadmap’ to help you as you start your data visualization journey!</li>
+</ul>
+</section>
+<section id="graph-choice-roadmap" class="slide level2">
+<h2><span class="purple">Graph Choice Roadmap</span></h2>
+<p><br>
+</p>
+
+<img data-src="images/visualization/viz-roadmap-01.png" class="quarto-figure quarto-figure-center r-stretch" alt="Visualization roadmap with a series of yes/no branching lines between colored boxes. The top box says 'is my explanatory variable categorical?'"></section>
+<section id="graph-choice-roadmap-1" class="slide level2">
+<h2><span class="purple">Graph Choice Roadmap</span></h2>
+<p><br>
+</p>
+
+<img data-src="images/visualization/viz-roadmap-02.png" class="quarto-figure quarto-figure-center r-stretch" alt="Visualization roadmap with a series of yes/no branching lines between colored boxes. The top box says 'is my explanatory variable categorical?'. If 'yes' another box asks 'is the range of the data what's important?'"></section>
+<section id="graph-choice-roadmap-2" class="slide level2">
+<h2><span class="purple">Graph Choice Roadmap</span></h2>
+<p><br>
+</p>
+
+<img data-src="images/visualization/viz-roadmap-03.png" class="quarto-figure quarto-figure-center r-stretch" alt="Visualization roadmap with a series of yes/no branching lines between colored boxes. The top box says 'is my explanatory variable categorical?'. If 'yes' another box asks 'is the range of the data what's important?'. If 'yes', then boxplot/violin plot, if 'no' then bar graph. "></section>
+<section id="graph-choice-roadmap-3" class="slide level2">
+<h2><span class="purple">Graph Choice Roadmap</span></h2>
+<p><br>
+</p>
+
+<img data-src="images/visualization/viz-roadmap-04.png" class="quarto-figure quarto-figure-center r-stretch" alt="Visualization roadmap with a series of yes/no branching lines between colored boxes. The top box says 'is my explanatory variable categorical?'. If 'yes' another box asks 'is the range of the data what's important?'. If 'yes', then boxplot/violin plot, if 'no' then bar graph. If the explanatory variable is not categorical then another box asks 'do I care about the trend?'"></section>
+<section id="graph-choice-roadmap-4" class="slide level2">
+<h2><span class="purple">Graph Choice Roadmap</span></h2>
+<p><br>
+</p>
+
+<img data-src="images/visualization/viz-roadmap-05.png" class="quarto-figure quarto-figure-center r-stretch" alt="Visualization roadmap with a series of yes/no branching lines between colored boxes. The top box says 'is my explanatory variable categorical?'. If 'yes' another box asks 'is the range of the data what's important?'. If 'yes', then boxplot/violin plot, if 'no' then bar graph. If the explanatory variable is not categorical then another box asks 'do I care about the trend?'. If 'yes' then scatterplot plus best fit line, if 'no' then just a scatterplot"></section>
+<section id="aside-categorical-response-variable" class="slide level2">
+<h2><span class="orange">Aside: Categorical Response Variable</span></h2>
+<ul>
+<li>You may notice that the prior slide excluded the possibility of a categorical <em>response</em></li>
+</ul>
+<p><br>
+</p>
+<ul>
+<li>If <em>both</em> your explanatory and response are categorical, you likely will want a table instead of a graph</li>
+</ul>
+<p><br>
+</p>
+<ul>
+<li>Or something that is technically a scatterplot but has relatively few points</li>
+</ul>
 </section>
 <section id="graph-explanation-scatterplot" class="slide level2">
 <h2><span class="orange">Graph Explanation: Scatterplot</span></h2>
@@ -380,7 +424,7 @@ Nick J Lyon
 <p><br>
 </p>
 <ul>
-<li>Raise your hand if you think you know the proper graph type to use in each of the following examples</li>
+<li><span class="gold">Raise your hand</span> if you think you know the proper graph type to use in each of the following examples</li>
 </ul>
 </section>
 <section id="thanks-questions" class="slide level2" data-background-image="images/photo_question-mark-bfly.jpg">

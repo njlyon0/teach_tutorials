@@ -440,11 +440,53 @@
     "text": "Anatomy of a Graph - P3"
   },
   {
-    "objectID": "content/slides_data-viz-basics.html#visualization-goal-roadmap",
-    "href": "content/slides_data-viz-basics.html#visualization-goal-roadmap",
+    "objectID": "content/slides_data-viz-basics.html#choosing-the-right-graph",
+    "href": "content/slides_data-viz-basics.html#choosing-the-right-graph",
     "title": "Data Visualization Basics",
-    "section": "Visualization Goal Roadmap",
-    "text": "Visualization Goal Roadmap\n\nResponse & explanatory are continuous: scatterplot\n\nCare about trend? Add “best-fit” line\n\n\n\n\n\nResponse is continuous but explanatory is categorical:\n\nCare about each data point or data range: boxplot / violin plot\nCare about single summary value within each category: bar graph"
+    "section": "Choosing the Right Graph",
+    "text": "Choosing the Right Graph\n\nThere are a lot of different types of graphs you can make\n\n\n\n\nAs you work more with data, you will hone your intuition for which is correct for a given context\n\n\n\n\nFor now, let’s consider a simplified ‘roadmap’ to help you as you start your data visualization journey!"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#graph-choice-roadmap",
+    "href": "content/slides_data-viz-basics.html#graph-choice-roadmap",
+    "title": "Data Visualization Basics",
+    "section": "Graph Choice Roadmap",
+    "text": "Graph Choice Roadmap"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#graph-choice-roadmap-1",
+    "href": "content/slides_data-viz-basics.html#graph-choice-roadmap-1",
+    "title": "Data Visualization Basics",
+    "section": "Graph Choice Roadmap",
+    "text": "Graph Choice Roadmap"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#graph-choice-roadmap-2",
+    "href": "content/slides_data-viz-basics.html#graph-choice-roadmap-2",
+    "title": "Data Visualization Basics",
+    "section": "Graph Choice Roadmap",
+    "text": "Graph Choice Roadmap"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#graph-choice-roadmap-3",
+    "href": "content/slides_data-viz-basics.html#graph-choice-roadmap-3",
+    "title": "Data Visualization Basics",
+    "section": "Graph Choice Roadmap",
+    "text": "Graph Choice Roadmap"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#graph-choice-roadmap-4",
+    "href": "content/slides_data-viz-basics.html#graph-choice-roadmap-4",
+    "title": "Data Visualization Basics",
+    "section": "Graph Choice Roadmap",
+    "text": "Graph Choice Roadmap"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#aside-categorical-response-variable",
+    "href": "content/slides_data-viz-basics.html#aside-categorical-response-variable",
+    "title": "Data Visualization Basics",
+    "section": "Aside: Categorical Response Variable",
+    "text": "Aside: Categorical Response Variable\n\nYou may notice that the prior slide excluded the possibility of a categorical response\n\n\n\n\nIf both your explanatory and response are categorical, you likely will want a table instead of a graph\n\n\n\n\nOr something that is technically a scatterplot but has relatively few points"
   },
   {
     "objectID": "content/slides_data-viz-basics.html#graph-explanation-scatterplot",
