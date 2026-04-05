@@ -1,0 +1,48 @@
+---
+title: "Data Visualization Basics"
+author: "Nick J Lyon"
+engine: knitr
+title-slide-attributes:
+  data-background-color: "#222222"
+format: 
+  revealjs: 
+    slide-number: c
+    scrollable: false
+    code-overflow: wrap
+    code-line-numbers: false
+    code-copy: hover
+    theme: [simple, slides.scss]
+    reference-location: document
+---
+
+## A Guide to Your Process
+
+### [Scheduling]{.blue}
+
+### [Learning Objectives]{.purple}
+
+### [Practice]{.pink}
+
+### [Supporting Information]{.orange}
+
+### [Class Discussion]{.gold}
+
+## [Today's Plan]{.blue}
+
+- Function Tutorial Debrief
+- Data Visualization with `ggplot2`
+    - Core ggplot
+    - Adding geometries
+    - Multiple geometries
+    - Setting color
+    - Customizing colors
+
+## [Today's Learning Objectives]{.purple}
+
+After today's session you will be able to:
+
+. . .
+
+- TBD
+
+## [Thanks! Questions?]{.cream} {background-image="images_general/pic-question-mark-bfly.jpg"}
