@@ -178,16 +178,60 @@ After today's session you will be able to:
 
 ![](images/visualization/graph-anatomy-03.png){fig-alt="Same scatterplot as in prior image but with a box around the axis labels, another around the axis tick labels, and a final category of box around the tick marks themselves" fig-align="center"}
 
-## [Visualization Goal Roadmap]{.purple}
+## [Choosing the Right Graph]{.orange}
 
-1. Response & explanatory are continuous: scatterplot
-    - Care about trend? Add "best-fit" line
+- There are a _lot_ of different types of graphs you can make
 
 \
 
-2. Response is continuous but explanatory is categorical:
-    - Care about each data point or data range: boxplot / violin plot
-    - Care about single summary value within each category: bar graph
+- As you work more with data, you will hone your intuition for which is correct for a given context
+
+\
+
+- For now, let's consider a simplified 'roadmap' to help you as you start your data visualization journey!
+
+## [Graph Choice Roadmap]{.purple}
+
+\
+
+![](images/visualization/viz-roadmap-01.png){fig-alt="Visualization roadmap with a series of yes/no branching lines between colored boxes. The top box says 'is my explanatory variable categorical?'" fig-align="center"}
+
+## [Graph Choice Roadmap]{.purple}
+
+\
+
+![](images/visualization/viz-roadmap-02.png){fig-alt="Visualization roadmap with a series of yes/no branching lines between colored boxes. The top box says 'is my explanatory variable categorical?'. If 'yes' another box asks 'is the range of the data what's important?'" fig-align="center"}
+
+## [Graph Choice Roadmap]{.purple}
+
+\
+
+![](images/visualization/viz-roadmap-03.png){fig-alt="Visualization roadmap with a series of yes/no branching lines between colored boxes. The top box says 'is my explanatory variable categorical?'. If 'yes' another box asks 'is the range of the data what's important?'. If 'yes', then boxplot/violin plot, if 'no' then bar graph. " fig-align="center"}
+
+## [Graph Choice Roadmap]{.purple}
+
+\
+
+![](images/visualization/viz-roadmap-04.png){fig-alt="Visualization roadmap with a series of yes/no branching lines between colored boxes. The top box says 'is my explanatory variable categorical?'. If 'yes' another box asks 'is the range of the data what's important?'. If 'yes', then boxplot/violin plot, if 'no' then bar graph. If the explanatory variable is not categorical then another box asks 'do I care about the trend?'" fig-align="center"}
+
+## [Graph Choice Roadmap]{.purple}
+
+\
+
+![](images/visualization/viz-roadmap-05.png){fig-alt="Visualization roadmap with a series of yes/no branching lines between colored boxes. The top box says 'is my explanatory variable categorical?'. If 'yes' another box asks 'is the range of the data what's important?'. If 'yes', then boxplot/violin plot, if 'no' then bar graph. If the explanatory variable is not categorical then another box asks 'do I care about the trend?'. If 'yes' then scatterplot plus best fit line, if 'no' then just a scatterplot" fig-align="center"}
+
+## [Aside: Categorical Response Variable]{.orange}
+
+- You may notice that the prior slide excluded the possibility of a categorical _response_
+
+\
+
+- If _both_ your explanatory and response are categorical, you likely will want a table instead of a graph
+
+\
+
+- Or something that is technically a scatterplot but has relatively few points
+
 
 ## [Graph Explanation: Scatterplot]{.orange}
 
@@ -219,7 +263,6 @@ After today's session you will be able to:
 
 \
 
-- Raise your hand if you think you know the proper graph type to use in each of the following examples
-
+- [Raise your hand]{.gold} if you think you know the proper graph type to use in each of the following examples
 
 ## [Thanks! Questions?]{.cream} {background-image="images/photo_question-mark-bfly.jpg"}
