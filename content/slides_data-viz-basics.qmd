@@ -18,31 +18,208 @@ format:
 ## A Guide to Your Process
 
 ### [Scheduling]{.blue}
-
 ### [Learning Objectives]{.purple}
-
 ### [Practice]{.pink}
-
 ### [Supporting Information]{.orange}
-
 ### [Class Discussion]{.gold}
 
 ## [Today's Plan]{.blue}
 
-- Function Tutorial Debrief
-- Data Visualization with `ggplot2`
-    - Core ggplot
-    - Adding geometries
-    - Multiple geometries
-    - Setting color
-    - Customizing colors
+- Types of Data
+- Aside: Tidy Data
+- Anatomy of a Graph
+- Visualization Goals
+- Graph Types
 
 ## [Today's Learning Objectives]{.purple}
 
 After today's session you will be able to:
 
-. . .
+- **Define** two major types of data
+- **Identify** characteristics of "tidy" data
+- **Define** fundamental anatomy of a graph
+- **Explain** how visualization is affected by what message you want to convey
+- **Paraphrase** how you can choose what type of graph to use
 
-- TBD
+## [Graphing Overview]{.orange}
 
-## [Thanks! Questions?]{.cream} {background-image="images_general/pic-question-mark-bfly.jpg"}
+- _Before_ you can get into graphing, you need to know:
+
+\
+
+1. What type(s) of data you have
+
+\
+
+2. What message you want to share with your audience
+
+## [Types of Data]{.purple}
+
+::::{.columns}
+:::{.column width="48%"}
+### Continuous
+
+- Data _must_ be numbers
+
+\
+
+- Infinite options within possible range
+
+\
+
+- For example: height, length, profit
+
+:::
+:::{.column width="4%"}
+:::
+:::{.column width="48%"}
+### Categorical
+
+- Data _may_ be numbers
+
+\
+
+- Options limited to particular intervals
+
+\
+
+- For example: counts, satisfaction ratings
+
+:::
+::::
+
+## [Types of Data - Comic]{.orange}
+
+![](images/visualization/discrete-vs-continuous.png){fig-alt="Comic with a bird on the left under the 'continuous' heading and some non-integer number examples and an octopus on the right under the 'discrete' heading and some integer examples" fig-align="center"}
+
+## [Data Format Aside]{.orange}
+
+- In order to make a graph, your data need to be "tidy"
+
+\
+
+- But what does it mean for data to be "tidy"?
+
+\
+
+- Let's dig into that
+
+## [What is 'Tidy Data'?]{.purple}
+
+::::{.columns}
+:::{.column width="48%"}
+
+- One row = one observation
+
+\
+
+- One column = one variable
+
+\
+
+- One cell = one data point
+
+:::
+:::{.column width="4%"}
+:::
+:::{.column width="48%"}
+
+![](images/visualization/tidy-data.png){fig-alt="Cartoon data table with one column labeled as 'variable', one row as 'observation', and two cells as 'data point'" fig-align="center" fig-width="75%"}
+
+:::
+::::
+
+## [Tidy vs. Un-Tidy Comic]{.orange}
+
+![](images/visualization/untidy-cartoon.jpg){fig-alt="Cartoon of several brightly-colored, anthropomorphic tables with a speech bubble saying 'we are all tidy' above several other tables in dull colors and various, irregular shapes with a speech bubble saying 'we are untidy in different ways'" fig-align="center"}
+
+## [Un-Tidy Example 1]{.orange}
+
+![](images/visualization/untidy-example-01.png){fig-alt="Screen capture of an untidy data table in MS Excel where several sub-tables are included in different places on the same sheet" fig-align="center"}
+
+- Is every column a variable? _No!_
+- Is every row an observation? _No!_
+
+## [Un-Tidy Example 2]{.orange}
+
+\
+
+![](images/visualization/untidy-example-02.png){fig-alt="" fig-align="center"}
+
+\
+
+- Is every column a variable? **Yep**
+- Is every row an observation? _No!_
+
+## [Fixing Un-Tidy Data]{.orange}{.smaller}
+
+- What if you realize your data are not tidy?
+
+\
+
+- Ideally, you'd use some sort of code language (e.g., R, Python) to fix the data
+    - This is called [wrangling]{.purple}
+
+\
+
+- If you don't speak code, _<u>carefully</u>_ copy/pasting things is okay
+    - I _**strongly**_ recommend making a copy that you don't touch before doing this!
+    - That way you can check your work if you make a mistake
+
+## [Anatomy of a Graph - P1]{.orange}
+
+![](images/visualization/graph-anatomy-01.png){fig-alt="Scatterplot showing a negative relationship between the Y and X axes" fig-align="center"}
+
+## [Anatomy of a Graph - P2]{.purple}
+
+![](images/visualization/graph-anatomy-02.png){fig-alt="Same scatterplot as in prior image but with a box around the vertical axis (labeled 'y axis/response variable'), another around the horizontal axes (labeled 'x axis/explanatory variable'), and one final one around the plot area (labeled 'plot area')" fig-align="center"}
+
+## [Anatomy of a Graph - P3]{.purple}
+
+![](images/visualization/graph-anatomy-03.png){fig-alt="Same scatterplot as in prior image but with a box around the axis labels, another around the axis tick labels, and a final category of box around the tick marks themselves" fig-align="center"}
+
+## [Visualization Goal Roadmap]{.purple}
+
+1. Response & explanatory are continuous: scatterplot
+    - Care about trend? Add "best-fit" line
+
+\
+
+2. Response is continuous but explanatory is categorical:
+    - Care about each data point or data range: boxplot / violin plot
+    - Care about single summary value within each category: bar graph
+
+## [Graph Explanation: Scatterplot]{.orange}
+
+
+## [Scatterplot Example]{.orange}
+
+
+## [Graph Explanation: Violin Plot]{.orange}
+
+
+## [Violin Plot Example]{.orange}
+
+
+## [Violin Plot vs. Boxplot]{.purple}
+
+- Why use one versus the other?
+
+
+## [Graph Explanation: Bar Graph]{.orange}
+
+
+## [Bar Graph Example]{.orange}
+
+
+
+## [Pop-Quiz: Graph Choices!]{.gold}
+
+- Let's run through some examples!
+
+\
+
+- Raise your hand if you think you know the proper graph type to use in each of the following examples
+
+
+## [Thanks! Questions?]{.cream} {background-image="images/photo_question-mark-bfly.jpg"}
