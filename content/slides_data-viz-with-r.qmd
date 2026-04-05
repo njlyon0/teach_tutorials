@@ -18,13 +18,9 @@ format:
 ## A Guide to Your Process
 
 ### [Scheduling]{.blue}
-
 ### [Learning Objectives]{.purple}
-
 ### [Practice]{.pink}
-
 ### [Supporting Information]{.orange}
-
 ### [Class Discussion]{.gold}
 
 ## [Today's Plan]{.blue}
@@ -45,4 +41,4 @@ After today's session you will be able to:
 
 - TBD
 
-## [Thanks! Questions?]{.cream} {background-image="images_general/pic-question-mark-bfly.jpg"}
+## [Thanks! Questions?]{.cream} {background-image="images/photo_question-mark-bfly.jpg"}
