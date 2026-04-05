@@ -33,7 +33,7 @@ website:
           - text: "Version Control"
             href: content/version-control.qmd
           - text: "Visualization"
-            href: visualization.qmd
+            href: content/visualization.qmd
           - text: "SQL"
             href: content/sql.qmd
           - text: "Statistics"
