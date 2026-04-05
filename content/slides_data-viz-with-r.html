@@ -7,13 +7,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.36">
 
   <meta name="author" content="Nick J Lyon">
-  <title>Miscellaneous Tutorials – Random Forest in R</title>
+  <title>Miscellaneous Tutorials – Data Visualization With R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -34,74 +32,8 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-      }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-    div.sourceCode
-      { color: #f8f8f2;  }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #f8f8f2; } /* Normal */
-    code span.al { color: #f07178; } /* Alert */
-    code span.an { color: #d4d0ab; } /* Annotation */
-    code span.at { color: #00e0e0; } /* Attribute */
-    code span.bn { color: #d4d0ab; } /* BaseN */
-    code span.bu { color: #abe338; } /* BuiltIn */
-    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #abe338; } /* Char */
-    code span.cn { color: #ffd700; } /* Constant */
-    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
-    code span.cv { color: #ffd700; } /* CommentVar */
-    code span.do { color: #f8f8f2; } /* Documentation */
-    code span.dt { color: #ffa07a; } /* DataType */
-    code span.dv { color: #d4d0ab; } /* DecVal */
-    code span.er { color: #f07178; text-decoration: underline; } /* Error */
-    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
-    code span.fl { color: #d4d0ab; } /* Float */
-    code span.fu { color: #ffa07a; } /* Function */
-    code span.im { color: #abe338; } /* Import */
-    code span.in { color: #d4d0ab; } /* Information */
-    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
-    code span.op { color: #ffa07a; } /* Operator */
-    code span.ot { color: #00e0e0; } /* Other */
-    code span.pp { color: #dcc6e0; } /* Preprocessor */
-    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
-    code span.sc { color: #abe338; } /* SpecialChar */
-    code span.ss { color: #abe338; } /* SpecialString */
-    code span.st { color: #abe338; } /* String */
-    code span.va { color: #00e0e0; } /* Variable */
-    code span.vs { color: #abe338; } /* VerbatimString */
-    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-5fe7298417a20f8cea1ef3f23d79c19c.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4d4ebefd623fe8be2b108c4c25517e2c.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -198,8 +130,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Random Forest in R</h1>
+<section id="title-slide" data-background-color="#222222" class="quarto-title-block center">
+  <h1 class="title">Data Visualization With R</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -210,157 +142,37 @@ Nick J Lyon
 </div>
 
 </section>
-<section id="prepare" class="slide level2 smaller">
-<h2>Prepare</h2>
-<ul>
-<li>First, you’ll need to install and load a few <i class="fa-brands fa-r-project" aria-label="r-project"></i> R packages
-<ul>
-<li>While not technically necessary, the <code>librarian</code> package makes library management <em>much</em> simpler</li>
-</ul></li>
-</ul>
-<p><br>
-</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Install librarian (if you need to)</span></span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("librarian")</span></span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Install (if not already present) and load needed libraries</span></span>
-<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>librarian<span class="sc">::</span><span class="fu">shelf</span>(tidyverse, randomForest, permimp, vegan)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-The downloaded binary packages are in
-    /var/folders/9m/7tv5z0_j2q34mnkv7907vm540000gn/T//Rtmp60b1XC/downloaded_packages</code></pre>
-</div>
-</div>
+<section id="a-guide-to-your-process" class="slide level2">
+<h2>A Guide to Your Process</h2>
+<h3 id="scheduling"><span class="blue">Scheduling</span></h3>
+<h3 id="learning-objectives"><span class="purple">Learning Objectives</span></h3>
+<h3 id="practice"><span class="pink">Practice</span></h3>
+<h3 id="supporting-information"><span class="orange">Supporting Information</span></h3>
+<h3 id="class-discussion"><span class="gold">Class Discussion</span></h3>
 </section>
-<section id="lichen-data" class="slide level2 smaller">
-<h2>Lichen Data</h2>
+<section id="todays-plan" class="slide level2">
+<h2><span class="blue">Today’s Plan</span></h2>
 <ul>
-<li>The <code>vegan</code> package includes some lichen community composition data we can use for exploratory purposes</li>
-</ul>
-<p><br>
-</p>
+<li>Function Tutorial Debrief</li>
+<li>Data Visualization with <code>ggplot2</code>
 <ul>
-<li>We’ll begin by loading that data (with some minor wrangling)</li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Load vegan's lichen dataset &amp; associated chemistry dataset</span></span>
-<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">data</span>(<span class="st">"varespec"</span>, <span class="at">package =</span> <span class="st">'vegan'</span>)</span>
-<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">data</span>(<span class="st">"varechem"</span>, <span class="at">package =</span> <span class="st">'vegan'</span>)</span>
-<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Get one lichen species' cover information separate</span></span>
-<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a>lichen_sp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(varespec, Callvulg)</span>
-<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Attach the single species to the chemistry data</span></span>
-<span id="cb3-9"><a aria-hidden="true" tabindex="-1"></a>lichen_df <span class="ot">&lt;-</span> <span class="fu">cbind</span>(lichen_sp, varechem)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="data-structure" class="slide level2 smaller">
-<h2>Data Structure</h2>
-<ul>
-<li>This data object now has the following structure:</li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Check lichen data structure</span></span>
-<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(lichen_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   24 obs. of  15 variables:
- $ Callvulg: num  0.55 0.67 0.1 0 0 ...
- $ N       : num  19.8 13.4 20.2 20.6 23.8 22.8 26.6 24.2 29.8 28.1 ...
- $ P       : num  42.1 39.1 67.7 60.8 54.5 40.9 36.7 31 73.5 40.5 ...
- $ K       : num  140 167 207 234 181 ...
- $ Ca      : num  519 357 973 834 777 ...
- $ Mg      : num  90 70.7 209.1 127.2 125.8 ...
- $ S       : num  32.3 35.2 58.1 40.7 39.5 40.8 33.8 27.1 42.5 60.2 ...
- $ Al      : num  39 88.1 138 15.4 24.2 ...
- $ Fe      : num  40.9 39 35.4 4.4 3 ...
- $ Mn      : num  58.1 52.4 32.1 132 50.1 ...
- $ Zn      : num  4.5 5.4 16.8 10.7 6.6 9.1 7.4 5.2 9.3 9.1 ...
- $ Mo      : num  0.3 0.3 0.8 0.2 0.3 0.4 0.3 0.3 0.3 0.5 ...
- $ Baresoil: num  43.9 23.6 21.2 18.7 46 40.5 23 29.8 17.6 29.9 ...
- $ Humdepth: num  2.2 2.2 2 2.9 3 3.8 2.8 2 3 2.2 ...
- $ pH      : num  2.7 2.8 3 2.8 2.7 2.7 2.8 2.8 2.8 2.8 ...</code></pre>
-</div>
-</div>
-</section>
-<section id="random-forest" class="slide level2 smaller">
-<h2><span class="edu-pink">Random Forest</span></h2>
-<ul>
-<li>Run the random forest with the function and package of the same name</li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Actually do the random forest</span></span>
-<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>lich_rf <span class="ot">&lt;-</span> randomForest<span class="sc">::</span><span class="fu">randomForest</span>(Callvulg <span class="sc">~</span> ., <span class="at">data =</span> lichen_df, </span>
-<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a>                                      <span class="at">ntree =</span> <span class="dv">1000</span>, <span class="at">mtry =</span> <span class="dv">2</span>, </span>
-<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a>                                      <span class="at">na.action =</span> na.omit,</span>
-<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a>                                      <span class="at">keep.forest =</span> T, <span class="at">keep.inbag =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><br>
-</p>
-<ul>
-<li>Quick argument explanation
-<ul>
-<li>‘Y ~ .’ format of model means all other columns are (potential) predictors</li>
-<li><code>ntree</code> is the number of trees in the forest</li>
-<li><code>mtry</code> is the number of variables per node in the tree</li>
+<li>Core ggplot</li>
+<li>Adding geometries</li>
+<li>Multiple geometries</li>
+<li>Setting color</li>
+<li>Customizing colors</li>
 </ul></li>
 </ul>
 </section>
-<section id="variable-importance-plot" class="slide level2 smaller">
-<h2>Variable Importance Plot</h2>
+<section id="todays-learning-objectives" class="slide level2">
+<h2><span class="purple">Today’s Learning Objectives</span></h2>
+<p>After today’s session you will be able to:</p>
+<div class="fragment">
 <ul>
-<li>We can now generate a <span class="edu-gold">variable importance plot</span> based on that random forest</li>
+<li>TBD</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Create variable importance plot</span></span>
-<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a>randomForest<span class="sc">::</span><span class="fu">varImpPlot</span>(<span class="at">x =</span> lich_rf, <span class="at">sort =</span> T,</span>
-<span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a>                         <span class="at">n.var =</span> (<span class="fu">ncol</span>(lichen_df) <span class="sc">-</span> <span class="dv">1</span>),</span>
-<span id="cb7-4"><a aria-hidden="true" tabindex="-1"></a>                         <span class="at">main =</span> <span class="st">"Variable Importance"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-
 </div>
-<img data-src="slides_random-forest_files/figure-revealjs/var-imp-plot-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
-<section id="conditional-permutation-importance-cpi" class="slide level2 smaller">
-<h2>Conditional Permutation Importance (CPI)</h2>
-<ul>
-<li>We can use that random forest to perform conditional permutation</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Implement conditional permutation</span></span>
-<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a>high_thresh <span class="ot">&lt;-</span> permimp<span class="sc">::</span><span class="fu">permimp</span>(<span class="at">object =</span> lich_rf, <span class="at">conditional =</span> T,</span>
-<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a>                                <span class="co"># Note the threshold is set to 0.95</span></span>
-<span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a>                               <span class="at">threshold =</span> <span class="fl">0.95</span>, <span class="at">do_check =</span> F, <span class="at">progressBar =</span> F)</span>
-<span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Make CPI plot</span></span>
-<span id="cb8-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(high_thresh, <span class="at">type =</span> <span class="st">"box"</span>, <span class="at">horizontal =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-
-</div>
-<img data-src="slides_random-forest_files/figure-revealjs/cpi-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
-<section id="cpi---thresholds" class="slide level2 smaller">
-<h2>CPI - Thresholds</h2>
-<ul>
-<li>As you might imagine, the threshold you pick can have a dramatic effect!</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Implement conditional permutation</span></span>
-<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>low_thresh <span class="ot">&lt;-</span> permimp<span class="sc">::</span><span class="fu">permimp</span>(<span class="at">object =</span> lich_rf, <span class="at">conditional =</span> T,</span>
-<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a>                               <span class="co"># Note the lower threshold</span></span>
-<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>                               <span class="at">threshold =</span> <span class="fl">0.50</span>, <span class="at">do_check =</span> F, <span class="at">progressBar =</span> F)</span>
-<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Make CPI plot</span></span>
-<span id="cb9-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(low_thresh, <span class="at">type =</span> <span class="st">"box"</span>, <span class="at">horizontal =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-
-</div>
-<img data-src="slides_random-forest_files/figure-revealjs/cpi-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
-<section id="exploratory-plotting" class="slide level2 smaller">
-<h2>Exploratory Plotting</h2>
-<ul>
-<li>Let’s graph the response against the four ‘most important’ variables
-<ul>
-<li>This part is just for fun!</li>
-</ul></li>
-</ul>
-
-<img data-src="slides_random-forest_files/figure-revealjs/explore-1.png" width="960" class="r-stretch"></section>
+</section>
 <section id="thanks-questions" class="slide level2" data-background-image="images/photo_question-mark-bfly.jpg">
 <h2><span class="cream">Thanks! Questions?</span></h2>
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Version Control Tutorials – Miscellaneous Tutorials</title>
+<title>Data Visualization Tutorials – Miscellaneous Tutorials</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -48,8 +48,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-c6467b09a9ea9f7bfb6da4c3d1a550cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-6bfa4963fceded5abe4ab38c6140f9a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-c6467b09a9ea9f7bfb6da4c3d1a550cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -288,7 +286,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/version-control.html">Data Science</a></li><li class="breadcrumb-item"><a href="../content/version-control.html">Version Control</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/version-control.html">Data Science</a></li><li class="breadcrumb-item"><a href="../content/visualization.html">Visualization</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -317,13 +315,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/version-control.html" class="sidebar-item-text sidebar-link active">
+  <a href="../content/version-control.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Version Control</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/visualization.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/visualization.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Visualization</span></a>
   </div>
 </li>
@@ -368,7 +366,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636f64652d6272616e6368203e7d7d-git-command-line-snippets" id="toc-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636f64652d6272616e6368203e7d7d-git-command-line-snippets" class="nav-link active" data-scroll-target="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636f64652d6272616e6368203e7d7d-git-command-line-snippets"><i class="fa-solid fa-code-branch" aria-label="code-branch"></i> Git Command Line Snippets</a></li>
+  <li><a href="#data-visualization-basics" id="toc-data-visualization-basics" class="nav-link active" data-scroll-target="#data-visualization-basics">Data Visualization Basics</a></li>
+  <li><a href="#data-visualization-with-r" id="toc-data-visualization-with-r" class="nav-link" data-scroll-target="#data-visualization-with-r">Data Visualization With R</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/njlyon0/teach_tutorials/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -376,9 +375,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/version-control.html">Data Science</a></li><li class="breadcrumb-item"><a href="../content/version-control.html">Version Control</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/version-control.html">Data Science</a></li><li class="breadcrumb-item"><a href="../content/visualization.html">Visualization</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Version Control Tutorials</h1>
+<h1 class="title">Data Visualization Tutorials</h1>
 </div>
 
 
@@ -395,63 +394,24 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The below tutorials are all focused on version control (especially Git and GitHub). See sub-headings for more specifics! Acronyms used in this page include:</p>
+<p>The below tutorials are all focused on data visualization. See sub-headings for more specifics!</p>
+<section id="data-visualization-basics" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization-basics">Data Visualization Basics</h2>
+<p>This slide deck includes:</p>
 <ul>
-<li>IDE = <u>I</u>ntegrated <u>D</u>evelopment <u>E</u>nvironment</li>
-<li>PAT = <u>P</u>ersonal <u>A</u>ccess <u>T</u>oken</li>
+<li>TBD</li>
 </ul>
-<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636f64652d6272616e6368203e7d7d-git-command-line-snippets" class="level2">
-<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636f64652d6272616e6368203e7d7d-git-command-line-snippets"><i class="fa-solid fa-code-branch" aria-label="code-branch"></i> Git Command Line Snippets</h2>
-<p>There are a few Git operations I need infrequently enough that I haven’t committed them to memory but would like an easy place to quickly reference as needed. Each tab below separates Git commands useful in different circumstances. Note that the tab order–and content within each tab–is ordered based on how often <em>I</em> need to refer to these snippets so I hope that doesn’t diminish their usefulness to you.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Remote Repository</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Branches</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Local Repository</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Server</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<section id="failed-pushsync-due-to-too-much-data" class="level4">
-<h4 class="anchored" data-anchor-id="failed-pushsync-due-to-too-much-data">Failed Push/Sync Due to Too Much Data</h4>
-<p>If you commit too much data on your local repository, your push/sync to GitHub will fail. You can force your machine to allow a larger amount of data in a single push/sync if need be. Ideally, you’d avoid committing too much data at once but this solve works if you forget.</p>
-<p><strong>Allow a single push/sync to include more/larger files</strong> <br> <code>git config http.postBuffer 524288000</code></p>
+<iframe class="slide-deck" src="slides_data-viz-basics.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
+<p>Data Visualization Basics Slides – <a href="../content/slides_data-viz-basics.html">Full Screen</a></p>
 </section>
-<section id="changed-remote-name" class="level4">
-<h4 class="anchored" data-anchor-id="changed-remote-name">Changed Remote Name</h4>
-<p>If you change your GitHub repository’s name after cloning it, you may get a warning in your IDE that your ‘remote has moved to a new location’. Many IDEs are savvy enough for this not to cause a real error but it’s good practice to tweak things so that the only warnings you get are the ones to which you want to pay attention.</p>
-<p><strong>Update existing local repository with new remote URL:</strong> <br> <code>git remote set-url origin {new URL}</code></p>
-</section>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<section id="branch-housekeeping" class="level4">
-<h4 class="anchored" data-anchor-id="branch-housekeeping">Branch Housekeeping</h4>
-<p>Once you are done working in a branch (i.e., have merged it with ‘main’), there are a few good houskeeping steps to follow:</p>
-<ol type="1">
-<li>In your IDE, switch back to ‘main’ and pull/sync</li>
-<li>Delete the branch in your remote repository</li>
-<li><strong>Delete the branch in your local repository</strong>
+<section id="data-visualization-with-r" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization-with-r">Data Visualization With R</h2>
+<p>This slide deck includes:</p>
 <ul>
-<li><code>git branch -d {branch name}</code></li>
-</ul></li>
-<li><strong>Update your local repository’s list of the branches it thinks are in your remote repository</strong>
-<ul>
-<li><code>git remote update origin --prune</code></li>
-</ul></li>
-</ol>
-</section>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<section id="check-current-settings" class="level4">
-<h4 class="anchored" data-anchor-id="check-current-settings">Check Current Settings</h4>
-<p>It can be helpful to see what your current Git settings are. Fortunately, there’s an easy way to check your global Git settings on your machine.</p>
-<p><strong>List Git information on your computer</strong> <br> <code>git config --global --list</code></p>
-</section>
-</div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<section id="credential-caching" class="level4">
-<h4 class="anchored" data-anchor-id="credential-caching">Credential Caching</h4>
-<p>On some remote servers (e.g., those used by <a href="https://www.nceas.ucsb.edu/">NCEAS</a>), you must specify how long you want your credentials to be “cached” (i.e., remembered). It is a pain if you forget to cache your credentials as–in the worst case–it may mean that you’d need to make a new PAT if your old one is not cached and you didn’t save it elsewhere.</p>
-<p><strong>Cache your credentials for 10 million seconds</strong> <br> <code>git config --global credential.helper 'cache --timeout=10000000'</code></p>
-</section>
-</div>
-</div>
-</div>
+<li>TBD</li>
+</ul>
+<iframe class="slide-deck" src="slides_data-viz-with-r.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
+<p>Data Visualization With R Slides – <a href="../content/slides_data-viz-with-r.html">Full Screen</a></p>
 
 
 </section>

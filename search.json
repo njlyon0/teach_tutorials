@@ -10,8 +10,8 @@
     ]
   },
   {
-    "objectID": "index.html#navigating-the-website",
-    "href": "index.html#navigating-the-website",
+    "objectID": "index.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636f6d70617373203e7d7d-navigating-the-website",
+    "href": "index.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636f6d70617373203e7d7d-navigating-the-website",
     "title": "Tutorial Home",
     "section": " Navigating the Website",
     "text": "Navigating the Website\nCheck out the section headers in the sidebar on the left side of this website. More specific themes for tutorials are listed beneath each so feel free to follow your curiosity as you browse.",
@@ -20,303 +20,58 @@
     ]
   },
   {
-    "objectID": "content/statistics.html",
-    "href": "content/statistics.html",
-    "title": "Statistics Tutorials",
+    "objectID": "content/version-control.html",
+    "href": "content/version-control.html",
+    "title": "Version Control Tutorials",
     "section": "",
-    "text": "The below tutorials are all focused on statistics. See sub-headings for more specifics!",
+    "text": "The below tutorials are all focused on version control (especially Git and GitHub). See sub-headings for more specifics! Acronyms used in this page include:",
     "crumbs": [
       "Data Science",
-      "Statistics"
+      "Version Control"
     ]
   },
   {
-    "objectID": "content/statistics.html#multivariate-statistics",
-    "href": "content/statistics.html#multivariate-statistics",
-    "title": "Statistics Tutorials",
-    "section": "Multivariate Statistics",
-    "text": "Multivariate Statistics\nThis slide deck includes:\n\nBrief introduction to multivariate statistics\nExplanation of resampling/permutation methods\nMultivariate data visualization explanation with some non-ordination examples\nCode demonstration for PCA, PCoA, and NMS in  R\n\n\nMultivariate Statistics Slides – Full Screen",
+    "objectID": "content/version-control.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636f64652d6272616e6368203e7d7d-git-command-line-snippets",
+    "href": "content/version-control.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636f64652d6272616e6368203e7d7d-git-command-line-snippets",
+    "title": "Version Control Tutorials",
+    "section": " Git Command Line Snippets",
+    "text": "Git Command Line Snippets\nThere are a few Git operations I need infrequently enough that I haven’t committed them to memory but would like an easy place to quickly reference as needed. Each tab below separates Git commands useful in different circumstances. Note that the tab order–and content within each tab–is ordered based on how often I need to refer to these snippets so I hope that doesn’t diminish their usefulness to you.\n\nRemote RepositoryBranchesLocal RepositoryServer\n\n\n\nFailed Push/Sync Due to Too Much Data\nIf you commit too much data on your local repository, your push/sync to GitHub will fail. You can force your machine to allow a larger amount of data in a single push/sync if need be. Ideally, you’d avoid committing too much data at once but this solve works if you forget.\nAllow a single push/sync to include more/larger files  git config http.postBuffer 524288000\n\n\nChanged Remote Name\nIf you change your GitHub repository’s name after cloning it, you may get a warning in your IDE that your ‘remote has moved to a new location’. Many IDEs are savvy enough for this not to cause a real error but it’s good practice to tweak things so that the only warnings you get are the ones to which you want to pay attention.\nUpdate existing local repository with new remote URL:  git remote set-url origin {new URL}\n\n\n\n\nBranch Housekeeping\nOnce you are done working in a branch (i.e., have merged it with ‘main’), there are a few good houskeeping steps to follow:\n\nIn your IDE, switch back to ‘main’ and pull/sync\nDelete the branch in your remote repository\nDelete the branch in your local repository\n\ngit branch -d {branch name}\n\nUpdate your local repository’s list of the branches it thinks are in your remote repository\n\ngit remote update origin --prune\n\n\n\n\n\n\nCheck Current Settings\nIt can be helpful to see what your current Git settings are. Fortunately, there’s an easy way to check your global Git settings on your machine.\nList Git information on your computer  git config --global --list\n\n\n\n\nCredential Caching\nOn some remote servers (e.g., those used by NCEAS), you must specify how long you want your credentials to be “cached” (i.e., remembered). It is a pain if you forget to cache your credentials as–in the worst case–it may mean that you’d need to make a new PAT if your old one is not cached and you didn’t save it elsewhere.\nCache your credentials for 10 million seconds  git config --global credential.helper 'cache --timeout=10000000'",
     "crumbs": [
       "Data Science",
-      "Statistics"
+      "Version Control"
     ]
   },
   {
-    "objectID": "content/statistics.html#random-forest",
-    "href": "content/statistics.html#random-forest",
-    "title": "Statistics Tutorials",
-    "section": "Random Forest",
-    "text": "Random Forest\nThis slide deck includes: - Code demo for performing random forest in  R\n\nRandom Forest Slides – Full Screen",
-    "crumbs": [
-      "Data Science",
-      "Statistics"
-    ]
-  },
-  {
-    "objectID": "content/slides_random-forest.html#prepare",
-    "href": "content/slides_random-forest.html#prepare",
-    "title": "Random Forest in R",
-    "section": "Prepare",
-    "text": "Prepare\n\nFirst, you’ll need to install and load a few  R packages\n\nWhile not technically necessary, the librarian package makes library management much simpler\n\n\n\n\n\n# Install librarian (if you need to)\n# install.packages(\"librarian\")\n\n# Install (if not already present) and load needed libraries\nlibrarian::shelf(tidyverse, randomForest, permimp, vegan)"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#lichen-data",
-    "href": "content/slides_random-forest.html#lichen-data",
-    "title": "Random Forest in R",
-    "section": "Lichen Data",
-    "text": "Lichen Data\n\nThe vegan package includes some lichen community composition data we can use for exploratory purposes\n\n\n\n\nWe’ll begin by loading that data (with some minor wrangling)\n\n\n# Load vegan's lichen dataset & associated chemistry dataset\nutils::data(\"varespec\", package = 'vegan')\nutils::data(\"varechem\", package = 'vegan')\n\n# Get one lichen species' cover information separate\nlichen_sp &lt;- dplyr::select(varespec, Callvulg)\n\n# Attach the single species to the chemistry data\nlichen_df &lt;- cbind(lichen_sp, varechem)"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#data-structure",
-    "href": "content/slides_random-forest.html#data-structure",
-    "title": "Random Forest in R",
-    "section": "Data Structure",
-    "text": "Data Structure\n\nThis data object now has the following structure:\n\n\n# Check lichen data structure\nstr(lichen_df)\n\n'data.frame':   24 obs. of  15 variables:\n $ Callvulg: num  0.55 0.67 0.1 0 0 ...\n $ N       : num  19.8 13.4 20.2 20.6 23.8 22.8 26.6 24.2 29.8 28.1 ...\n $ P       : num  42.1 39.1 67.7 60.8 54.5 40.9 36.7 31 73.5 40.5 ...\n $ K       : num  140 167 207 234 181 ...\n $ Ca      : num  519 357 973 834 777 ...\n $ Mg      : num  90 70.7 209.1 127.2 125.8 ...\n $ S       : num  32.3 35.2 58.1 40.7 39.5 40.8 33.8 27.1 42.5 60.2 ...\n $ Al      : num  39 88.1 138 15.4 24.2 ...\n $ Fe      : num  40.9 39 35.4 4.4 3 ...\n $ Mn      : num  58.1 52.4 32.1 132 50.1 ...\n $ Zn      : num  4.5 5.4 16.8 10.7 6.6 9.1 7.4 5.2 9.3 9.1 ...\n $ Mo      : num  0.3 0.3 0.8 0.2 0.3 0.4 0.3 0.3 0.3 0.5 ...\n $ Baresoil: num  43.9 23.6 21.2 18.7 46 40.5 23 29.8 17.6 29.9 ...\n $ Humdepth: num  2.2 2.2 2 2.9 3 3.8 2.8 2 3 2.2 ...\n $ pH      : num  2.7 2.8 3 2.8 2.7 2.7 2.8 2.8 2.8 2.8 ..."
-  },
-  {
-    "objectID": "content/slides_random-forest.html#random-forest",
-    "href": "content/slides_random-forest.html#random-forest",
-    "title": "Random Forest in R",
-    "section": "Random Forest",
-    "text": "Random Forest\n\nRun the random forest with the function and package of the same name\n\n\n# Actually do the random forest\nlich_rf &lt;- randomForest::randomForest(Callvulg ~ ., data = lichen_df, \n                                      ntree = 1000, mtry = 2, \n                                      na.action = na.omit,\n                                      keep.forest = T, keep.inbag = T)\n\n\n\n\nQuick argument explanation\n\n‘Y ~ .’ format of model means all other columns are (potential) predictors\nntree is the number of trees in the forest\nmtry is the number of variables per node in the tree"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#variable-importance-plot",
-    "href": "content/slides_random-forest.html#variable-importance-plot",
-    "title": "Random Forest in R",
-    "section": "Variable Importance Plot",
-    "text": "Variable Importance Plot\n\nWe can now generate a variable importance plot based on that random forest\n\n\n# Create variable importance plot\nrandomForest::varImpPlot(x = lich_rf, sort = T,\n                         n.var = (ncol(lichen_df) - 1),\n                         main = \"Variable Importance\")"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#conditional-permutation-importance-cpi",
-    "href": "content/slides_random-forest.html#conditional-permutation-importance-cpi",
-    "title": "Random Forest in R",
-    "section": "Conditional Permutation Importance (CPI)",
-    "text": "Conditional Permutation Importance (CPI)\n\nWe can use that random forest to perform conditional permutation\n\n\n# Implement conditional permutation\nhigh_thresh &lt;- permimp::permimp(object = lich_rf, conditional = T,\n                                # Note the threshold is set to 0.95\n                               threshold = 0.95, do_check = F, progressBar = F)\n\n# Make CPI plot\nplot(high_thresh, type = \"box\", horizontal = T)"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#cpi---thresholds",
-    "href": "content/slides_random-forest.html#cpi---thresholds",
-    "title": "Random Forest in R",
-    "section": "CPI - Thresholds",
-    "text": "CPI - Thresholds\n\nAs you might imagine, the threshold you pick can have a dramatic effect!\n\n\n# Implement conditional permutation\nlow_thresh &lt;- permimp::permimp(object = lich_rf, conditional = T,\n                               # Note the lower threshold\n                               threshold = 0.50, do_check = F, progressBar = F)\n\n# Make CPI plot\nplot(low_thresh, type = \"box\", horizontal = T)"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#exploratory-plotting",
-    "href": "content/slides_random-forest.html#exploratory-plotting",
-    "title": "Random Forest in R",
-    "section": "Exploratory Plotting",
-    "text": "Exploratory Plotting\n\nLet’s graph the response against the four ‘most important’ variables\n\nThis part is just for fun!"
-  },
-  {
-    "objectID": "content/slides_random-forest.html#thanks-questions",
-    "href": "content/slides_random-forest.html#thanks-questions",
-    "title": "Random Forest in R",
-    "section": "Thanks! Questions?",
-    "text": "Thanks! Questions?"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#outline",
-    "href": "content/slides_four-player-model.html#outline",
-    "title": "The Four Player Model",
-    "section": "Outline",
-    "text": "Outline\n\n\nBackground\nModel Overview\nStuck Communication Patterns"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#background-1",
-    "href": "content/slides_four-player-model.html#background-1",
-    "title": "The Four Player Model",
-    "section": "Background",
-    "text": "Background\n\nDesigned by David Kantor\n\n\n\n\n\nDiagnoses & helps resolve “stuck” communication\n\n\n\n\n\n\nBased on 30+ years of research on groups"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#four-actions-of-effective-communication",
-    "href": "content/slides_four-player-model.html#four-actions-of-effective-communication",
-    "title": "The Four Player Model",
-    "section": "Four Actions of Effective Communication",
-    "text": "Four Actions of Effective Communication\n\nThe model identifies four actions of effective communication:"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#four-actions-of-effective-communication-1",
-    "href": "content/slides_four-player-model.html#four-actions-of-effective-communication-1",
-    "title": "The Four Player Model",
-    "section": "Four Actions of Effective Communication",
-    "text": "Four Actions of Effective Communication\n\nThe model identifies four actions of effective communication:\n\n\n\nMove  - Initiate an idea, action, or direction for conversation"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#four-actions-of-effective-communication-2",
-    "href": "content/slides_four-player-model.html#four-actions-of-effective-communication-2",
-    "title": "The Four Player Model",
-    "section": "Four Actions of Effective Communication",
-    "text": "Four Actions of Effective Communication\n\nThe model identifies four actions of effective communication:\n\n\n\nMove  - Initiate an idea, action, or direction for conversation\nFollow  - Continue the direction or flow of the conversation\n\nEither by agreeing or asking for more information"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#four-actions-of-effective-communication-3",
-    "href": "content/slides_four-player-model.html#four-actions-of-effective-communication-3",
-    "title": "The Four Player Model",
-    "section": "Four Actions of Effective Communication",
-    "text": "Four Actions of Effective Communication\n\nThe model identifies four actions of effective communication:\n\n\n\nMove  - Initiate an idea, action, or direction for conversation\nFollow  - Continue the direction or flow of the conversation\n\nEither by agreeing or asking for more information\n\nOppose  - Challenge or disagree with an idea, action, or suggested direction"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#four-actions-of-effective-communication-4",
-    "href": "content/slides_four-player-model.html#four-actions-of-effective-communication-4",
-    "title": "The Four Player Model",
-    "section": "Four Actions of Effective Communication",
-    "text": "Four Actions of Effective Communication\n\nThe model identifies four actions of effective communication:\n\n\n\nMove  - Initiate an idea, action, or direction for conversation\nFollow  - Continue the direction or flow of the conversation\n\nEither by agreeing or asking for more information\n\nOppose  - Challenge or disagree with an idea, action, or suggested direction\nBystand  - Add a neutral perspective\n\nArticulate what’s happening in a conversation"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#the-model",
-    "href": "content/slides_four-player-model.html#the-model",
-    "title": "The Four Player Model",
-    "section": "The Model",
-    "text": "The Model"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#group-conversations",
-    "href": "content/slides_four-player-model.html#group-conversations",
-    "title": "The Four Player Model",
-    "section": "Group Conversations",
-    "text": "Group Conversations\n\nEach action in a discussion can be coded into this model\n\nMost of us default to one we’re comfortable with\n\n\n\n\n\n\nEffective conversations require listening & all four modes\n\n\n\n\n\n\nThere are common “stuck” patterns when not doing this"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#stuck---serial-moves",
-    "href": "content/slides_four-player-model.html#stuck---serial-moves",
-    "title": "The Four Player Model",
-    "section": "Stuck - Serial Moves",
-    "text": "Stuck - Serial Moves\n\n\n\n\nLots of idea generation\n\n\n\n\nMay feel like a barrage\n\n\n\n\nNo clear thread, decision, or follow through"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#unstick-serial-moves",
-    "href": "content/slides_four-player-model.html#unstick-serial-moves",
-    "title": "The Four Player Model",
-    "section": "‘Unstick’ Serial Moves",
-    "text": "‘Unstick’ Serial Moves\n\nFollow   Give momentum to a particular move\n\n\n\n\nFor example:\n\nCan we go back to the idea that Jose put on the table? That felt like a topic that could really use our attention. Shall we focus there?"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#unstick-serial-moves-1",
-    "href": "content/slides_four-player-model.html#unstick-serial-moves-1",
-    "title": "The Four Player Model",
-    "section": "‘Unstick’ Serial Moves",
-    "text": "‘Unstick’ Serial Moves\n\nOppose   Offer an effective oppose to a move\n\n\n\n\nFor example:\n\nWe’ve heard a lot of different ideas. I’d like to focus on the one Amelia laid out. I’m interested in the research question, but I don’t think machine learning is going to be the most productive approach. Can we dig in to this one?"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#unstick-serial-moves-2",
-    "href": "content/slides_four-player-model.html#unstick-serial-moves-2",
-    "title": "The Four Player Model",
-    "section": "‘Unstick’ Serial Moves",
-    "text": "‘Unstick’ Serial Moves\n\nBystand   Bring awareness to and disrupt the dynamic\n\n\n\n\nFor example:\n\nHey gang, we’re 20 minutes into our call and we’ve put a lot of different topics on the table. Where do we want to focus ourselves so we can walk away with some clear next steps?"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#stuck---polite-discussion",
-    "href": "content/slides_four-player-model.html#stuck---polite-discussion",
-    "title": "The Four Player Model",
-    "section": "Stuck - Polite Discussion",
-    "text": "Stuck - Polite Discussion\n\n\n\n\nMoves are followed with little discussion or resistance\n\n\n\n\nA.k.a. “Courteous Compliance”"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#unstick-polite-discussion",
-    "href": "content/slides_four-player-model.html#unstick-polite-discussion",
-    "title": "The Four Player Model",
-    "section": "‘Unstick’ Polite Discussion",
-    "text": "‘Unstick’ Polite Discussion\n\nOppose   Prompt an effective oppose\n\n\n\n\nFor example:\n\nWho sees it differently?\n\n\nWhat’s at risk here?\n\n\nWhat other angles should we consider?"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#unstick-polite-discussion-1",
-    "href": "content/slides_four-player-model.html#unstick-polite-discussion-1",
-    "title": "The Four Player Model",
-    "section": "‘Unstick’ Polite Discussion",
-    "text": "‘Unstick’ Polite Discussion\n\nBystand   Invite a bystand\n\n\n\n\nFor example:\n\nWhere is the group right now?\n\n\nWhat are you noticing?\n\n\nIs there an elephant in the room that needs to be named?"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#stuck---debate",
-    "href": "content/slides_four-player-model.html#stuck---debate",
-    "title": "The Four Player Model",
-    "section": "Stuck - Debate",
-    "text": "Stuck - Debate\n\n\n\n\nIndividuals are locked in a back and forth\n\nMay be just two people involved\n\n\n\n\n\nEach move is met with resistance / opposition"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#unstick-debate",
-    "href": "content/slides_four-player-model.html#unstick-debate",
-    "title": "The Four Player Model",
-    "section": "‘Unstick’ Debate",
-    "text": "‘Unstick’ Debate\n\nFollow   Invite a follow on one of the moves\n\n\n\n\nFor example:\n\nWhat do you like about the proposal on the table?\n\n\nWhat do you agree with that we could build upon?"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#unstick-debate-1",
-    "href": "content/slides_four-player-model.html#unstick-debate-1",
-    "title": "The Four Player Model",
-    "section": "‘Unstick’ Debate",
-    "text": "‘Unstick’ Debate\n\nOppose   Coach for a more effective oppose\n\n\n\n\nFor example:\n\nWhat elements of this do you agree with–or at least 2% agree with?\n\n\nIn your opinion, what would need to be changed to make this work?"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#unstick-debate-2",
-    "href": "content/slides_four-player-model.html#unstick-debate-2",
-    "title": "The Four Player Model",
-    "section": "‘Unstick’ Debate",
-    "text": "‘Unstick’ Debate\n\nBystand   - Invite a bystand from someone less involved in the point-counterpoint\n\n\n\n\nFor example:\n\nIn addition to the two viewpoints on the table, I’d love to hear from some other perspectives.\n\n\nWhat are you noticing?\n\n\nWhat might we be missing?"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#stuck---covert-opposition",
-    "href": "content/slides_four-player-model.html#stuck---covert-opposition",
-    "title": "The Four Player Model",
-    "section": "Stuck - Covert Opposition",
-    "text": "Stuck - Covert Opposition\n\n\n\n\n\nConversation appears harmonious but people have unspoken reservations\n\n\n\n\nOpposition tends to be expressed outside of the conversation\n\nOr harbored as resentment\n\n\n\n\n\nUneven power dynamics are often behind this pattern\n\nGroup members defer to those with more power or seniority"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#unstick-covert-opposition",
-    "href": "content/slides_four-player-model.html#unstick-covert-opposition",
-    "title": "The Four Player Model",
-    "section": "‘Unstick’ Covert Opposition",
-    "text": "‘Unstick’ Covert Opposition\n\nOppose   Prompt a transparent oppose\n\n\n\n\nFor example:\n\nWho sees it differently?\n\n\nWhat’s at risk here?\n\n\nAre there some cons to the proposed idea?"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#unstick-covert-opposition-1",
-    "href": "content/slides_four-player-model.html#unstick-covert-opposition-1",
-    "title": "The Four Player Model",
-    "section": "‘Unstick’ Covert Opposition",
-    "text": "‘Unstick’ Covert Opposition\n\nOppose   If others aren’t comfortable, you can offer an oppose\n\n\n\n\nFor example:\n\nI’m not sure that collecting new data is feasible; just getting data for one state would take hours and we have ten states in our study."
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#unstick-covert-opposition-2",
-    "href": "content/slides_four-player-model.html#unstick-covert-opposition-2",
-    "title": "The Four Player Model",
-    "section": "‘Unstick’ Covert Opposition",
-    "text": "‘Unstick’ Covert Opposition\n\nBystand   Offer a bystand on the ‘covert’ facet of the opposition\n\n\n\n\n\nFor example:\n\nI want to offer a reflection from another team I was part of. On that team, we kept having meetings where it seemed like everyone was in agreement, but then we would leave, and over and over again there would be little follow through and more than a little grousing. People’s real opinions were only coming out in side conversations outside of the meeting. We lost a lot of time and forward momentum because people didn’t feel like they could air their concerns in the larger group. Do you see that happening here? Does anyone have a suggestion for how to make this a safer space to critically discuss ideas?"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#unstick-covert-opposition-3",
-    "href": "content/slides_four-player-model.html#unstick-covert-opposition-3",
-    "title": "The Four Player Model",
-    "section": "‘Unstick’ Covert Opposition",
-    "text": "‘Unstick’ Covert Opposition\n\nInvite those with more power to follow  or bystand  to open up space for other players to make a move \n\n\n\n\nFor example:\n\nI’m noticing that the younger folks in the room haven’t spoken up much. I know a number of them are using some interesting analytical methods for their dissertation work and I’d like to hear how those tools might be applied to this work"
-  },
-  {
-    "objectID": "content/slides_four-player-model.html#thanks-questions",
-    "href": "content/slides_four-player-model.html#thanks-questions",
-    "title": "The Four Player Model",
-    "section": "Thanks! Questions?",
-    "text": "Thanks! Questions?"
-  },
-  {
-    "objectID": "content/facilitation.html",
-    "href": "content/facilitation.html",
-    "title": "Inclusive Facilitation Tutorials",
+    "objectID": "content/sql.html",
+    "href": "content/sql.html",
+    "title": "Structured Query Language Tutorials",
     "section": "",
-    "text": "The below tutorials are all focused on facilitation and team science topics. See sub-headings for more specifics!",
+    "text": "The below tutorials are all focused on SQL. See sub-headings for more specifics! Acronyms used in this page include:",
     "crumbs": [
-      "Team Science",
-      "Facilitation"
+      "Data Science",
+      "SQL"
     ]
   },
   {
-    "objectID": "content/facilitation.html#david-kantors-four-player-model",
-    "href": "content/facilitation.html#david-kantors-four-player-model",
-    "title": "Inclusive Facilitation Tutorials",
-    "section": "David Kantor’s Four Player Model",
-    "text": "David Kantor’s Four Player Model\nThis slide deck includes:\n\nBrief background on the four player model\nExplanation of major components\nIdentification of some “stuck” communication patterns and suggestions for how to resolve them\n\n\nFour Player Model Slides – Full Screen",
+    "objectID": "content/sql.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120626f6f6b2d626f6f6b6d61726b203e7d7d-sql-term-glossary",
+    "href": "content/sql.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120626f6f6b2d626f6f6b6d61726b203e7d7d-sql-term-glossary",
+    "title": "Structured Query Language Tutorials",
+    "section": " SQL Term Glossary",
+    "text": "SQL Term Glossary\nI don’t do much SQL in my day-to-day (at time of writing anyway) so having a term glossary will prove useful in brushing up periodically. Note that SQL is mostly not case sensitive but I find it easier to keep all SQL verbs fully capitalized for some visual distinction between functions versus data objects/variables.\n\nCore Terms\nI’m dividing the core terms based on a general category for their purpose.\n\nQuery Existing TablesCreate a New TableAlter an Existing TableDelete a Table\n\n\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\n;\n{other fxns};\nA semicolon indicates the end of a clause/set of clauses in SQL. Including it is necessary to indicate that a query should be executed\n\n\nSELECT\nSELECT {column name(s)}\nPick only some columns from a given data table. Comparable to the function of the same name from the dplyr package in  R\n\n\nFROM\nFROM {table name}\nSpecify on which table the query should be operating. This is comparable to a data argument in  R or parameter in  Python\n\n\nWHERE\nWHERE {conditions}\nImpose conditions to restrict which rows of the table should be returned. Uses a number of conditional verbs\n\n\nORDER BY\nORDER BY {column}\nSort the rows of the returned table by the specified column\n\n\nOFFSET\nOFFSET {number of rows}\nReturn only the specified number of rows\n\n\nGROUP BY\nGROUP BY {column}\nPerform subsequent operations within unique levels of the specified column. Comparable to the function of the same name from the dplyr package in  R\n\n\n\n\n\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nCREATE TABLE\nCREATE TABLE {new table} ({column} {DataType} {TableConstraint} DEFAULT {default value}, ...)\nMake a new table by naming each column, deciding on its data type, giving it a constraint (optional), and setting the default value (optional)\n\n\n\n\n\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nALTER TABLE\nALTER TABLE {table}\nSimilar syntax to CREATE TABLE, same facets that were optional for that term are still optional here\n\n\n\n\n\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nDROP TABLE\nDROP TABLE {table}\nLike CREATE TABLE, can be used with or without a IF EXISTS clause. If you have tables that are dependent upon other tables (e.g., because of FOREIGN KEY), then you must remove that dependency before you can drop the table\n\n\n\n\n\n\n\n\nSubordinates to Core Terms\nTo my knowledge, the following SQL verbs can only be used in combination with one of the ‘core’ verbs included in the table above. Where possible, I’ve separated the subordinate terms into separate tabs depending on to which core term they are subordinate.\n\nSELECT SubordinatesWHERE SubordinatesFROM SubordinatesOther Subordinates\n\n\n\nAliasing with SELECT\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nAS\nSELECT {column} AS {alias}\nCreate an alias of the specified column. Aliases can be used to increase clarity of column names. Subsequent code can then use the alias instead of the original/actual column name. This also works for FROM\n\n\n\n\n\n\nSummarizing with SELECT\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nDISTINCT\nSELECT DISTINCT {column name}\nKeep only rows with unique values in the specified column. Comparable to the function of the same name from the dplyr package in  R\n\n\nCOUNT\nSELECT COUNT({column}) AS {new column}\nCounts the number of each unique entity in the specified column\n\n\nMIN/MAX/AVG/SUM\nSELECT AVG({column}) AS {new column}\nComputes the minimum/maximum/mean/sum (respectively) of the specified column\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\n=/!=\nWHERE {column} != \"{character}\"\nConditional operator for numbers and characters. Note that character conditions are case-sensitive and must be in quotes! Operators mean:, ‘equal to’ and ‘not equal to’ respectively\n\n\n&lt;/&gt;/&lt;=/&gt;=\nWHERE {column} &gt;= {#}\nConditional operators for numbers only. Operators mean:, ‘less than’, ‘greater than’, ‘less than or equal to’, and ‘greater than or equal to’ respectively\n\n\nAND\nWHERE {condition} AND {condition}\nKeep rows where both/all conditions are met. Comparable to  R’s &\n\n\nOR\nWHERE {condition} OR {condition}\nKeep rows where either/at least one condition is met. Comparable to  R’s |\n\n\nBETWEEN / NOT BETWEEN\nWHERE {column} BETWEEN {#} AND {#}\nKeep rows where the value is/is not between the specified numbers\n\n\nIN / NOT IN\nWHERE {column} IN ({#}, {#}, {#})\nKeep rows where the value is/is not in the provided set of numbers. Comparable to  R’s %in% operator. Works for bare numbers or quoted characters\n\n\nLIKE / NOT LIKE\nWHERE {column} LIKE \"%{character}%\"\nKeeps rows where the value has/doesn’t have at least a partial string match to the provided character (e.g., “mar” in “march”). This is case insenstive!\n\n\nLIKE / NOT LIKE\nWHERE {column} LIKE \"{character}_\"\nKeeps rows where the value matches the string plus one character. Excludes an exact string match without that additional character. This is case insenstive!\n\n\nIS NULL / IS NOT NULL\nWHERE {column} IS NULL\nKeep rows where the specified column is/is not NA\n\n\n\n\n\n\nAliasing Data\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nAS\nFROM {table} AS {alias}\nCreate an alias of the specified table. Aliases can be used to increase clarity of tables. Subsequent code can then use the alias instead of the original/actual table name. This also works for SELECT\n\n\n\n\n\n\nJoining Data\nAll JOIN functions require ON as well. Note also that ON assumes the left column name(s) corresponds to the left table and vice versa but you can also specify the second table’s key explicitly with a period separating the table from its key (e.g., {table B}.{table B key}).\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nINNER JOIN\nFROM {table A} INNER JOIN {table B} ON {table A key} = {table B key}\nReturns only rows where a given value is found in both tables’ key columns. Returns all columns from both tables where the relevant match is found. Note also that JOIN is equivalent to INNER JOIN but the longer form is retained here for the sake of precision\n\n\nLEFT JOIN\nFROM {table A} LEFT JOIN {table B} ON {table A key} = {table B key}\nReturns only rows where a given value is found in table A’s key column. Returns all columns from both tables where the relevant match is found\n\n\nRIGHT JOIN\nFROM {table A} RIGHT JOIN {table B} ON {table A key} = {table B key}\nReturns only rows where a given value is found in table B’s key column. Returns all columns from both tables where the relevant match is found\n\n\nFULL JOIN\nFROM {table A} FULL JOIN {table B} ON {table A key} = {table B key}\nReturns only rows where a given value is found in either tables’ key column. Returns all columns from both tables where the relevant match is found\n\n\n\n\n\n\n\nORDER BY Subordinates\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nASC / DESC\nORDER BY {column} ASC\nOrder the rows in ascending/descending order of the provided column\n\n\n\n\n\n\nOFFSET Subordinates\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nLIMIT\nOFFSET {number of rows} LIMIT {row number}\nSpecify from which row the offset rows should begin\n\n\n\n\n\n\nGROUP BY Subordinates\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nHAVING\nHAVING {group condition}\nSame as WHERE but only works if you first use GROUP BY. If not using GROUP BY, use WHERE instead\n\n\n\n\n\n\nCREATE TABLE Subordinates\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nIF NOT EXISTS\nCREATE TABLE IF NOT EXISTS {new table} ...\nAvoids the error that SQL will return if you try to make a new table with the same name as an existing one.\n\n\nBOOLEAN / INTEGER / FLOAT / DOUBLE / REAL\nCREATE TABLE {new table} ({column} {DataType}, ...)\nAllowed types of number data (boolean is 0-1, others are self-explanatory)\n\n\nCHARACTER / VARCHAR / TEXT\nCREATE TABLE {new table} ({column} {DataType}, ...)\nAllowed types of text data\n\n\nDATE / DATETIME\nCREATE TABLE {new table} ({column} {DataType}, ...)\nAllowed types of date data. Note that there are similar formatting issues here that you may experience with this type of data in other programming languages\n\n\nPRIMARY KEY / AUTOINCREMENT / UNIQUE / NOT NULL\nCREATE TABLE {new table} ({column} {DataType} {TableConstraint}, ...)\nConstraints that can be placed on a new column. The “primary key” is the row that uniquely identifies each row and ties it to some other relational table.\n\n\nPRIMARY KEY\nCREATE TABLE {new table} ({column} {DataType} PRIMARY KEY, ...)\nConstraints that can be placed on a new column. The “primary key” is the column that uniquely identifies each row and ties it to some other relational table\n\n\nAUTOINCREMENT\nCREATE TABLE {new table} ({column} {DataType} AUTOINCREMENT, ...)\nConstraints that can be placed on a new column. Only applies to integers. Only supported by some databases\n\n\nUNIQUE\nCREATE TABLE {new table} ({column} {DataType} UNIQUE, ...)\nConstraints that can be placed on a new column. Doesn’t allow repeated entries when inserting rows into this table. Differs from the “primary key” because it doesn’t necessarily have to be able to identify a specific row\n\n\nNOT NULL\nCREATE TABLE {new table} ({column} {DataType} NOT NULL, ...)\nConstraints that can be placed on a new column. Self-explanatory\n\n\nCHECK\nCREATE TABLE {new table} ({column} {DataType} CHECK({expression}), ...)\nAllows for checking of whether values to be inserted match some user-specified expression. Good for QA of new data\n\n\nFOREIGN KEY\nCREATE TABLE {new table} ({column} {DataType} FOREIGN KEY, ...)\nGuarantees that each value in this column is found in a column in another table\n\n\n\n\n\n\nALTER TABLE Subordinates\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nADD\nALTER TABLE {table} ADD {column} {DataType} {TableConstraint} DEFAULT {default value}\nSimilar syntax to CREATE TABLE. Features that were optional for that function are still optional here\n\n\nDROP\nALTER TABLE {table} DROP {column}\nSimpler than some alternatives because you just have to name the function to be deleted\n\n\nRENAME\nALTER TABLE {table} RENAME {column} AS {column}\nMore permanent than the alias conferred by AS when used with SELECT",
     "crumbs": [
-      "Team Science",
-      "Facilitation"
+      "Data Science",
+      "SQL"
+    ]
+  },
+  {
+    "objectID": "content/sql.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206172726f772d646f776e2d776964652d73686f7274203e7d7d-sql-order-of-operations",
+    "href": "content/sql.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206172726f772d646f776e2d776964652d73686f7274203e7d7d-sql-order-of-operations",
+    "title": "Structured Query Language Tutorials",
+    "section": " SQL Order of Operations",
+    "text": "SQL Order of Operations\nThe general order of operations for a SQL query is as follows:\n\nFROM / JOIN\nWHERE & subordinates\nGROUP BY\nHAVING & subordinates\nSELECT & subordinates\nORDER BY & subordinates\nOFFSET & subordinates",
+    "crumbs": [
+      "Data Science",
+      "SQL"
     ]
   },
   {
@@ -530,58 +285,539 @@
     "text": "Thanks! Questions?"
   },
   {
-    "objectID": "content/sql.html",
-    "href": "content/sql.html",
-    "title": "Structured Query Language Tutorials",
+    "objectID": "content/slides_data-viz-with-r.html#a-guide-to-your-process",
+    "href": "content/slides_data-viz-with-r.html#a-guide-to-your-process",
+    "title": "Data Visualization With R",
+    "section": "A Guide to Your Process",
+    "text": "A Guide to Your Process\nScheduling\nLearning Objectives\nPractice\nSupporting Information\nClass Discussion"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#todays-plan",
+    "href": "content/slides_data-viz-with-r.html#todays-plan",
+    "title": "Data Visualization With R",
+    "section": "Today’s Plan",
+    "text": "Today’s Plan\n\nFunction Tutorial Debrief\nData Visualization with ggplot2\n\nCore ggplot\nAdding geometries\nMultiple geometries\nSetting color\nCustomizing colors"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#todays-learning-objectives",
+    "href": "content/slides_data-viz-with-r.html#todays-learning-objectives",
+    "title": "Data Visualization With R",
+    "section": "Today’s Learning Objectives",
+    "text": "Today’s Learning Objectives\nAfter today’s session you will be able to:\n\n\nTBD"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#thanks-questions",
+    "href": "content/slides_data-viz-with-r.html#thanks-questions",
+    "title": "Data Visualization With R",
+    "section": "Thanks! Questions?",
+    "text": "Thanks! Questions?"
+  },
+  {
+    "objectID": "content/facilitation.html",
+    "href": "content/facilitation.html",
+    "title": "Inclusive Facilitation Tutorials",
     "section": "",
-    "text": "The below tutorials are all focused on SQL. See sub-headings for more specifics! Acronyms used in this page include:",
+    "text": "The below tutorials are all focused on facilitation and team science topics. See sub-headings for more specifics!",
     "crumbs": [
-      "Data Science",
-      "SQL"
+      "Team Science",
+      "Facilitation"
     ]
   },
   {
-    "objectID": "content/sql.html#sql-term-glossary",
-    "href": "content/sql.html#sql-term-glossary",
-    "title": "Structured Query Language Tutorials",
-    "section": " SQL Term Glossary",
-    "text": "SQL Term Glossary\nI don’t do much SQL in my day-to-day (at time of writing anyway) so having a term glossary will prove useful in brushing up periodically. Note that SQL is mostly not case sensitive but I find it easier to keep all SQL verbs fully capitalized for some visual distinction between functions versus data objects/variables.\n\nCore Terms\nI’m dividing the core terms based on a general category for their purpose.\n\nQuery Existing TablesCreate a New TableAlter an Existing TableDelete a Table\n\n\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\n;\n{other fxns};\nA semicolon indicates the end of a clause/set of clauses in SQL. Including it is necessary to indicate that a query should be executed\n\n\nSELECT\nSELECT {column name(s)}\nPick only some columns from a given data table. Comparable to the function of the same name from the dplyr package in  R\n\n\nFROM\nFROM {table name}\nSpecify on which table the query should be operating. This is comparable to a data argument in  R or parameter in  Python\n\n\nWHERE\nWHERE {conditions}\nImpose conditions to restrict which rows of the table should be returned. Uses a number of conditional verbs\n\n\nORDER BY\nORDER BY {column}\nSort the rows of the returned table by the specified column\n\n\nOFFSET\nOFFSET {number of rows}\nReturn only the specified number of rows\n\n\nGROUP BY\nGROUP BY {column}\nPerform subsequent operations within unique levels of the specified column. Comparable to the function of the same name from the dplyr package in  R\n\n\n\n\n\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nCREATE TABLE\nCREATE TABLE {new table} ({column} {DataType} {TableConstraint} DEFAULT {default value}, ...)\nMake a new table by naming each column, deciding on its data type, giving it a constraint (optional), and setting the default value (optional)\n\n\n\n\n\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nALTER TABLE\nALTER TABLE {table}\nSimilar syntax to CREATE TABLE, same facets that were optional for that term are still optional here\n\n\n\n\n\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nDROP TABLE\nDROP TABLE {table}\nLike CREATE TABLE, can be used with or without a IF EXISTS clause. If you have tables that are dependent upon other tables (e.g., because of FOREIGN KEY), then you must remove that dependency before you can drop the table\n\n\n\n\n\n\n\n\nSubordinates to Core Terms\nTo my knowledge, the following SQL verbs can only be used in combination with one of the ‘core’ verbs included in the table above. Where possible, I’ve separated the subordinate terms into separate tabs depending on to which core term they are subordinate.\n\nSELECT SubordinatesWHERE SubordinatesFROM SubordinatesOther Subordinates\n\n\n\nAliasing with SELECT\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nAS\nSELECT {column} AS {alias}\nCreate an alias of the specified column. Aliases can be used to increase clarity of column names. Subsequent code can then use the alias instead of the original/actual column name. This also works for FROM\n\n\n\n\n\n\nSummarizing with SELECT\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nDISTINCT\nSELECT DISTINCT {column name}\nKeep only rows with unique values in the specified column. Comparable to the function of the same name from the dplyr package in  R\n\n\nCOUNT\nSELECT COUNT({column}) AS {new column}\nCounts the number of each unique entity in the specified column\n\n\nMIN/MAX/AVG/SUM\nSELECT AVG({column}) AS {new column}\nComputes the minimum/maximum/mean/sum (respectively) of the specified column\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\n=/!=\nWHERE {column} != \"{character}\"\nConditional operator for numbers and characters. Note that character conditions are case-sensitive and must be in quotes! Operators mean:, ‘equal to’ and ‘not equal to’ respectively\n\n\n&lt;/&gt;/&lt;=/&gt;=\nWHERE {column} &gt;= {#}\nConditional operators for numbers only. Operators mean:, ‘less than’, ‘greater than’, ‘less than or equal to’, and ‘greater than or equal to’ respectively\n\n\nAND\nWHERE {condition} AND {condition}\nKeep rows where both/all conditions are met. Comparable to  R’s &\n\n\nOR\nWHERE {condition} OR {condition}\nKeep rows where either/at least one condition is met. Comparable to  R’s |\n\n\nBETWEEN / NOT BETWEEN\nWHERE {column} BETWEEN {#} AND {#}\nKeep rows where the value is/is not between the specified numbers\n\n\nIN / NOT IN\nWHERE {column} IN ({#}, {#}, {#})\nKeep rows where the value is/is not in the provided set of numbers. Comparable to  R’s %in% operator. Works for bare numbers or quoted characters\n\n\nLIKE / NOT LIKE\nWHERE {column} LIKE \"%{character}%\"\nKeeps rows where the value has/doesn’t have at least a partial string match to the provided character (e.g., “mar” in “march”). This is case insenstive!\n\n\nLIKE / NOT LIKE\nWHERE {column} LIKE \"{character}_\"\nKeeps rows where the value matches the string plus one character. Excludes an exact string match without that additional character. This is case insenstive!\n\n\nIS NULL / IS NOT NULL\nWHERE {column} IS NULL\nKeep rows where the specified column is/is not NA\n\n\n\n\n\n\nAliasing Data\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nAS\nFROM {table} AS {alias}\nCreate an alias of the specified table. Aliases can be used to increase clarity of tables. Subsequent code can then use the alias instead of the original/actual table name. This also works for SELECT\n\n\n\n\n\n\nJoining Data\nAll JOIN functions require ON as well. Note also that ON assumes the left column name(s) corresponds to the left table and vice versa but you can also specify the second table’s key explicitly with a period separating the table from its key (e.g., {table B}.{table B key}).\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nINNER JOIN\nFROM {table A} INNER JOIN {table B} ON {table A key} = {table B key}\nReturns only rows where a given value is found in both tables’ key columns. Returns all columns from both tables where the relevant match is found. Note also that JOIN is equivalent to INNER JOIN but the longer form is retained here for the sake of precision\n\n\nLEFT JOIN\nFROM {table A} LEFT JOIN {table B} ON {table A key} = {table B key}\nReturns only rows where a given value is found in table A’s key column. Returns all columns from both tables where the relevant match is found\n\n\nRIGHT JOIN\nFROM {table A} RIGHT JOIN {table B} ON {table A key} = {table B key}\nReturns only rows where a given value is found in table B’s key column. Returns all columns from both tables where the relevant match is found\n\n\nFULL JOIN\nFROM {table A} FULL JOIN {table B} ON {table A key} = {table B key}\nReturns only rows where a given value is found in either tables’ key column. Returns all columns from both tables where the relevant match is found\n\n\n\n\n\n\n\nORDER BY Subordinates\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nASC / DESC\nORDER BY {column} ASC\nOrder the rows in ascending/descending order of the provided column\n\n\n\n\n\n\nOFFSET Subordinates\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nLIMIT\nOFFSET {number of rows} LIMIT {row number}\nSpecify from which row the offset rows should begin\n\n\n\n\n\n\nGROUP BY Subordinates\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nHAVING\nHAVING {group condition}\nSame as WHERE but only works if you first use GROUP BY. If not using GROUP BY, use WHERE instead\n\n\n\n\n\n\nCREATE TABLE Subordinates\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nIF NOT EXISTS\nCREATE TABLE IF NOT EXISTS {new table} ...\nAvoids the error that SQL will return if you try to make a new table with the same name as an existing one.\n\n\nBOOLEAN / INTEGER / FLOAT / DOUBLE / REAL\nCREATE TABLE {new table} ({column} {DataType}, ...)\nAllowed types of number data (boolean is 0-1, others are self-explanatory)\n\n\nCHARACTER / VARCHAR / TEXT\nCREATE TABLE {new table} ({column} {DataType}, ...)\nAllowed types of text data\n\n\nDATE / DATETIME\nCREATE TABLE {new table} ({column} {DataType}, ...)\nAllowed types of date data. Note that there are similar formatting issues here that you may experience with this type of data in other programming languages\n\n\nPRIMARY KEY / AUTOINCREMENT / UNIQUE / NOT NULL\nCREATE TABLE {new table} ({column} {DataType} {TableConstraint}, ...)\nConstraints that can be placed on a new column. The “primary key” is the row that uniquely identifies each row and ties it to some other relational table.\n\n\nPRIMARY KEY\nCREATE TABLE {new table} ({column} {DataType} PRIMARY KEY, ...)\nConstraints that can be placed on a new column. The “primary key” is the column that uniquely identifies each row and ties it to some other relational table\n\n\nAUTOINCREMENT\nCREATE TABLE {new table} ({column} {DataType} AUTOINCREMENT, ...)\nConstraints that can be placed on a new column. Only applies to integers. Only supported by some databases\n\n\nUNIQUE\nCREATE TABLE {new table} ({column} {DataType} UNIQUE, ...)\nConstraints that can be placed on a new column. Doesn’t allow repeated entries when inserting rows into this table. Differs from the “primary key” because it doesn’t necessarily have to be able to identify a specific row\n\n\nNOT NULL\nCREATE TABLE {new table} ({column} {DataType} NOT NULL, ...)\nConstraints that can be placed on a new column. Self-explanatory\n\n\nCHECK\nCREATE TABLE {new table} ({column} {DataType} CHECK({expression}), ...)\nAllows for checking of whether values to be inserted match some user-specified expression. Good for QA of new data\n\n\nFOREIGN KEY\nCREATE TABLE {new table} ({column} {DataType} FOREIGN KEY, ...)\nGuarantees that each value in this column is found in a column in another table\n\n\n\n\n\n\nALTER TABLE Subordinates\n\n\n\n\n\n\n\n\nFunction\nSyntax\nExplanation\n\n\n\n\nADD\nALTER TABLE {table} ADD {column} {DataType} {TableConstraint} DEFAULT {default value}\nSimilar syntax to CREATE TABLE. Features that were optional for that function are still optional here\n\n\nDROP\nALTER TABLE {table} DROP {column}\nSimpler than some alternatives because you just have to name the function to be deleted\n\n\nRENAME\nALTER TABLE {table} RENAME {column} AS {column}\nMore permanent than the alias conferred by AS when used with SELECT",
+    "objectID": "content/facilitation.html#david-kantors-four-player-model",
+    "href": "content/facilitation.html#david-kantors-four-player-model",
+    "title": "Inclusive Facilitation Tutorials",
+    "section": "David Kantor’s Four Player Model",
+    "text": "David Kantor’s Four Player Model\nThis slide deck includes:\n\nBrief background on the four player model\nExplanation of major components\nIdentification of some “stuck” communication patterns and suggestions for how to resolve them\n\n\nFour Player Model Slides – Full Screen",
     "crumbs": [
-      "Data Science",
-      "SQL"
+      "Team Science",
+      "Facilitation"
     ]
   },
   {
-    "objectID": "content/sql.html#sql-order-of-operations",
-    "href": "content/sql.html#sql-order-of-operations",
-    "title": "Structured Query Language Tutorials",
-    "section": " SQL Order of Operations",
-    "text": "SQL Order of Operations\nThe general order of operations for a SQL query is as follows:\n\nFROM / JOIN\nWHERE & subordinates\nGROUP BY\nHAVING & subordinates\nSELECT & subordinates\nORDER BY & subordinates\nOFFSET & subordinates",
-    "crumbs": [
-      "Data Science",
-      "SQL"
-    ]
+    "objectID": "content/slides_data-viz-basics.html#a-guide-to-your-process",
+    "href": "content/slides_data-viz-basics.html#a-guide-to-your-process",
+    "title": "Data Visualization Basics",
+    "section": "A Guide to Your Process",
+    "text": "A Guide to Your Process\nScheduling\nLearning Objectives\nPractice\nSupporting Information\nClass Discussion"
   },
   {
-    "objectID": "content/version-control.html",
-    "href": "content/version-control.html",
-    "title": "Version Control Tutorials",
+    "objectID": "content/slides_data-viz-basics.html#todays-plan",
+    "href": "content/slides_data-viz-basics.html#todays-plan",
+    "title": "Data Visualization Basics",
+    "section": "Today’s Plan",
+    "text": "Today’s Plan\n\nTypes of Data\nAside: Tidy Data\nAnatomy of a Graph\nVisualization Goals\nGraph Types"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#todays-learning-objectives",
+    "href": "content/slides_data-viz-basics.html#todays-learning-objectives",
+    "title": "Data Visualization Basics",
+    "section": "Today’s Learning Objectives",
+    "text": "Today’s Learning Objectives\nAfter today’s session you will be able to:\n\nDefine two major types of data\nIdentify characteristics of “tidy” data\nDefine fundamental anatomy of a graph\nExplain how visualization is affected by what message you want to convey\nParaphrase how you can choose what type of graph to use"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#graphing-overview",
+    "href": "content/slides_data-viz-basics.html#graphing-overview",
+    "title": "Data Visualization Basics",
+    "section": "Graphing Overview",
+    "text": "Graphing Overview\n\nBefore you can get into graphing, you need to know:\n\n\n\n\nWhat type(s) of data you have\n\n\n\n\nWhat message you want to share with your audience"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#types-of-data",
+    "href": "content/slides_data-viz-basics.html#types-of-data",
+    "title": "Data Visualization Basics",
+    "section": "Types of Data",
+    "text": "Types of Data\n\n\nContinuous\n\nData must be numbers\n\n\n\n\nInfinite options within possible range\n\n\n\n\nFor example: height, length, profit\n\n\n\n\nCategorical\n\nData may be numbers\n\n\n\n\nOptions limited to particular intervals\n\n\n\n\nFor example: counts, satisfaction ratings"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#types-of-data---comic",
+    "href": "content/slides_data-viz-basics.html#types-of-data---comic",
+    "title": "Data Visualization Basics",
+    "section": "Types of Data - Comic",
+    "text": "Types of Data - Comic"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#data-format-aside",
+    "href": "content/slides_data-viz-basics.html#data-format-aside",
+    "title": "Data Visualization Basics",
+    "section": "Data Format Aside",
+    "text": "Data Format Aside\n\nIn order to make a graph, your data need to be “tidy”\n\n\n\n\nBut what does it mean for data to be “tidy”?\n\n\n\n\nLet’s dig into that"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#what-is-tidy-data",
+    "href": "content/slides_data-viz-basics.html#what-is-tidy-data",
+    "title": "Data Visualization Basics",
+    "section": "What is ‘Tidy Data’?",
+    "text": "What is ‘Tidy Data’?\n\n\n\nOne row = one observation\n\n\n\n\nOne column = one variable\n\n\n\n\nOne cell = one data point"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#tidy-vs.-un-tidy-comic",
+    "href": "content/slides_data-viz-basics.html#tidy-vs.-un-tidy-comic",
+    "title": "Data Visualization Basics",
+    "section": "Tidy vs. Un-Tidy Comic",
+    "text": "Tidy vs. Un-Tidy Comic"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#un-tidy-example-1",
+    "href": "content/slides_data-viz-basics.html#un-tidy-example-1",
+    "title": "Data Visualization Basics",
+    "section": "Un-Tidy Example 1",
+    "text": "Un-Tidy Example 1\n\n\nIs every column a variable? No!\nIs every row an observation? No!"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#un-tidy-example-2",
+    "href": "content/slides_data-viz-basics.html#un-tidy-example-2",
+    "title": "Data Visualization Basics",
+    "section": "Un-Tidy Example 2",
+    "text": "Un-Tidy Example 2\n\n\n\n\n\n\nIs every column a variable? Yep\nIs every row an observation? No!"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#fixing-un-tidy-data",
+    "href": "content/slides_data-viz-basics.html#fixing-un-tidy-data",
+    "title": "Data Visualization Basics",
+    "section": "Fixing Un-Tidy Data",
+    "text": "Fixing Un-Tidy Data\n\nWhat if you realize your data are not tidy?\n\n\n\n\nIdeally, you’d use some sort of code language (e.g., R, Python) to fix the data\n\nThis is called wrangling\n\n\n\n\n\nIf you don’t speak code, carefully copy/pasting things is okay\n\nI strongly recommend making a copy that you don’t touch before doing this!\nThat way you can check your work if you make a mistake"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#anatomy-of-a-graph---p1",
+    "href": "content/slides_data-viz-basics.html#anatomy-of-a-graph---p1",
+    "title": "Data Visualization Basics",
+    "section": "Anatomy of a Graph - P1",
+    "text": "Anatomy of a Graph - P1"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#anatomy-of-a-graph---p2",
+    "href": "content/slides_data-viz-basics.html#anatomy-of-a-graph---p2",
+    "title": "Data Visualization Basics",
+    "section": "Anatomy of a Graph - P2",
+    "text": "Anatomy of a Graph - P2"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#anatomy-of-a-graph---p3",
+    "href": "content/slides_data-viz-basics.html#anatomy-of-a-graph---p3",
+    "title": "Data Visualization Basics",
+    "section": "Anatomy of a Graph - P3",
+    "text": "Anatomy of a Graph - P3"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#visualization-goal-roadmap",
+    "href": "content/slides_data-viz-basics.html#visualization-goal-roadmap",
+    "title": "Data Visualization Basics",
+    "section": "Visualization Goal Roadmap",
+    "text": "Visualization Goal Roadmap\n\nResponse & explanatory are continuous: scatterplot\n\nCare about trend? Add “best-fit” line\n\n\n\n\n\nResponse is continuous but explanatory is categorical:\n\nCare about each data point or data range: boxplot / violin plot\nCare about single summary value within each category: bar graph"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#graph-explanation-scatterplot",
+    "href": "content/slides_data-viz-basics.html#graph-explanation-scatterplot",
+    "title": "Data Visualization Basics",
+    "section": "Graph Explanation: Scatterplot",
+    "text": "Graph Explanation: Scatterplot"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#scatterplot-example",
+    "href": "content/slides_data-viz-basics.html#scatterplot-example",
+    "title": "Data Visualization Basics",
+    "section": "Scatterplot Example",
+    "text": "Scatterplot Example"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#graph-explanation-violin-plot",
+    "href": "content/slides_data-viz-basics.html#graph-explanation-violin-plot",
+    "title": "Data Visualization Basics",
+    "section": "Graph Explanation: Violin Plot",
+    "text": "Graph Explanation: Violin Plot"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#violin-plot-example",
+    "href": "content/slides_data-viz-basics.html#violin-plot-example",
+    "title": "Data Visualization Basics",
+    "section": "Violin Plot Example",
+    "text": "Violin Plot Example"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#violin-plot-vs.-boxplot",
+    "href": "content/slides_data-viz-basics.html#violin-plot-vs.-boxplot",
+    "title": "Data Visualization Basics",
+    "section": "Violin Plot vs. Boxplot",
+    "text": "Violin Plot vs. Boxplot\n\nWhy use one versus the other?"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#graph-explanation-bar-graph",
+    "href": "content/slides_data-viz-basics.html#graph-explanation-bar-graph",
+    "title": "Data Visualization Basics",
+    "section": "Graph Explanation: Bar Graph",
+    "text": "Graph Explanation: Bar Graph"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#bar-graph-example",
+    "href": "content/slides_data-viz-basics.html#bar-graph-example",
+    "title": "Data Visualization Basics",
+    "section": "Bar Graph Example",
+    "text": "Bar Graph Example"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#pop-quiz-graph-choices",
+    "href": "content/slides_data-viz-basics.html#pop-quiz-graph-choices",
+    "title": "Data Visualization Basics",
+    "section": "Pop-Quiz: Graph Choices!",
+    "text": "Pop-Quiz: Graph Choices!\n\nLet’s run through some examples!\n\n\n\n\nRaise your hand if you think you know the proper graph type to use in each of the following examples"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#thanks-questions",
+    "href": "content/slides_data-viz-basics.html#thanks-questions",
+    "title": "Data Visualization Basics",
+    "section": "Thanks! Questions?",
+    "text": "Thanks! Questions?"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#outline",
+    "href": "content/slides_four-player-model.html#outline",
+    "title": "The Four Player Model",
+    "section": "Outline",
+    "text": "Outline\n\n\nBackground\nModel Overview\nStuck Communication Patterns"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#background-1",
+    "href": "content/slides_four-player-model.html#background-1",
+    "title": "The Four Player Model",
+    "section": "Background",
+    "text": "Background\n\nDesigned by David Kantor\n\n\n\n\n\nDiagnoses & helps resolve “stuck” communication\n\n\n\n\n\n\nBased on 30+ years of research on groups"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#four-actions-of-effective-communication",
+    "href": "content/slides_four-player-model.html#four-actions-of-effective-communication",
+    "title": "The Four Player Model",
+    "section": "Four Actions of Effective Communication",
+    "text": "Four Actions of Effective Communication\n\nThe model identifies four actions of effective communication:"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#four-actions-of-effective-communication-1",
+    "href": "content/slides_four-player-model.html#four-actions-of-effective-communication-1",
+    "title": "The Four Player Model",
+    "section": "Four Actions of Effective Communication",
+    "text": "Four Actions of Effective Communication\n\nThe model identifies four actions of effective communication:\n\n\n\nMove  - Initiate an idea, action, or direction for conversation"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#four-actions-of-effective-communication-2",
+    "href": "content/slides_four-player-model.html#four-actions-of-effective-communication-2",
+    "title": "The Four Player Model",
+    "section": "Four Actions of Effective Communication",
+    "text": "Four Actions of Effective Communication\n\nThe model identifies four actions of effective communication:\n\n\n\nMove  - Initiate an idea, action, or direction for conversation\nFollow  - Continue the direction or flow of the conversation\n\nEither by agreeing or asking for more information"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#four-actions-of-effective-communication-3",
+    "href": "content/slides_four-player-model.html#four-actions-of-effective-communication-3",
+    "title": "The Four Player Model",
+    "section": "Four Actions of Effective Communication",
+    "text": "Four Actions of Effective Communication\n\nThe model identifies four actions of effective communication:\n\n\n\nMove  - Initiate an idea, action, or direction for conversation\nFollow  - Continue the direction or flow of the conversation\n\nEither by agreeing or asking for more information\n\nOppose  - Challenge or disagree with an idea, action, or suggested direction"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#four-actions-of-effective-communication-4",
+    "href": "content/slides_four-player-model.html#four-actions-of-effective-communication-4",
+    "title": "The Four Player Model",
+    "section": "Four Actions of Effective Communication",
+    "text": "Four Actions of Effective Communication\n\nThe model identifies four actions of effective communication:\n\n\n\nMove  - Initiate an idea, action, or direction for conversation\nFollow  - Continue the direction or flow of the conversation\n\nEither by agreeing or asking for more information\n\nOppose  - Challenge or disagree with an idea, action, or suggested direction\nBystand  - Add a neutral perspective\n\nArticulate what’s happening in a conversation"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#the-model",
+    "href": "content/slides_four-player-model.html#the-model",
+    "title": "The Four Player Model",
+    "section": "The Model",
+    "text": "The Model"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#group-conversations",
+    "href": "content/slides_four-player-model.html#group-conversations",
+    "title": "The Four Player Model",
+    "section": "Group Conversations",
+    "text": "Group Conversations\n\nEach action in a discussion can be coded into this model\n\nMost of us default to one we’re comfortable with\n\n\n\n\n\n\nEffective conversations require listening & all four modes\n\n\n\n\n\n\nThere are common “stuck” patterns when not doing this"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#stuck---serial-moves",
+    "href": "content/slides_four-player-model.html#stuck---serial-moves",
+    "title": "The Four Player Model",
+    "section": "Stuck - Serial Moves",
+    "text": "Stuck - Serial Moves\n\n\n\n\nLots of idea generation\n\n\n\n\nMay feel like a barrage\n\n\n\n\nNo clear thread, decision, or follow through"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#unstick-serial-moves",
+    "href": "content/slides_four-player-model.html#unstick-serial-moves",
+    "title": "The Four Player Model",
+    "section": "‘Unstick’ Serial Moves",
+    "text": "‘Unstick’ Serial Moves\n\nFollow   Give momentum to a particular move\n\n\n\n\nFor example:\n\nCan we go back to the idea that Jose put on the table? That felt like a topic that could really use our attention. Shall we focus there?"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#unstick-serial-moves-1",
+    "href": "content/slides_four-player-model.html#unstick-serial-moves-1",
+    "title": "The Four Player Model",
+    "section": "‘Unstick’ Serial Moves",
+    "text": "‘Unstick’ Serial Moves\n\nOppose   Offer an effective oppose to a move\n\n\n\n\nFor example:\n\nWe’ve heard a lot of different ideas. I’d like to focus on the one Amelia laid out. I’m interested in the research question, but I don’t think machine learning is going to be the most productive approach. Can we dig in to this one?"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#unstick-serial-moves-2",
+    "href": "content/slides_four-player-model.html#unstick-serial-moves-2",
+    "title": "The Four Player Model",
+    "section": "‘Unstick’ Serial Moves",
+    "text": "‘Unstick’ Serial Moves\n\nBystand   Bring awareness to and disrupt the dynamic\n\n\n\n\nFor example:\n\nHey gang, we’re 20 minutes into our call and we’ve put a lot of different topics on the table. Where do we want to focus ourselves so we can walk away with some clear next steps?"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#stuck---polite-discussion",
+    "href": "content/slides_four-player-model.html#stuck---polite-discussion",
+    "title": "The Four Player Model",
+    "section": "Stuck - Polite Discussion",
+    "text": "Stuck - Polite Discussion\n\n\n\n\nMoves are followed with little discussion or resistance\n\n\n\n\nA.k.a. “Courteous Compliance”"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#unstick-polite-discussion",
+    "href": "content/slides_four-player-model.html#unstick-polite-discussion",
+    "title": "The Four Player Model",
+    "section": "‘Unstick’ Polite Discussion",
+    "text": "‘Unstick’ Polite Discussion\n\nOppose   Prompt an effective oppose\n\n\n\n\nFor example:\n\nWho sees it differently?\n\n\nWhat’s at risk here?\n\n\nWhat other angles should we consider?"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#unstick-polite-discussion-1",
+    "href": "content/slides_four-player-model.html#unstick-polite-discussion-1",
+    "title": "The Four Player Model",
+    "section": "‘Unstick’ Polite Discussion",
+    "text": "‘Unstick’ Polite Discussion\n\nBystand   Invite a bystand\n\n\n\n\nFor example:\n\nWhere is the group right now?\n\n\nWhat are you noticing?\n\n\nIs there an elephant in the room that needs to be named?"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#stuck---debate",
+    "href": "content/slides_four-player-model.html#stuck---debate",
+    "title": "The Four Player Model",
+    "section": "Stuck - Debate",
+    "text": "Stuck - Debate\n\n\n\n\nIndividuals are locked in a back and forth\n\nMay be just two people involved\n\n\n\n\n\nEach move is met with resistance / opposition"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#unstick-debate",
+    "href": "content/slides_four-player-model.html#unstick-debate",
+    "title": "The Four Player Model",
+    "section": "‘Unstick’ Debate",
+    "text": "‘Unstick’ Debate\n\nFollow   Invite a follow on one of the moves\n\n\n\n\nFor example:\n\nWhat do you like about the proposal on the table?\n\n\nWhat do you agree with that we could build upon?"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#unstick-debate-1",
+    "href": "content/slides_four-player-model.html#unstick-debate-1",
+    "title": "The Four Player Model",
+    "section": "‘Unstick’ Debate",
+    "text": "‘Unstick’ Debate\n\nOppose   Coach for a more effective oppose\n\n\n\n\nFor example:\n\nWhat elements of this do you agree with–or at least 2% agree with?\n\n\nIn your opinion, what would need to be changed to make this work?"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#unstick-debate-2",
+    "href": "content/slides_four-player-model.html#unstick-debate-2",
+    "title": "The Four Player Model",
+    "section": "‘Unstick’ Debate",
+    "text": "‘Unstick’ Debate\n\nBystand   - Invite a bystand from someone less involved in the point-counterpoint\n\n\n\n\nFor example:\n\nIn addition to the two viewpoints on the table, I’d love to hear from some other perspectives.\n\n\nWhat are you noticing?\n\n\nWhat might we be missing?"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#stuck---covert-opposition",
+    "href": "content/slides_four-player-model.html#stuck---covert-opposition",
+    "title": "The Four Player Model",
+    "section": "Stuck - Covert Opposition",
+    "text": "Stuck - Covert Opposition\n\n\n\n\n\nConversation appears harmonious but people have unspoken reservations\n\n\n\n\nOpposition tends to be expressed outside of the conversation\n\nOr harbored as resentment\n\n\n\n\n\nUneven power dynamics are often behind this pattern\n\nGroup members defer to those with more power or seniority"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#unstick-covert-opposition",
+    "href": "content/slides_four-player-model.html#unstick-covert-opposition",
+    "title": "The Four Player Model",
+    "section": "‘Unstick’ Covert Opposition",
+    "text": "‘Unstick’ Covert Opposition\n\nOppose   Prompt a transparent oppose\n\n\n\n\nFor example:\n\nWho sees it differently?\n\n\nWhat’s at risk here?\n\n\nAre there some cons to the proposed idea?"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#unstick-covert-opposition-1",
+    "href": "content/slides_four-player-model.html#unstick-covert-opposition-1",
+    "title": "The Four Player Model",
+    "section": "‘Unstick’ Covert Opposition",
+    "text": "‘Unstick’ Covert Opposition\n\nOppose   If others aren’t comfortable, you can offer an oppose\n\n\n\n\nFor example:\n\nI’m not sure that collecting new data is feasible; just getting data for one state would take hours and we have ten states in our study."
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#unstick-covert-opposition-2",
+    "href": "content/slides_four-player-model.html#unstick-covert-opposition-2",
+    "title": "The Four Player Model",
+    "section": "‘Unstick’ Covert Opposition",
+    "text": "‘Unstick’ Covert Opposition\n\nBystand   Offer a bystand on the ‘covert’ facet of the opposition\n\n\n\n\n\nFor example:\n\nI want to offer a reflection from another team I was part of. On that team, we kept having meetings where it seemed like everyone was in agreement, but then we would leave, and over and over again there would be little follow through and more than a little grousing. People’s real opinions were only coming out in side conversations outside of the meeting. We lost a lot of time and forward momentum because people didn’t feel like they could air their concerns in the larger group. Do you see that happening here? Does anyone have a suggestion for how to make this a safer space to critically discuss ideas?"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#unstick-covert-opposition-3",
+    "href": "content/slides_four-player-model.html#unstick-covert-opposition-3",
+    "title": "The Four Player Model",
+    "section": "‘Unstick’ Covert Opposition",
+    "text": "‘Unstick’ Covert Opposition\n\nInvite those with more power to follow  or bystand  to open up space for other players to make a move \n\n\n\n\nFor example:\n\nI’m noticing that the younger folks in the room haven’t spoken up much. I know a number of them are using some interesting analytical methods for their dissertation work and I’d like to hear how those tools might be applied to this work"
+  },
+  {
+    "objectID": "content/slides_four-player-model.html#thanks-questions",
+    "href": "content/slides_four-player-model.html#thanks-questions",
+    "title": "The Four Player Model",
+    "section": "Thanks! Questions?",
+    "text": "Thanks! Questions?"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#prepare",
+    "href": "content/slides_random-forest.html#prepare",
+    "title": "Random Forest in R",
+    "section": "Prepare",
+    "text": "Prepare\n\nFirst, you’ll need to install and load a few  R packages\n\nWhile not technically necessary, the librarian package makes library management much simpler\n\n\n\n\n\n# Install librarian (if you need to)\n# install.packages(\"librarian\")\n\n# Install (if not already present) and load needed libraries\nlibrarian::shelf(tidyverse, randomForest, permimp, vegan)\n\n\nThe downloaded binary packages are in\n    /var/folders/9m/7tv5z0_j2q34mnkv7907vm540000gn/T//Rtmp60b1XC/downloaded_packages"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#lichen-data",
+    "href": "content/slides_random-forest.html#lichen-data",
+    "title": "Random Forest in R",
+    "section": "Lichen Data",
+    "text": "Lichen Data\n\nThe vegan package includes some lichen community composition data we can use for exploratory purposes\n\n\n\n\nWe’ll begin by loading that data (with some minor wrangling)\n\n\n# Load vegan's lichen dataset & associated chemistry dataset\nutils::data(\"varespec\", package = 'vegan')\nutils::data(\"varechem\", package = 'vegan')\n\n# Get one lichen species' cover information separate\nlichen_sp &lt;- dplyr::select(varespec, Callvulg)\n\n# Attach the single species to the chemistry data\nlichen_df &lt;- cbind(lichen_sp, varechem)"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#data-structure",
+    "href": "content/slides_random-forest.html#data-structure",
+    "title": "Random Forest in R",
+    "section": "Data Structure",
+    "text": "Data Structure\n\nThis data object now has the following structure:\n\n\n# Check lichen data structure\nstr(lichen_df)\n\n'data.frame':   24 obs. of  15 variables:\n $ Callvulg: num  0.55 0.67 0.1 0 0 ...\n $ N       : num  19.8 13.4 20.2 20.6 23.8 22.8 26.6 24.2 29.8 28.1 ...\n $ P       : num  42.1 39.1 67.7 60.8 54.5 40.9 36.7 31 73.5 40.5 ...\n $ K       : num  140 167 207 234 181 ...\n $ Ca      : num  519 357 973 834 777 ...\n $ Mg      : num  90 70.7 209.1 127.2 125.8 ...\n $ S       : num  32.3 35.2 58.1 40.7 39.5 40.8 33.8 27.1 42.5 60.2 ...\n $ Al      : num  39 88.1 138 15.4 24.2 ...\n $ Fe      : num  40.9 39 35.4 4.4 3 ...\n $ Mn      : num  58.1 52.4 32.1 132 50.1 ...\n $ Zn      : num  4.5 5.4 16.8 10.7 6.6 9.1 7.4 5.2 9.3 9.1 ...\n $ Mo      : num  0.3 0.3 0.8 0.2 0.3 0.4 0.3 0.3 0.3 0.5 ...\n $ Baresoil: num  43.9 23.6 21.2 18.7 46 40.5 23 29.8 17.6 29.9 ...\n $ Humdepth: num  2.2 2.2 2 2.9 3 3.8 2.8 2 3 2.2 ...\n $ pH      : num  2.7 2.8 3 2.8 2.7 2.7 2.8 2.8 2.8 2.8 ..."
+  },
+  {
+    "objectID": "content/slides_random-forest.html#random-forest",
+    "href": "content/slides_random-forest.html#random-forest",
+    "title": "Random Forest in R",
+    "section": "Random Forest",
+    "text": "Random Forest\n\nRun the random forest with the function and package of the same name\n\n\n# Actually do the random forest\nlich_rf &lt;- randomForest::randomForest(Callvulg ~ ., data = lichen_df, \n                                      ntree = 1000, mtry = 2, \n                                      na.action = na.omit,\n                                      keep.forest = T, keep.inbag = T)\n\n\n\n\nQuick argument explanation\n\n‘Y ~ .’ format of model means all other columns are (potential) predictors\nntree is the number of trees in the forest\nmtry is the number of variables per node in the tree"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#variable-importance-plot",
+    "href": "content/slides_random-forest.html#variable-importance-plot",
+    "title": "Random Forest in R",
+    "section": "Variable Importance Plot",
+    "text": "Variable Importance Plot\n\nWe can now generate a variable importance plot based on that random forest\n\n\n# Create variable importance plot\nrandomForest::varImpPlot(x = lich_rf, sort = T,\n                         n.var = (ncol(lichen_df) - 1),\n                         main = \"Variable Importance\")"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#conditional-permutation-importance-cpi",
+    "href": "content/slides_random-forest.html#conditional-permutation-importance-cpi",
+    "title": "Random Forest in R",
+    "section": "Conditional Permutation Importance (CPI)",
+    "text": "Conditional Permutation Importance (CPI)\n\nWe can use that random forest to perform conditional permutation\n\n\n# Implement conditional permutation\nhigh_thresh &lt;- permimp::permimp(object = lich_rf, conditional = T,\n                                # Note the threshold is set to 0.95\n                               threshold = 0.95, do_check = F, progressBar = F)\n\n# Make CPI plot\nplot(high_thresh, type = \"box\", horizontal = T)"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#cpi---thresholds",
+    "href": "content/slides_random-forest.html#cpi---thresholds",
+    "title": "Random Forest in R",
+    "section": "CPI - Thresholds",
+    "text": "CPI - Thresholds\n\nAs you might imagine, the threshold you pick can have a dramatic effect!\n\n\n# Implement conditional permutation\nlow_thresh &lt;- permimp::permimp(object = lich_rf, conditional = T,\n                               # Note the lower threshold\n                               threshold = 0.50, do_check = F, progressBar = F)\n\n# Make CPI plot\nplot(low_thresh, type = \"box\", horizontal = T)"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#exploratory-plotting",
+    "href": "content/slides_random-forest.html#exploratory-plotting",
+    "title": "Random Forest in R",
+    "section": "Exploratory Plotting",
+    "text": "Exploratory Plotting\n\nLet’s graph the response against the four ‘most important’ variables\n\nThis part is just for fun!"
+  },
+  {
+    "objectID": "content/slides_random-forest.html#thanks-questions",
+    "href": "content/slides_random-forest.html#thanks-questions",
+    "title": "Random Forest in R",
+    "section": "Thanks! Questions?",
+    "text": "Thanks! Questions?"
+  },
+  {
+    "objectID": "content/statistics.html",
+    "href": "content/statistics.html",
+    "title": "Statistics Tutorials",
     "section": "",
-    "text": "The below tutorials are all focused on version control (especially Git and GitHub). See sub-headings for more specifics! Acronyms used in this page include:",
+    "text": "The below tutorials are all focused on statistics. See sub-headings for more specifics!",
     "crumbs": [
       "Data Science",
-      "Version Control"
+      "Statistics"
     ]
   },
   {
-    "objectID": "content/version-control.html#git-command-line-snippets",
-    "href": "content/version-control.html#git-command-line-snippets",
-    "title": "Version Control Tutorials",
-    "section": " Git Command Line Snippets",
-    "text": "Git Command Line Snippets\nThere are a few Git operations I need infrequently enough that I haven’t committed them to memory but would like an easy place to quickly reference as needed. Each tab below separates Git commands useful in different circumstances. Note that the tab order–and content within each tab–is ordered based on how often I need to refer to these snippets so I hope that doesn’t diminish their usefulness to you.\n\nRemote RepositoryBranchesLocal RepositoryServer\n\n\n\nFailed Push/Sync Due to Too Much Data\nIf you commit too much data on your local repository, your push/sync to GitHub will fail. You can force your machine to allow a larger amount of data in a single push/sync if need be. Ideally, you’d avoid committing too much data at once but this solve works if you forget.\nAllow a single push/sync to include more/larger files  git config http.postBuffer 524288000\n\n\nChanged Remote Name\nIf you change your GitHub repository’s name after cloning it, you may get a warning in your IDE that your ‘remote has moved to a new location’. Many IDEs are savvy enough for this not to cause a real error but it’s good practice to tweak things so that the only warnings you get are the ones to which you want to pay attention.\nUpdate existing local repository with new remote URL:  git remote set-url origin {new URL}\n\n\n\n\nBranch Housekeeping\nOnce you are done working in a branch (i.e., have merged it with ‘main’), there are a few good houskeeping steps to follow:\n\nIn your IDE, switch back to ‘main’ and pull/sync\nDelete the branch in your remote repository\nDelete the branch in your local repository\n\ngit branch -d {branch name}\n\nUpdate your local repository’s list of the branches it thinks are in your remote repository\n\ngit remote update origin --prune\n\n\n\n\n\n\nCheck Current Settings\nIt can be helpful to see what your current Git settings are. Fortunately, there’s an easy way to check your global Git settings on your machine.\nList Git information on your computer  git config --global --list\n\n\n\n\nCredential Caching\nOn some remote servers (e.g., those used by NCEAS), you must specify how long you want your credentials to be “cached” (i.e., remembered). It is a pain if you forget to cache your credentials as–in the worst case–it may mean that you’d need to make a new PAT if your old one is not cached and you didn’t save it elsewhere.\nCache your credentials for 10 million seconds  git config --global credential.helper 'cache --timeout=10000000'",
+    "objectID": "content/statistics.html#multivariate-statistics",
+    "href": "content/statistics.html#multivariate-statistics",
+    "title": "Statistics Tutorials",
+    "section": "Multivariate Statistics",
+    "text": "Multivariate Statistics\nThis slide deck includes:\n\nBrief introduction to multivariate statistics\nExplanation of resampling/permutation methods\nMultivariate data visualization explanation with some non-ordination examples\nCode demonstration for PCA, PCoA, and NMS in  R\n\n\nMultivariate Statistics Slides – Full Screen",
     "crumbs": [
       "Data Science",
-      "Version Control"
+      "Statistics"
+    ]
+  },
+  {
+    "objectID": "content/statistics.html#random-forest",
+    "href": "content/statistics.html#random-forest",
+    "title": "Statistics Tutorials",
+    "section": "Random Forest",
+    "text": "Random Forest\nThis slide deck includes: - Code demo for performing random forest in  R\n\nRandom Forest Slides – Full Screen",
+    "crumbs": [
+      "Data Science",
+      "Statistics"
+    ]
+  },
+  {
+    "objectID": "content/visualization.html",
+    "href": "content/visualization.html",
+    "title": "Data Visualization Tutorials",
+    "section": "",
+    "text": "The below tutorials are all focused on data visualization. See sub-headings for more specifics!",
+    "crumbs": [
+      "Data Science",
+      "Visualization"
+    ]
+  },
+  {
+    "objectID": "content/visualization.html#data-visualization-basics",
+    "href": "content/visualization.html#data-visualization-basics",
+    "title": "Data Visualization Tutorials",
+    "section": "Data Visualization Basics",
+    "text": "Data Visualization Basics\nThis slide deck includes:\n\nTBD\n\n\nData Visualization Basics Slides – Full Screen",
+    "crumbs": [
+      "Data Science",
+      "Visualization"
+    ]
+  },
+  {
+    "objectID": "content/visualization.html#data-visualization-with-r",
+    "href": "content/visualization.html#data-visualization-with-r",
+    "title": "Data Visualization Tutorials",
+    "section": "Data Visualization With R",
+    "text": "Data Visualization With R\nThis slide deck includes:\n\nTBD\n\n\nData Visualization With R Slides – Full Screen",
+    "crumbs": [
+      "Data Science",
+      "Visualization"
     ]
   }
 ]
