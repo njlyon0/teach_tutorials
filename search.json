@@ -1182,7 +1182,7 @@
     "href": "content/visualization.html#data-visualization-with-r",
     "title": "Data Visualization Tutorials",
     "section": "Data Visualization With R",
-    "text": "Data Visualization With R\nThis slide deck includes:\n\nTBD\n\nData Visualization With R Slides –  Full Screen",
+    "text": "Data Visualization With R\nThis slide deck includes:\n\nCore ggplot\nAdding geometries\nMultiple geometries\nSetting color\nCustomizing colors\n\nData Visualization With R Slides –  Full Screen",
     "crumbs": [
       "Data Science",
       "Visualization"
