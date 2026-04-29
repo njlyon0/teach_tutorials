@@ -307,14 +307,252 @@
     "href": "content/slides_data-viz-with-r.html#todays-plan",
     "title": "Data Visualization With R",
     "section": "Today’s Plan",
-    "text": "Today’s Plan\n\nFunction Tutorial Debrief\nData Visualization with ggplot2\n\nCore ggplot\nAdding geometries\nMultiple geometries\nSetting color\nCustomizing colors"
+    "text": "Today’s Plan\n\nCore ggplot\nAdding geometries\nMultiple geometries\nSetting color\nCustomizing colors"
   },
   {
     "objectID": "content/slides_data-viz-with-r.html#todays-learning-objectives",
     "href": "content/slides_data-viz-with-r.html#todays-learning-objectives",
     "title": "Data Visualization With R",
     "section": "Today’s Learning Objectives",
-    "text": "Today’s Learning Objectives\nAfter today’s session you will be able to:\n\n\nTBD"
+    "text": "Today’s Learning Objectives\nAfter today’s session you will be able to:\n\n\nCreate ggplot2 graphs\nModify ggplot2 graph aesthetics and customize labels / colors"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#data-visualization",
+    "href": "content/slides_data-viz-with-r.html#data-visualization",
+    "title": "Data Visualization With R",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nFundamental part of scientific process\n\n\n\n\n\nImportant for:\n\nFigures in papers / presentations\n“Eyeball test” of statistical results\nIdentifying errors in data (e.g., unreasonably high/low points, typos, etc.)\n\n\n\n\n\n\n\nNote on word choice\n\nVisualization == figures == graphs == plots\n“Figures” are implicitly publication-quality but fundamentally still graphs"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#data-viz-in-r",
+    "href": "content/slides_data-viz-with-r.html#data-viz-in-r",
+    "title": "Data Visualization With R",
+    "section": "Data Viz in R",
+    "text": "Data Viz in R\nTwo main options for data viz in R:\n\n\nBase R\n\nFrom base R\nSimple but functional\nBase R function syntax\n\n\nggplot2\n\nFrom ggplot2 package\nModular functions allow range of complexity\nSyntax similar to tidyverse but not identical\nName derived from Grammar of Graphics"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#data-viz-in-r-1",
+    "href": "content/slides_data-viz-with-r.html#data-viz-in-r-1",
+    "title": "Data Visualization With R",
+    "section": "Data Viz in R",
+    "text": "Data Viz in R\nTwo main options for data viz in R:\n\n\nBase R\n\n\n\n\n\n\n\n\n\n\nggplot2"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#plot-structure-ggplot2",
+    "href": "content/slides_data-viz-with-r.html#plot-structure-ggplot2",
+    "title": "Data Visualization With R",
+    "section": "Plot Structure: ggplot2",
+    "text": "Plot Structure: ggplot2\n\nRequires three components (+ optional fourth)\n\n\n\n\nData object to plot\n\n\n\nMapping aesthetics\n\nE.g., which column is on each axis, etc.\nI.e., which variable is “mapped to” a given plot component\n\n\n\n\n\nOne or more geometries\n\nDetermines what type of plot you have\n\n\n\n\n\nTheme elements\n\nControls plot-level formatting"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#core-ggplot-creation",
+    "href": "content/slides_data-viz-with-r.html#core-ggplot-creation",
+    "title": "Data Visualization With R",
+    "section": "Core ggplot Creation",
+    "text": "Core ggplot Creation\n\nCore plot is just data object + aesthetics\n\nTells ggplot to create a plot with specified axes\n\n\n\n\n\n\nData object is inherited by every other layer of the plot\n\nSo only needs to be specified once!\n\n\n\n\n\n\n\nWhat aesthetics can you specify?\n\nX/Y axes\nColor(s) of geometries"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#core-graph-syntax",
+    "href": "content/slides_data-viz-with-r.html#core-graph-syntax",
+    "title": "Data Visualization With R",
+    "section": "Core Graph Syntax",
+    "text": "Core Graph Syntax\n\nFundamental graph syntax requires two functions:\n\nggplot\naes\n\n\n\n\n\nCheck out this example:\n\n# Make a simple `ggplot2` plot\nggplot(data = my_df, mapping = aes(x = x_var, y = y_var))"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#core-ggplot2",
+    "href": "content/slides_data-viz-with-r.html#core-ggplot2",
+    "title": "Data Visualization With R",
+    "section": "Core ggplot2",
+    "text": "Core ggplot2\n\n\nGet prepared for this practice\n\nCreate a script for this week\nDownload and read in the “minnow.csv” data\n\n\n\n\n\n\nUsing ggplot2, make a graph with the minnow data where:\n\nFish species is on the X axis\nDiameter of fish nest is on the Y axis\n\n\n\n\n\n\n\nWhat does the resulting graph look like?"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#core-ggplot2-1",
+    "href": "content/slides_data-viz-with-r.html#core-ggplot2-1",
+    "title": "Data Visualization With R",
+    "section": "Core ggplot2",
+    "text": "Core ggplot2"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#plot-type-geometries",
+    "href": "content/slides_data-viz-with-r.html#plot-type-geometries",
+    "title": "Data Visualization With R",
+    "section": "Plot Type & Geometries",
+    "text": "Plot Type & Geometries\n\nWhy does the plot not have anything on it?\n\nBecause ggplot2 needs you to specify your geometry!\n\n\n\n\n\n\nGeometries are functions you add to a plot to make the desired plot type\n\nAll start with geom_...\nE.g., geom_bar, geom_point, etc.\n\n\n\n\n\n\n\nGeometry determines the type of plot\n\nE.g., bar plot, scatterplot, etc."
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#adding-elements",
+    "href": "content/slides_data-viz-with-r.html#adding-elements",
+    "title": "Data Visualization With R",
+    "section": "Adding Elements",
+    "text": "Adding Elements\n\nUse + to add geometries to a plot\n\n\n\n\n\nExample syntax:\n\n# Make a simple `ggplot2` plot\nggplot(data = my_df, mapping = aes(x = x_var, y = y_var)) +\n    # Make it a scatterplot\n    geom_point()\n\n\n\n\n\nThis syntax is unique to ggplot2\n\nRefers to stacked layers of plot information"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#geometries",
+    "href": "content/slides_data-viz-with-r.html#geometries",
+    "title": "Data Visualization With R",
+    "section": "Geometries",
+    "text": "Geometries\n\n\nLet’s practice adding geometries!\n\nCopy the code you wrote for the previous graph\nAdd a + to the end of the line\nIn the next line add geom_point()\n\n\n\n\n\n\nWhat does that give you?\n\n\n\n\n\n\nCopy that code and change geom_point() to geom_boxplot()\n\nWhat do you have now?"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#geometries-1",
+    "href": "content/slides_data-viz-with-r.html#geometries-1",
+    "title": "Data Visualization With R",
+    "section": "Geometries",
+    "text": "Geometries"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#temperature-check",
+    "href": "content/slides_data-viz-with-r.html#temperature-check",
+    "title": "Data Visualization With R",
+    "section": "Temperature Check",
+    "text": "Temperature Check\nHow are you Feeling?"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#geometries-cont.",
+    "href": "content/slides_data-viz-with-r.html#geometries-cont.",
+    "title": "Data Visualization With R",
+    "section": "Geometries Cont.",
+    "text": "Geometries Cont.\n\nGeometries “know” what data to use because of your core plot\n\nI.e., in your top-level ggplot and aes functions\n\n\n\n\n\n\nGeometries do support arguments but minimal graphs don’t use them\n\n\n\n\n\n\nMappings/aesthetics inherited from top to bottom"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#multiple-geometries",
+    "href": "content/slides_data-viz-with-r.html#multiple-geometries",
+    "title": "Data Visualization With R",
+    "section": "Multiple Geometries",
+    "text": "Multiple Geometries\n\nYou can add multiple geometries to the same plot!\n\nBut order matters!\n\n\n\n\n\n\nGeometries added later are “in front” of earlier geometries\n\n\n\n\n\n\nSimilar to how first geometry is “in front” of core ggplot"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#multiple-geometries-1",
+    "href": "content/slides_data-viz-with-r.html#multiple-geometries-1",
+    "title": "Data Visualization With R",
+    "section": "Multiple Geometries",
+    "text": "Multiple Geometries\n\n\nMake a graph with both geom_boxplot and geom_point\n\nAdd a + after whichever you put first, then put the other\n\n\n\n\n\n\nWhat happens if geom_boxplot is first?\n\n\n\n\n\n\nVersus if geom_point is first?"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#multiple-geometries-2",
+    "href": "content/slides_data-viz-with-r.html#multiple-geometries-2",
+    "title": "Data Visualization With R",
+    "section": "Multiple Geometries",
+    "text": "Multiple Geometries\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSee how points are “behind” boxplots on the left?"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#axis-titles",
+    "href": "content/slides_data-viz-with-r.html#axis-titles",
+    "title": "Data Visualization With R",
+    "section": "Axis Titles",
+    "text": "Axis Titles\n\nAxis titles default to column name passed to aes\n\n\n\n\n\nGood column names are usually not good plot axis labels!\n\n\n\n\n\n\nColumn names should have no spaces / may or may not be capitalized\n\nPlot axes should have spaces and be at least somewhat capitalized\nUnits may be in parentheses"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#manual-axis-labels",
+    "href": "content/slides_data-viz-with-r.html#manual-axis-labels",
+    "title": "Data Visualization With R",
+    "section": "Manual Axis Labels",
+    "text": "Manual Axis Labels\n\nCan set labels manually to be prettier with labs function!\n\n\n\n\n\nlabs has arguments x and y that expect characters to put as titles\n\n\n\n\n\n\nExample syntax:\n\n# Make a simple `ggplot2` plot\nggplot(data = my_df, mapping = aes(x = x_var, y = y_var)) +\n    # Make it a scatterplot\n    geom_point() +\n    # Add custom axis labels\n    labs(x = \"Custom X Label\", y = \"Custom Y Label\")"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#axis-labels",
+    "href": "content/slides_data-viz-with-r.html#axis-labels",
+    "title": "Data Visualization With R",
+    "section": "Axis Labels",
+    "text": "Axis Labels\n\n\nCopy your code for the plot with:\n\nBoth a boxplot and points\nPoints in front of boxplots\n\n\n\n\n\n\nUse labs to do do the following:\n\nCapitalize “species” and “diameter”\nPut “cm” in parentheses on the y-axis\n\n\n\n\n\n\n\nWhat does that graph look like?"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#axis-labels-1",
+    "href": "content/slides_data-viz-with-r.html#axis-labels-1",
+    "title": "Data Visualization With R",
+    "section": "Axis Labels",
+    "text": "Axis Labels"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#manual-label-cautionary-note",
+    "href": "content/slides_data-viz-with-r.html#manual-label-cautionary-note",
+    "title": "Data Visualization With R",
+    "section": "Manual Label Cautionary Note",
+    "text": "Manual Label Cautionary Note\n\nIf you mis-apply the labels your plot will still work but will be wrong\n\n\n\n\n\nSame plot but flipped labels and no way to know which is correct!"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#coloring-geometries",
+    "href": "content/slides_data-viz-with-r.html#coloring-geometries",
+    "title": "Data Visualization With R",
+    "section": "Coloring Geometries",
+    "text": "Coloring Geometries\n\nYou can color geometries by other columns in the data!\n\nYou just need to pass them to the color or fill aesthetics\n\n\n\n\n\n\nExample syntax:\n\n# Make a plot where the color and y-axis are mapped to the same variable\nggplot(data = my_df, mapping = aes(x = x_var, y = y_var, color = y_var)) +\n    # Make it a scatterplot\n    geom_point() +\n    # Add custom axis labels\n    labs(x = \"Custom X Label\", y = \"Custom Y Label\")\n\n\n\n\n\nColor != Fill\n\nColor = borders / solid points\nFill = interior of shapes / points"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#geometry-color",
+    "href": "content/slides_data-viz-with-r.html#geometry-color",
+    "title": "Data Visualization With R",
+    "section": "Geometry Color",
+    "text": "Geometry Color\n\n\nTake the plot you created during the previous practice:\n\nWhat happens if you map color to species in the aes call at the top?\n\n\n\n\n\n\nChange color to fill. Now what does the plot look like?"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#geometry-color-1",
+    "href": "content/slides_data-viz-with-r.html#geometry-color-1",
+    "title": "Data Visualization With R",
+    "section": "Geometry Color",
+    "text": "Geometry Color\n\n\n\ncolor = species\n\n\n\n\n\n\n\n\n\n\nfill = species"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#geometry-color-2",
+    "href": "content/slides_data-viz-with-r.html#geometry-color-2",
+    "title": "Data Visualization With R",
+    "section": "Geometry Color",
+    "text": "Geometry Color\n\n\nWhat happens if you map species to both color and fill?\n\n\n\n\nTry it and find out!"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#geometry-color-3",
+    "href": "content/slides_data-viz-with-r.html#geometry-color-3",
+    "title": "Data Visualization With R",
+    "section": "Geometry Color",
+    "text": "Geometry Color"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#customizing-colors",
+    "href": "content/slides_data-viz-with-r.html#customizing-colors",
+    "title": "Data Visualization With R",
+    "section": "Customizing Colors",
+    "text": "Customizing Colors"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#finding-fun-colors",
+    "href": "content/slides_data-viz-with-r.html#finding-fun-colors",
+    "title": "Data Visualization With R",
+    "section": "Finding Fun Colors",
+    "text": "Finding Fun Colors\n\nCoolors (coolors.co/palettes/popular)\n\nMany options + search bar to narrow results\n\n\n\n\n\n\nColor Brewer 2.0 (colorbrewer2.org)\n\nFewer options but checkbox for colorblind safe palettes only\n\n\n\n\n\n\n\nColors identified as hexadecimal codes\n\nHexadecimal structure: #RRGGBB"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#hexadecimal-aside",
+    "href": "content/slides_data-viz-with-r.html#hexadecimal-aside",
+    "title": "Data Visualization With R",
+    "section": "Hexadecimal Aside",
+    "text": "Hexadecimal Aside\n\nHexadecimal = 16 digits\n\n0-9 + a-f\n\n\n\n\n\n\nRed/Green/Blue hues can be between 0 and 255\n\n“Colors” are combinations of 0-255 of R/G/B\n\n\n\n\n\n\n\nColor with regular numbers = #RRRGGGBBB\n\nIf using hexadecimals: three fewer numbers to store in a computer\nEach color x 103-106s of pixels would compound “extra” digits’ memory demands"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#manually-setting-colors",
+    "href": "content/slides_data-viz-with-r.html#manually-setting-colors",
+    "title": "Data Visualization With R",
+    "section": "Manually Setting Colors",
+    "text": "Manually Setting Colors\n\nUse scale_fill_manual() or scale_color_manual()\n\nEach has one argument: values\n\n\n\n\n\n\nNeeds a named vector of hexadecimal codes\n\n\nc(\"name 1\" = \"entry 1\", \"name 2\" = \"entry 2\", \"name 3\" = \"entry 3\")\n\n   name 1    name 2    name 3 \n\"entry 1\" \"entry 2\" \"entry 3\" \n\n\n\n\n\n\n\nExample syntax:\n\n# Make a plot where the color and y-axis are mapped to the same variable\nggplot(data = my_df, mapping = aes(x = x_var, y = y_var, color = y_var)) +\n    # Make it a scatterplot\n    geom_point() +\n    # Add custom axis labels\n    labs(x = \"Custom X Label\", y = \"Custom Y Label\") +\n    # Customize colors\n    scale_color_manual(values = c(\"name 1\" = \"#00FF00\", \"name 2\" = \"#FF0000\", \"name 3\" = \"#0000FF\"))"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#set-colors",
+    "href": "content/slides_data-viz-with-r.html#set-colors",
+    "title": "Data Visualization With R",
+    "section": "Set Colors",
+    "text": "Set Colors\n\n\nTo the graph you made in the previous practice:\n\nMake species fill with custom colors\n\n\n\n\n\nVisit one of the sites I suggested to pick your colors\n\nCoolors (coolors.co/palettes/popular)\nColor Brewer 2.0 (colorbrewer2.org)\n\n\n\n\n\nWhat does that final plot look like?"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#set-colors-1",
+    "href": "content/slides_data-viz-with-r.html#set-colors-1",
+    "title": "Data Visualization With R",
+    "section": "Set Colors",
+    "text": "Set Colors"
+  },
+  {
+    "objectID": "content/slides_data-viz-with-r.html#temperature-check-1",
+    "href": "content/slides_data-viz-with-r.html#temperature-check-1",
+    "title": "Data Visualization With R",
+    "section": "Temperature Check",
+    "text": "Temperature Check\nHow are you Feeling?"
   },
   {
     "objectID": "content/slides_data-viz-with-r.html#thanks-questions",
