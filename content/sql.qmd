@@ -81,8 +81,8 @@ To my knowledge, the following SQL verbs can only be used in combination with on
 | `OR` | `WHERE {condition} OR {condition}` | Keep rows where <u>either/at least one</u> condition is met. Comparable to {{< fa brands r-project >}} R's `|` |
 | `BETWEEN` / `NOT BETWEEN` | `WHERE {column} BETWEEN {#} AND {#}` | Keep rows where the value is/is not between the specified numbers |
 | `IN` / `NOT IN` | `WHERE {column} IN ({#}, {#}, {#})` | Keep rows where the value is/is not in the provided set of numbers. Comparable to {{< fa brands r-project >}} R's `%in%` operator. <u>Works for bare numbers or quoted characters</u> |
-| `LIKE` / `NOT LIKE` | `WHERE {column} LIKE "%{character}%"` | Keeps rows where the value has/doesn't have at least a partial string match to the provided character (e.g., "mar" in "march"). This is <u>case _insenstive</u>!_ |
-| `LIKE` / `NOT LIKE` | `WHERE {column} LIKE "{character}_"` | Keeps rows where the value matches the string plus one character. Excludes an exact string match without that additional character. This is <u>case _insenstive</u>!_ | 
+| `LIKE` / `NOT LIKE` | `WHERE {column} LIKE "%{character}%"` | Keeps rows where the value has/doesn't have at least a partial string match to the provided character (e.g., "mar" in "march"). This is <u>case _insensitive</u>!_ |
+| `LIKE` / `NOT LIKE` | `WHERE {column} LIKE "{character}_"` | Keeps rows where the value matches the string plus one character. Excludes an exact string match without that additional character. This is <u>case _insensitive</u>!_ | 
 | `IS NULL` / `IS NOT NULL` | `WHERE {column} IS NULL` | Keep rows where the specified column is/is not NA |
 
 ### `FROM` Subordinates
