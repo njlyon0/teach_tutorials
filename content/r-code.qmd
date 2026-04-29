@@ -1,6 +1,5 @@
 ---
 title: "R Code Tutorials"
-code-annotations: hover
 ---
 
 The below tutorials are all focused on neat features of the R programming language. See sub-headings for more specifics!

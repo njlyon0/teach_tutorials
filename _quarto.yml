@@ -58,6 +58,7 @@ format:
     link-external-newwindow: true
     link-external-icon: false
     code-overflow: wrap
+    code-annotations: hover
     code-line-numbers: false
     code-copy: hover
     theme:
