@@ -44,6 +44,10 @@ website:
         contents: 
           - text: "Facilitation"
             href: content/facilitation.qmd
+      - section: "Other"
+        contents: 
+          - text: "Artificial Intelligence"
+            href: content/ai.qmd
   page-footer: 
     center: "Copyright &copy; 2026, Nick J Lyon"
     background: secondary
