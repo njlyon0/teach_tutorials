@@ -17,7 +17,7 @@ This slide deck includes:
 <iframe class="slide-deck" src="slides_multivariate-stats.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
 ```
 
-Multivariate Statistics Slides -- [Full Screen](slides_multivariate-stats.qmd)
+Multivariate Statistics Slides -- [Full Screen](slides_multivariate-stats.qmd){target="_blank"}
 
 ## Random Forest
 
@@ -28,4 +28,4 @@ This slide deck includes:
 <iframe class="slide-deck" src="slides_random-forest.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
 ```
 
-Random Forest Slides -- [Full Screen](slides_random-forest.qmd)
+Random Forest Slides -- [Full Screen](slides_random-forest.qmd){target="_blank"}

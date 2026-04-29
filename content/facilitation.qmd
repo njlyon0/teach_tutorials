@@ -16,4 +16,4 @@ This slide deck includes:
 <iframe class="slide-deck" src="slides_four-player-model.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
 ```
 
-Four Player Model Slides -- [Full Screen](slides_four-player-model.qmd)
+Four Player Model Slides -- [Full Screen](slides_four-player-model.qmd){target="_blank"}
