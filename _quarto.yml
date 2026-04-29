@@ -9,7 +9,7 @@ execute:
   freeze: auto
 
 website:
-  title: "Miscellaneous Tutorials"
+  title: "Nick Lyon's Tips & Tricks"
   favicon: content/images/logo_lyon.png
   repo-url: https://github.com/njlyon0/teach_tutorials
   repo-actions: [issue]
