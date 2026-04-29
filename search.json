@@ -42,6 +42,17 @@
     ]
   },
   {
+    "objectID": "content/version-control.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636c6f636b2d726f746174652d6c656674203e7d7d-conventional-commits",
+    "href": "content/version-control.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636c6f636b2d726f746174652d6c656674203e7d7d-conventional-commits",
+    "title": "Version Control Tutorials",
+    "section": " Conventional Commits",
+    "text": "Conventional Commits\nI use Git to preserve the history of files in the vast majority of my projects but I am largely self-taught and thus feel like I periodically stumble onto fabulous features I didn’t know existed. For example, I was introduced to Conventional Commits which is a system for making more informative commit messages in version control systems.\nI’ve long appreciated that “update” is not an ideal commit message but it can be hard to know which files should be staged into a commit or how much rambling information is useful in the long term. I’ve really enjoyed using this system to formalize both the frequency of my commits and the content of the associated messages.\n\nExplanation\nA conventional commit is one that uses one of the allowed “types” followed by a colon and then a short description of the specific content of that commit. As an example, your commit might look like: docs: improve readme. Making sure a commit fits only a single ‘type’ (and that all of the changes for a particular ‘type’ are in the same commit) has been a really useful scaffold for me. If it’s a breaking change you put a ! after the ‘type’ but before the : (e.g., feat!: remove tip page from site).\nI’m doing my best to be consistent in using this system going forward but this  GitHub repository is one good example of my approach to this method.\n\n\nAvailable ‘Types’\nFor reference, here’s the full list of official ‘types’ (and one bonus that I use sometimes). Note that I added fun symbols for each type that are not official.\n\n\n\n\n\n\n\n\nType\nSymbol\nDescription\n\n\n\n\nbuild\n\nChanges to build system or external dependencies (e.g., Quarto extensions, etc.)\n\n\nci\n\nChanges to continuous integration (“CI”) operations (e.g., GitHub Actions, etc.)\n\n\ndev\n\nExperimental changes that you may want to revisit in the future. This is my un-official addition!\n\n\ndocs\n\nChanges to documentation\n\n\nfeat\n\nChanges that introduce a new feature\n\n\nfix\n\nChanges that fix a bug\n\n\nperf\n\nChanges that affect (improve) performance\n\n\nrefactor\n\nChanges that neither fix a bug nor add a feature. Used when the output of the code is unchanged but the way in which that output is reached has changed\n\n\nstyle\n\nChanges that do not affect the meaning of the code (e.g., white space, formatting, etc.)\n\n\ntest\n\nChanges that create or modify tests",
+    "crumbs": [
+      "Data Science",
+      "Version Control"
+    ]
+  },
+  {
     "objectID": "content/sql.html",
     "href": "content/sql.html",
     "title": "Structured Query Language Tutorials",
