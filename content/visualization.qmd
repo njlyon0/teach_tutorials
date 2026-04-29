@@ -21,7 +21,11 @@ Data Visualization Basics Slides -- {{< fa person-chalkboard >}} [Full Screen](s
 
 This slide deck includes:
 
-- TBD
+- Core ggplot
+- Adding geometries
+- Multiple geometries
+- Setting color
+- Customizing colors
 
 Data Visualization With R Slides -- {{< fa person-chalkboard >}} [Full Screen](slides_data-viz-with-r.qmd){target="_blank"}
 
