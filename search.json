@@ -368,6 +368,17 @@
     ]
   },
   {
+    "objectID": "content/r-code.html#selecting-elements",
+    "href": "content/r-code.html#selecting-elements",
+    "title": "R Code Tutorials",
+    "section": "Selecting Elements",
+    "text": "Selecting Elements\n\n[, [[, and $\nIn R, there are three primary methods of selecting elements in an object – [, [[, and $. However, many R users don’t actually know how the three methods differ from one another. The following attempts to clarify this! Let’s start with a multi-element list and then check out an example of each.\n\n# Make a 3-element list\nmy_list &lt;- list(\"a\" = 1:3, \"b\" = \"hello\", \"c\" = 7:9)\n\n\nSingle Bracket - [Double Brackets - [[Dollar Sign - $\n\n\nIf x is a train with multiple cars where each car may contain some number of items, x[1] grabs the whole first train car. This means that the extracted bit is still the same type of data as the original object; in this case that means we still have a list, just this time it has only a single element.\n\n# Select with position\nmy_list[1]\n\n$a\n[1] 1 2 3\n\n\nUsing either element position or element name (if there is one) is supported.\n\n# Select with name\nmy_list[\"c\"]\n\n$c\n[1] 7 8 9\n\n\n\n\nIf x is a train with multiple cars where each car may contain some number of items, x[[1]] grabs the contents of the whole first train car. This means that the type of data changes to whatever is stored in that element. In this case that means we now have a vector.\n\nmy_list[[1]]\n\n[1] 1 2 3\n\n\nAgain, both element position and element name (if there is one) are supported.\n\nmy_list[[\"c\"]]\n\n[1] 7 8 9\n\n\n\n\nIf x is a train with multiple cars where each car may contain some number of items, x$name also grabs the contents of the whole first train car. x$name is shorthand for x[[\"name\"]]! However, only the element name is supported when using this method for selecting an element.\n\nmy_list$a\n\n[1] 1 2 3\n\n\n\n\n\n\n\n[[ versus $\nThe above examples show how [[ and $ function similarly but there is an important caveat to this! If name is an object containing one of the names in x, then the two methods differ. x[[name]] will get the entity that matches the value of name while x$name will get an entity that is itself named name. See an example below:\n\n# Make a new list\nmy_list2 &lt;- list(\"d\" = 4, \"e\" = 5, \"f\" = 6)\n\n# Make an object containing the name we want\nwanted_bit &lt;- \"e\"\n\n# Select it with double brackets\n1my_list2[[wanted_bit]]\n\n\n1\n\nwanted_bit is interpreted as \"e\" because that is the value bound to that object.\n\n\n\n\n[1] 5\n\n\n\n# Select it with a dollar sign\n2my_list2$wanted_bit\n\n\n2\n\nThis returns NULL because \"wanted_bit\" is not the name of any element of this list.\n\n\n\n\nNULL",
+    "crumbs": [
+      "Data Science",
+      "R Code"
+    ]
+  },
+  {
     "objectID": "content/facilitation.html",
     "href": "content/facilitation.html",
     "title": "Inclusive Facilitation Tutorials",
