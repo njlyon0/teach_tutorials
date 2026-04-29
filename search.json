@@ -335,10 +335,10 @@
     ]
   },
   {
-    "objectID": "content/r-code.html#class-coercion",
-    "href": "content/r-code.html#class-coercion",
+    "objectID": "content/r-code.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612070656f706c652d70756c6c696e67203e7d7d-class-coercion",
+    "href": "content/r-code.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612070656f706c652d70756c6c696e67203e7d7d-class-coercion",
     "title": "R Code Tutorials",
-    "section": "Class Coercion",
+    "section": " Class Coercion",
     "text": "Class Coercion\nThe R programming language is extremely useful for a variety of data science tasks. It–and other object-oriented programming languages–allow storing values in “objects” and then using those objects to re-call and use the values to which they are bound. In order to combine different “types” of values, R has to “coerce” one or both of the values into a shared type (sometimes a.k.a. “class” depending on what you’re working on).\n\nCoercion Rules\nThe order of this coercion is logical  integer  double  character. Logicals are the most specific type of atomic vector and the order proceeds to characters which are the most general type. It might be helpful to consider some examples. Let’s begin by making one object for each atomic type (identified above).\n\nLogicalIntegerDoubleCharacter\n\n\n\nmy_logi &lt;- c(TRUE, FALSE)\ntypeof(x = my_logi)\n\n[1] \"logical\"\n\n\n\n\n\n1my_int &lt;- c(4L, 5L, 6L)\ntypeof(x = my_int)\n\n\n1\n\nThe L at the end is for “length” and ensures that number is type\n\n\n\n\n[1] \"integer\"\n\n\n\n\n\n2my_doub &lt;- c(3.14, 77.0, 20)\ntypeof(x = my_doub)\n\n\n2\n\nEven though “20” looks like an integer, R will consider it a double without the trailing L\n\n\n\n\n[1] \"double\"\n\n\n\n\n\nmy_char &lt;- c(\"a\", \"b\", \"c\")\ntypeof(x = my_char)\n\n[1] \"character\"\n\n\n\n\n\nNow that we have those, let’s combine them in sequence so we can see the coercion rules in action!\n\nLogical + IntegerInteger + DoubleDouble + Character\n\n\n\nmy_logi.int &lt;- c(my_logi, my_int)\nmy_logi.int\n\n[1] 1 0 4 5 6\n\ntypeof(x = my_logi.int)\n\n[1] \"integer\"\n\n\n\n\n\nmy_int.doub &lt;- c(my_int, my_doub)\nmy_int.doub\n\n[1]  4.00  5.00  6.00  3.14 77.00 20.00\n\ntypeof(x = my_int.doub)\n\n[1] \"double\"\n\n\n\n\n\nmy_doub.char &lt;- c(my_doub, my_char)\nmy_doub.char\n\n[1] \"3.14\" \"77\"   \"20\"   \"a\"    \"b\"    \"c\"   \n\ntypeof(x = my_doub.char)\n\n[1] \"character\"\n\n\n\n\n\n\n\nOther Coercion Variants\nYou may have noticed that the above examples are missing some classes of object with which you may work regularly. These were absent from the above examples because the first component of this tip is restricted only to “type” coercion while you may be thinking of “class” coercion. See below for some examples that may address what felt missing above.\n\nNumeric CoercionFactor CoercionDate CoercionDate-Time Coercion\n\n\n“Numeric” values are technically inclusive of both integers and doubles. The reason to avoid that phrasing earlier was just to be more precise about the coercion rules between integers and doubles.\n\n\nFactors are a special case of an integer. This does mean that coercing a factor can have surprising results in some cases.\n\n# Make our character object into a factor\nmy_fact &lt;- as.factor(x = my_char)\nmy_fact\n\n[1] a b c\nLevels: a b c\n\n\n\n# Check the type & class\ntypeof(x = my_fact)\n\n[1] \"integer\"\n\nclass(x = my_fact)\n\n[1] \"factor\"\n\n\n\n# Coerce it by combining with a double\nmy_doub.fact &lt;- c(my_doub, my_fact)\n3my_doub.fact\ntypeof(x = my_doub.fact)\n\n\n3\n\nBecause doubles “win” coercion against integers, our a, b, and c become 1.00, 2.00, and 3.00 respectively!\n\n\n\n\n[1]  3.14 77.00 20.00  1.00  2.00  3.00\n[1] \"double\"\n\n\n\n\nDates are a special case of a double. They represent the number of days since January 1st, 1970. Like factors, this means that coercion can behave in a way that surprises you.\n\n# Make a date\nmy_date &lt;- as.Date(x = \"2024-10-13\")\n\n# Check the type & class\ntypeof(x = my_date)\n\n[1] \"double\"\n\nclass(x = my_date)\n\n[1] \"Date\"\n\n# Coerce it by combining with a character\nmy_char.date &lt;- c(my_char, my_date)\nmy_char.date\n\n[1] \"a\"     \"b\"     \"c\"     \"20009\"\n\ntypeof(x = my_char.date)\n\n[1] \"character\"\n\n\n\n\nDate-times are a special case of a double. They represent the number of seconds since January 1st, 1970. Just like dates, this can make coercion surprising here as well.\n\n# Make a datetime\nmy_datetime &lt;- as.POSIXct(\"2024-10-13 23:00\", tz = \"UTC\")\n\n# Check the type & class\ntypeof(x = my_datetime)\n\n[1] \"double\"\n\nclass(x = my_datetime)\n\n[1] \"POSIXct\" \"POSIXt\" \n\n# Coerce it by combining with a character\nmy_char.datetime &lt;- c(my_char, my_datetime)\nmy_char.datetime\n\n[1] \"a\"          \"b\"          \"c\"          \"1728860400\"\n\ntypeof(x = my_char.datetime)\n\n[1] \"character\"",
     "crumbs": [
       "Data Science",
@@ -346,10 +346,10 @@
     ]
   },
   {
-    "objectID": "content/r-code.html#signaling-conditions",
-    "href": "content/r-code.html#signaling-conditions",
+    "objectID": "content/r-code.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612066696c652d636972636c652d6578636c616d6174696f6e203e7d7d-signaling-conditions",
+    "href": "content/r-code.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612066696c652d636972636c652d6578636c616d6174696f6e203e7d7d-signaling-conditions",
     "title": "R Code Tutorials",
-    "section": "Signaling Conditions",
+    "section": " Signaling Conditions",
     "text": "Signaling Conditions\nMany programming languages rely on being able to signal “conditions” when code doesn’t work as intended. These conditions range from effectively ‘for your information’ notes all the way to full-blown errors. See the tabs below for the three most common conditions in R\n\nMessageWarningError\n\n\nMessages indicate that an action has been taken on the user’s behalf but not necessarily a problem. These can be useful to explicitly inform a user about an assumed default value or–for code that iterates for a long time–reassure users that the function is still working.\n\nmessage(\"Pssst\")\n\nPssst\n\n\n\n\nWarnings indicate that something has gone wrong but the function could at least partially recover. These can be useful when some facet of a user’s input is incorrect but the code can still complete. I often uses warnings in my custom functions that have at least one argument that expects a logical (i.e., T or F). If the user supplies anything other than a logical, I return a warning and coerce that argument to whatever default logical I originally defined.\n\nwarning(\"Oops\")\n\nWarning: Oops\n\n\n\n\nErrors indicate that that the function cannot continue and execution must stop. Including custom input checks with informative messages in an important facet of package development! And in non-function code, error messages are your first indicating that something is not working as it should.\n\nstop(\"Oh no\")\n1#&gt; Error: Oh no\n\n\n1\n\nI included what this looks like as a commented-out line because otherwise the website can’t render this page.",
     "crumbs": [
       "Data Science",
@@ -357,10 +357,10 @@
     ]
   },
   {
-    "objectID": "content/r-code.html#looping-across-integers",
-    "href": "content/r-code.html#looping-across-integers",
+    "objectID": "content/r-code.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120726570656174203e7d7d-looping-across-integers",
+    "href": "content/r-code.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120726570656174203e7d7d-looping-across-integers",
     "title": "R Code Tutorials",
-    "section": "Looping Across Integers",
+    "section": " Looping Across Integers",
     "text": "Looping Across Integers\nWhen iterating a given operation it is common to loop across some integer. For example, maybe you’re looping across a list and want to use the numeric position of each element of the list. Typically, this is accomplished like so:\n\n# Define vector\nmy_vec &lt;- c(\"a\", \"b\", \"c\")\n\n# Loop across it\nfor(k in 1:length(my_vec)){\n  \n  # Print the kth letter\n  cat(\"Processing \", my_vec[[k]], \"\\n\", sep=\"\")\n  \n}\n\nProcessing a\nProcessing b\nProcessing c\n\n\nThis works in this case but if the vector of values has no elements, the loop will behave unexpectedly. This is because 1:length of an empty vector returns 1 and 0! Let’s demonstrate this here:\n\n# Make an empty vector\nempty_vec &lt;- c()\n\n# Loop across it\nfor(k in 1:length(empty_vec)){\n  \n  # Print the kth letter\n  cat(\"Processing \", empty_vec[[k]], \"\\n\", sep=\"\")\n  \n}\n\nProcessing \nProcessing \n\n# Demonstrate how the loop interpreted the `1:length` bit\n1:length(empty_vec)\n\n[1] 1 0\n\n\nSee how the loop still appears to work but isn’t returning values that might be expected? This can be especially challenging to debug with a more complex (i.e., more realistic) loop. However, we can reformat the first part of the loop to use seq_along instead of 1:length. The loop will still not work but it will be more clear that the issue is with your initial vector of inputs.\n\n# Loop across the empty vector\n1for(k in seq_along(empty_vec)){\n  \n  # Print the kth letter\n  cat(\"Processing \", empty_vec[[k]], \"\\n\", sep=\"\")\n  \n}\n\n# Demonstrate how the loop interpreted the `seq_along` bit\nseq_along(empty_vec)\n\n\n1\n\nTechnically, seq_along has an along.with argument but for conciseness I’ve let it be implicit in this demo\n\n\n\n\ninteger(0)",
     "crumbs": [
       "Data Science",
@@ -368,10 +368,10 @@
     ]
   },
   {
-    "objectID": "content/r-code.html#selecting-elements",
-    "href": "content/r-code.html#selecting-elements",
+    "objectID": "content/r-code.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612068616e64732d686f6c64696e672d636972636c65203e7d7d-selecting-elements",
+    "href": "content/r-code.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612068616e64732d686f6c64696e672d636972636c65203e7d7d-selecting-elements",
     "title": "R Code Tutorials",
-    "section": "Selecting Elements",
+    "section": " Selecting Elements",
     "text": "Selecting Elements\n\n[, [[, and $\nIn R, there are three primary methods of selecting elements in an object – [, [[, and $. However, many R users don’t actually know how the three methods differ from one another. The following attempts to clarify this! Let’s start with a multi-element list and then check out an example of each.\n\n# Make a 3-element list\nmy_list &lt;- list(\"a\" = 1:3, \"b\" = \"hello\", \"c\" = 7:9)\n\n\nSingle Bracket - [Double Brackets - [[Dollar Sign - $\n\n\nIf x is a train with multiple cars where each car may contain some number of items, x[1] grabs the whole first train car. This means that the extracted bit is still the same type of data as the original object; in this case that means we still have a list, just this time it has only a single element.\n\n# Select with position\nmy_list[1]\n\n$a\n[1] 1 2 3\n\n\nUsing either element position or element name (if there is one) is supported.\n\n# Select with name\nmy_list[\"c\"]\n\n$c\n[1] 7 8 9\n\n\n\n\nIf x is a train with multiple cars where each car may contain some number of items, x[[1]] grabs the contents of the whole first train car. This means that the type of data changes to whatever is stored in that element. In this case that means we now have a vector.\n\nmy_list[[1]]\n\n[1] 1 2 3\n\n\nAgain, both element position and element name (if there is one) are supported.\n\nmy_list[[\"c\"]]\n\n[1] 7 8 9\n\n\n\n\nIf x is a train with multiple cars where each car may contain some number of items, x$name also grabs the contents of the whole first train car. x$name is shorthand for x[[\"name\"]]! However, only the element name is supported when using this method for selecting an element.\n\nmy_list$a\n\n[1] 1 2 3\n\n\n\n\n\n\n\n[[ versus $\nThe above examples show how [[ and $ function similarly but there is an important caveat to this! If name is an object containing one of the names in x, then the two methods differ. x[[name]] will get the entity that matches the value of name while x$name will get an entity that is itself named name. See an example below:\n\n# Make a new list\nmy_list2 &lt;- list(\"d\" = 4, \"e\" = 5, \"f\" = 6)\n\n# Make an object containing the name we want\nwanted_bit &lt;- \"e\"\n\n# Select it with double brackets\n1my_list2[[wanted_bit]]\n\n\n1\n\nwanted_bit is interpreted as \"e\" because that is the value bound to that object.\n\n\n\n\n[1] 5\n\n\n\n# Select it with a dollar sign\n2my_list2$wanted_bit\n\n\n2\n\nThis returns NULL because \"wanted_bit\" is not the name of any element of this list.\n\n\n\n\nNULL",
     "crumbs": [
       "Data Science",
@@ -416,7 +416,7 @@
     "href": "content/facilitation.html#david-kantors-four-player-model",
     "title": "Inclusive Facilitation Tutorials",
     "section": "David Kantor’s Four Player Model",
-    "text": "David Kantor’s Four Player Model\nThis slide deck includes:\n\nBrief background on the four player model\nExplanation of major components\nIdentification of some “stuck” communication patterns and suggestions for how to resolve them\n\n\nFour Player Model Slides – Full Screen",
+    "text": "David Kantor’s Four Player Model\nThis slide deck includes:\n\nBrief background on the four player model\nExplanation of major components\nIdentification of some “stuck” communication patterns and suggestions for how to resolve them\n\nFour Player Model Slides –  Full Screen",
     "crumbs": [
       "Team Science",
       "Facilitation"
@@ -900,7 +900,7 @@
     "href": "content/statistics.html#multivariate-statistics",
     "title": "Statistics Tutorials",
     "section": "Multivariate Statistics",
-    "text": "Multivariate Statistics\nThis slide deck includes:\n\nBrief introduction to multivariate statistics\nExplanation of resampling/permutation methods\nMultivariate data visualization explanation with some non-ordination examples\nCode demonstration for PCA, PCoA, and NMS in  R\n\n\nMultivariate Statistics Slides – Full Screen",
+    "text": "Multivariate Statistics\nThis slide deck includes:\n\nBrief introduction to multivariate statistics\nExplanation of resampling/permutation methods\nMultivariate data visualization explanation with some non-ordination examples\nCode demonstration for PCA, PCoA, and NMS in  R\n\nMultivariate Statistics Slides –  Full Screen",
     "crumbs": [
       "Data Science",
       "Statistics"
@@ -911,7 +911,7 @@
     "href": "content/statistics.html#random-forest",
     "title": "Statistics Tutorials",
     "section": "Random Forest",
-    "text": "Random Forest\nThis slide deck includes: - Code demo for performing random forest in  R\n\nRandom Forest Slides – Full Screen",
+    "text": "Random Forest\nThis slide deck includes:\n\nCode demo for performing random forest in  R\n\nRandom Forest Slides –  Full Screen",
     "crumbs": [
       "Data Science",
       "Statistics"
@@ -933,7 +933,7 @@
     "href": "content/visualization.html#data-visualization-basics",
     "title": "Data Visualization Tutorials",
     "section": "Data Visualization Basics",
-    "text": "Data Visualization Basics\nThis slide deck includes:\n\nTBD\n\n\nData Visualization Basics Slides – Full Screen",
+    "text": "Data Visualization Basics\nThis slide deck includes:\n\nTBD\n\nData Visualization Basics Slides –  Full Screen",
     "crumbs": [
       "Data Science",
       "Visualization"
@@ -944,7 +944,7 @@
     "href": "content/visualization.html#data-visualization-with-r",
     "title": "Data Visualization Tutorials",
     "section": "Data Visualization With R",
-    "text": "Data Visualization With R\nThis slide deck includes:\n\nTBD\n\n\nData Visualization With R Slides – Full Screen",
+    "text": "Data Visualization With R\nThis slide deck includes:\n\nTBD\n\nData Visualization With R Slides –  Full Screen",
     "crumbs": [
       "Data Science",
       "Visualization"
