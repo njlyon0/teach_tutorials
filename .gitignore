@@ -75,8 +75,11 @@ vignettes/*.pdf
 *.xls
 *.txt
 
-# Folders to ignore
+# Quarto stuff
 /.quarto/
+**/*.quarto_ipynb
+
+# Folders to ignore
 docs/
 data/
 graphs/
