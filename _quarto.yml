@@ -32,6 +32,8 @@ website:
         contents:
           - text: "Version Control"
             href: content/version-control.qmd
+          - text: "R Code"
+            href: content/r-code.qmd
           - text: "Visualization"
             href: content/visualization.qmd
           - text: "SQL"
