@@ -346,6 +346,28 @@
     ]
   },
   {
+    "objectID": "content/r-code.html#signaling-conditions",
+    "href": "content/r-code.html#signaling-conditions",
+    "title": "R Code Tutorials",
+    "section": "Signaling Conditions",
+    "text": "Signaling Conditions\nMany programming languages rely on being able to signal “conditions” when code doesn’t work as intended. These conditions range from effectively ‘for your information’ notes all the way to full-blown errors. See the tabs below for the three most common conditions in R\n\nMessageWarningError\n\n\nMessages indicate that an action has been taken on the user’s behalf but not necessarily a problem. These can be useful to explicitly inform a user about an assumed default value or–for code that iterates for a long time–reassure users that the function is still working.\n\nmessage(\"Pssst\")\n\nPssst\n\n\n\n\nWarnings indicate that something has gone wrong but the function could at least partially recover. These can be useful when some facet of a user’s input is incorrect but the code can still complete. I often uses warnings in my custom functions that have at least one argument that expects a logical (i.e., T or F). If the user supplies anything other than a logical, I return a warning and coerce that argument to whatever default logical I originally defined.\n\nwarning(\"Oops\")\n\nWarning: Oops\n\n\n\n\nErrors indicate that that the function cannot continue and execution must stop. Including custom input checks with informative messages in an important facet of package development! And in non-function code, error messages are your first indicating that something is not working as it should.\n\nstop(\"Oh no\")\n1#&gt; Error: Oh no\n\n\n1\n\nI included what this looks like as a commented-out line because otherwise the website can’t render this page.",
+    "crumbs": [
+      "Data Science",
+      "R Code"
+    ]
+  },
+  {
+    "objectID": "content/r-code.html#looping-across-integers",
+    "href": "content/r-code.html#looping-across-integers",
+    "title": "R Code Tutorials",
+    "section": "Looping Across Integers",
+    "text": "Looping Across Integers\nWhen iterating a given operation it is common to loop across some integer. For example, maybe you’re looping across a list and want to use the numeric position of each element of the list. Typically, this is accomplished like so:\n\n# Define vector\nmy_vec &lt;- c(\"a\", \"b\", \"c\")\n\n# Loop across it\nfor(k in 1:length(my_vec)){\n  \n  # Print the kth letter\n  cat(\"Processing \", my_vec[[k]], \"\\n\", sep=\"\")\n  \n}\n\nProcessing a\nProcessing b\nProcessing c\n\n\nThis works in this case but if the vector of values has no elements, the loop will behave unexpectedly. This is because 1:length of an empty vector returns 1 and 0! Let’s demonstrate this here:\n\n# Make an empty vector\nempty_vec &lt;- c()\n\n# Loop across it\nfor(k in 1:length(empty_vec)){\n  \n  # Print the kth letter\n  cat(\"Processing \", empty_vec[[k]], \"\\n\", sep=\"\")\n  \n}\n\nProcessing \nProcessing \n\n# Demonstrate how the loop interpreted the `1:length` bit\n1:length(empty_vec)\n\n[1] 1 0\n\n\nSee how the loop still appears to work but isn’t returning values that might be expected? This can be especially challenging to debug with a more complex (i.e., more realistic) loop. However, we can reformat the first part of the loop to use seq_along instead of 1:length. The loop will still not work but it will be more clear that the issue is with your initial vector of inputs.\n\n# Loop across the empty vector\n1for(k in seq_along(empty_vec)){\n  \n  # Print the kth letter\n  cat(\"Processing \", empty_vec[[k]], \"\\n\", sep=\"\")\n  \n}\n\n# Demonstrate how the loop interpreted the `seq_along` bit\nseq_along(empty_vec)\n\n\n1\n\nTechnically, seq_along has an along.with argument but for conciseness I’ve let it be implicit in this demo\n\n\n\n\ninteger(0)",
+    "crumbs": [
+      "Data Science",
+      "R Code"
+    ]
+  },
+  {
     "objectID": "content/facilitation.html",
     "href": "content/facilitation.html",
     "title": "Inclusive Facilitation Tutorials",
