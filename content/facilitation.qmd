@@ -12,8 +12,8 @@ This slide deck includes:
 - Explanation of major components
 - Identification of some "stuck" communication patterns and suggestions for how to resolve them
 
+Four Player Model Slides -- {{< fa person-chalkboard >}} [Full Screen](slides_four-player-model.qmd){target="_blank"}
+
 ```{=html}
 <iframe class="slide-deck" src="slides_four-player-model.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
 ```
-
-Four Player Model Slides -- [Full Screen](slides_four-player-model.qmd){target="_blank"}

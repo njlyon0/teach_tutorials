@@ -13,19 +13,20 @@ This slide deck includes:
 - Multivariate data visualization explanation with some non-ordination examples
 - Code demonstration for PCA, PCoA, and NMS in {{< fa brands r-project >}} R
 
+Multivariate Statistics Slides -- {{< fa person-chalkboard >}} [Full Screen](slides_multivariate-stats.qmd){target="_blank"}
+
 ```{=html}
 <iframe class="slide-deck" src="slides_multivariate-stats.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
 ```
 
-Multivariate Statistics Slides -- [Full Screen](slides_multivariate-stats.qmd){target="_blank"}
-
 ## Random Forest
 
 This slide deck includes:
+
 - Code demo for performing random forest in {{< fa brands r-project >}} R
+
+Random Forest Slides -- {{< fa person-chalkboard >}} [Full Screen](slides_random-forest.qmd){target="_blank"}
 
 ```{=html}
 <iframe class="slide-deck" src="slides_random-forest.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
 ```
-
-Random Forest Slides -- [Full Screen](slides_random-forest.qmd){target="_blank"}

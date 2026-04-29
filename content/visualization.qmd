@@ -10,11 +10,12 @@ This slide deck includes:
 
 - TBD
 
+Data Visualization Basics Slides -- {{< fa person-chalkboard >}} [Full Screen](slides_data-viz-basics.qmd){target="_blank"}
+
+
 ```{=html}
 <iframe class="slide-deck" src="slides_data-viz-basics.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
 ```
-
-Data Visualization Basics Slides -- [Full Screen](slides_data-viz-basics.qmd){target="_blank"}
 
 ## Data Visualization With R
 
@@ -22,8 +23,8 @@ This slide deck includes:
 
 - TBD
 
+Data Visualization With R Slides -- {{< fa person-chalkboard >}} [Full Screen](slides_data-viz-with-r.qmd){target="_blank"}
+
 ```{=html}
 <iframe class="slide-deck" src="slides_data-viz-with-r.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
 ```
-
-Data Visualization With R Slides -- [Full Screen](slides_data-viz-with-r.qmd){target="_blank"}
