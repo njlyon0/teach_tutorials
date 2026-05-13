@@ -15,6 +15,27 @@ format:
     reference-location: document
 ---
 
+```{r}
+#| label: setup
+#| include: false
+
+# Load needed libraries
+# install.packages("librarian")
+librarian::shelf(tidyverse, palmerpenguins, supportR)
+
+# Prep data
+peng_df <- palmerpenguins::penguins %>% 
+  dplyr::mutate(body_mass_lb = body_mass_g * 0.00220462)
+
+# Get summarized data too
+peng_smry <- supportR::summary_table(data = peng_df, groups = c("species", "sex"),
+  response = "body_mass_lb", drop_na = TRUE)
+
+# Make color palettes
+spp_pal <- c("Adelie" = "#66c2a5", "Gentoo" = "#fc8d62", "Chinstrap" = "#8da0cb")
+sex_pal <- c("male" = "#4cc9f0", "female" = "#f72585")
+```
+
 ## A Guide to Your Process
 
 ### [Scheduling]{.blue}
@@ -226,36 +247,183 @@ After today's session you will be able to:
 
 \
 
-- If _both_ your explanatory and response are categorical, you likely will want a table instead of a graph
+- If _both_ your explanatory and response are categorical, **you likely want a table instead of a graph**
 
 \
 
 - Or something that is technically a scatterplot but has relatively few points
 
+## [Temperature Check]{.purple}
 
-## [Graph Explanation: Scatterplot]{.orange}
+#### How are you Feeling?
 
+<p align="center">
+<img src="images/visualization/debugging.png" alt="Comic-style graph depicting someone's emotional state as they debug code (from initial struggle and defeat to eventual triumph)">
+</p>
 
-## [Scatterplot Example]{.orange}
+## [Graph Example: Boxplot]{.orange}
 
+![](images/hex-ggplot2.png){.absolute top=0 left=1100 width="12%" fig-alt="hex logo for ggplot2 R package"}
+![](images/hex-penguins.png){.absolute top=150 left=1100 width="12%" fig-alt="hex logo for palmerpenguins R package"}
 
-## [Graph Explanation: Violin Plot]{.orange}
+```{r}
+#| label: box
+#| fig-height: 6
 
+ggplot(peng_df, aes(x = species, y = body_mass_lb, fill = species)) +
+  geom_boxplot(outlier.shape = 21) +
+  labs(x = "Penguin Species", y = "Body Mass (lb)") +
+  scale_fill_manual(values = spp_pal) +
+  scale_y_continuous(n.breaks = 5) +
+  supportR::theme_lyon()
+```
 
-## [Violin Plot Example]{.orange}
+## [Graph Explanation: Boxplot]{.orange}
 
+![](images/hex-ggplot2.png){.absolute top=0 left=1100 width="12%" fig-alt="hex logo for ggplot2 R package"}
+![](images/hex-penguins.png){.absolute top=150 left=1100 width="12%" fig-alt="hex logo for palmerpenguins R package"}
 
-## [Violin Plot vs. Boxplot]{.purple}
+```{r}
+#| label: box-v2
+#| fig-height: 6
 
-- Why use one versus the other?
+ggplot(peng_df, aes(x = species, y = body_mass_lb, fill = species)) +
+  geom_boxplot(outlier.shape = 21) +
+  geom_point(position = position_jitter(width = 0.25), pch = 16, color = "#000", alpha = 0.5) + 
+  labs(x = "Penguin Species", y = "Body Mass (lb)") +
+  scale_fill_manual(values = spp_pal) +
+  scale_y_continuous(n.breaks = 5) +
+  supportR::theme_lyon()
+```
 
+## [Boxplot Variant: Violin Plot]{.orange}
 
-## [Graph Explanation: Bar Graph]{.orange}
+![](images/hex-ggplot2.png){.absolute top=0 left=1100 width="12%" fig-alt="hex logo for ggplot2 R package"}
+![](images/hex-penguins.png){.absolute top=150 left=1100 width="12%" fig-alt="hex logo for palmerpenguins R package"}
 
+```{r}
+#| label: violin
+#| fig-height: 6
 
-## [Bar Graph Example]{.orange}
+ggplot(peng_df, aes(x = species, y = body_mass_lb, fill = species)) +
+  geom_violin() +
+  geom_point(position = position_jitter(width = 0.25), pch = 16, color = "#000", alpha = 0.5) + 
+  labs(x = "Penguin Species", y = "Body Mass (lb)") +
+  scale_fill_manual(values = spp_pal) +
+  scale_y_continuous(n.breaks = 5) +
+  supportR::theme_lyon()
+```
 
+## [Graph Example: Bar Graph]{.orange}
 
+![](images/hex-ggplot2.png){.absolute top=0 left=1100 width="12%" fig-alt="hex logo for ggplot2 R package"}
+![](images/hex-penguins.png){.absolute top=150 left=1100 width="12%" fig-alt="hex logo for palmerpenguins R package"}
+
+```{r}
+#| label: bar
+#| fig-height: 6
+
+ggplot(peng_smry, aes(x = species, y = mean, fill = sex)) +
+  geom_bar(stat = 'identity', position = "dodge") +
+  labs(x = "Penguin Species", y = "Body Mass (lb)") +
+  scale_fill_manual(values = sex_pal) +
+  ylim(0, 13) +
+  supportR::theme_lyon()
+```
+
+## [Bar Graph Expansion: With Error Bars]{.orange}
+
+![](images/hex-ggplot2.png){.absolute top=0 left=1100 width="12%" fig-alt="hex logo for ggplot2 R package"}
+![](images/hex-penguins.png){.absolute top=150 left=1100 width="12%" fig-alt="hex logo for palmerpenguins R package"}
+
+```{r}
+#| label: bar-v2
+#| fig-height: 6
+
+ggplot(peng_smry, aes(x = species, y = mean, fill = sex)) +
+  geom_bar(stat = 'identity', position = "dodge") +
+  geom_errorbar(aes(ymax = mean + std_error, ymin = mean - std_error),
+    width = 0.1, position = position_dodge(width = 1)) +
+  labs(x = "Penguin Species", y = "Body Mass (lb)") +
+  scale_fill_manual(values = sex_pal) +
+  ylim(0, 13) +
+  supportR::theme_lyon()
+```
+
+## [Bar Graph Variant: With Points!]{.orange}
+
+![](images/hex-ggplot2.png){.absolute top=0 left=1100 width="12%" fig-alt="hex logo for ggplot2 R package"}
+![](images/hex-penguins.png){.absolute top=150 left=1100 width="12%" fig-alt="hex logo for palmerpenguins R package"}
+
+```{r}
+#| label: bar-v3
+#| fig-height: 6
+
+ggplot(peng_smry, aes(x = species, y = mean, fill = sex)) +
+  geom_point(pch = 21, size = 5, position = position_dodge(width = 1)) +
+  geom_errorbar(aes(ymax = mean + std_error, ymin = mean - std_error),
+    width = 0.2, position = position_dodge(width = 1)) +
+  labs(x = "Penguin Species", y = "Body Mass (lb)") +
+  scale_fill_manual(values = sex_pal) +
+  supportR::theme_lyon()
+```
+
+## [Graph Example: Scatterplot]{.orange}
+
+![](images/hex-ggplot2.png){.absolute top=0 left=1100 width="12%" fig-alt="hex logo for ggplot2 R package"}
+![](images/hex-penguins.png){.absolute top=150 left=1100 width="12%" fig-alt="hex logo for palmerpenguins R package"}
+
+```{r}
+#| label: scatter
+#| fig-height: 6
+
+ggplot(peng_df, aes(x = bill_length_mm, y = bill_depth_mm, fill = 'x')) +
+  geom_point(pch = 23, size = 3, fill = "#6a994e") +
+  labs(x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+  supportR::theme_lyon()
+```
+
+## [Scatterplot Expansion: With Trendline]{.orange}
+
+![](images/hex-ggplot2.png){.absolute top=0 left=1100 width="12%" fig-alt="hex logo for ggplot2 R package"}
+![](images/hex-penguins.png){.absolute top=150 left=1100 width="12%" fig-alt="hex logo for palmerpenguins R package"}
+
+```{r}
+#| label: scatter-v2
+#| fig-height: 6
+
+ggplot(peng_df, aes(x = bill_length_mm, y = bill_depth_mm, fill = 'x')) +
+  geom_smooth(method = "lm", formula = "y ~ x", se = FALSE, color = "#000") +
+  geom_point(pch = 23, size = 3, fill = "#6a994e") +
+  labs(x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+  supportR::theme_lyon() +
+  theme(legend.position = "none")
+```
+
+## [Graph Warning: Hidden Variables]{.orange}
+
+![](images/hex-ggplot2.png){.absolute top=0 left=1100 width="12%" fig-alt="hex logo for ggplot2 R package"}
+![](images/hex-penguins.png){.absolute top=150 left=1100 width="12%" fig-alt="hex logo for palmerpenguins R package"}
+
+```{r}
+#| label: scatter-v3
+#| fig-height: 6
+
+ggplot(peng_df, aes(x = bill_length_mm, y = bill_depth_mm, fill = species)) +
+  geom_smooth(method = "lm", formula = "y ~ x", se = FALSE, color = "#000") +
+  geom_point(pch = 23, size = 3) +
+  labs(x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+  scale_fill_manual(values = spp_pal) +
+  supportR::theme_lyon()
+```
+
+## [Temperature Check]{.purple}
+
+#### How are you Feeling?
+
+<p align="center">
+<img src="images/visualization/debugging.png" alt="Comic-style graph depicting someone's emotional state as they debug code (from initial struggle and defeat to eventual triumph)">
+</p>
 
 ## [Pop-Quiz: Graph Choices!]{.gold}
 
