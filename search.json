@@ -899,6 +899,27 @@
     "text": "Pop-Quiz: Graph Choices!\n\nLet’s run through some examples!\n\n\n\n\nRaise your hand if you think you know the proper graph type to use in each of the following examples"
   },
   {
+    "objectID": "content/slides_data-viz-basics.html#question-1",
+    "href": "content/slides_data-viz-basics.html#question-1",
+    "title": "Data Visualization Basics",
+    "section": "Question 1",
+    "text": "Question 1\n\nYou want to know the effect of fertilizer on sunflower size. You grow 40 sunflowers, half in regular soil and the other half in soil with added fertilizer. You’re interested mostly in the average response, not the variation among individuals.\n\n\n\n\nWhat kind of graph should I make?\n\n \n\n\nA bar graph, but I might consider adding error bars"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#question-2",
+    "href": "content/slides_data-viz-basics.html#question-2",
+    "title": "Data Visualization Basics",
+    "section": "Question 2",
+    "text": "Question 2\n\nYou are helping an entomologist with their field research. You go to a bunch of sites in the desert, capture scorpions, and measure their length (before releasing them unharmed). Later, the entomologist also gives you hourly temperature data from those same sites. Her hypothesis is that bigger scorpions can be found at warmer temperatures.\n\n\n\n\nWhat kind of graph should I make?\n\n \n\n\nLikely a scatterplot, with a trendline"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#question-3",
+    "href": "content/slides_data-viz-basics.html#question-3",
+    "title": "Data Visualization Basics",
+    "section": "Question 3",
+    "text": "Question 3\n\nYour client has recently upgraded their website to be more inviting and accessible to users. They provide you with web traffic data including how long each user spent on their website for a week before and a week after they implemented their changes. The client is interested especially in how their changes affected the range of durations of stay at their website.\n\n\n\n\nWhat kind of graph should you make?\n\n \n\n\nA boxplot or violin plot will be best!"
+  },
+  {
     "objectID": "content/slides_data-viz-basics.html#thanks-questions",
     "href": "content/slides_data-viz-basics.html#thanks-questions",
     "title": "Data Visualization Basics",
