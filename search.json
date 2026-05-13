@@ -812,56 +812,84 @@
     "href": "content/slides_data-viz-basics.html#aside-categorical-response-variable",
     "title": "Data Visualization Basics",
     "section": "Aside: Categorical Response Variable",
-    "text": "Aside: Categorical Response Variable\n\nYou may notice that the prior slide excluded the possibility of a categorical response\n\n\n\n\nIf both your explanatory and response are categorical, you likely will want a table instead of a graph\n\n\n\n\nOr something that is technically a scatterplot but has relatively few points"
+    "text": "Aside: Categorical Response Variable\n\nYou may notice that the prior slide excluded the possibility of a categorical response\n\n\n\n\nIf both your explanatory and response are categorical, you likely want a table instead of a graph\n\n\n\n\nOr something that is technically a scatterplot but has relatively few points"
   },
   {
-    "objectID": "content/slides_data-viz-basics.html#graph-explanation-scatterplot",
-    "href": "content/slides_data-viz-basics.html#graph-explanation-scatterplot",
+    "objectID": "content/slides_data-viz-basics.html#temperature-check",
+    "href": "content/slides_data-viz-basics.html#temperature-check",
     "title": "Data Visualization Basics",
-    "section": "Graph Explanation: Scatterplot",
-    "text": "Graph Explanation: Scatterplot"
+    "section": "Temperature Check",
+    "text": "Temperature Check\nHow are you Feeling?"
   },
   {
-    "objectID": "content/slides_data-viz-basics.html#scatterplot-example",
-    "href": "content/slides_data-viz-basics.html#scatterplot-example",
+    "objectID": "content/slides_data-viz-basics.html#graph-example-boxplot",
+    "href": "content/slides_data-viz-basics.html#graph-example-boxplot",
     "title": "Data Visualization Basics",
-    "section": "Scatterplot Example",
-    "text": "Scatterplot Example"
+    "section": "Graph Example: Boxplot",
+    "text": "Graph Example: Boxplot"
   },
   {
-    "objectID": "content/slides_data-viz-basics.html#graph-explanation-violin-plot",
-    "href": "content/slides_data-viz-basics.html#graph-explanation-violin-plot",
+    "objectID": "content/slides_data-viz-basics.html#graph-explanation-boxplot",
+    "href": "content/slides_data-viz-basics.html#graph-explanation-boxplot",
     "title": "Data Visualization Basics",
-    "section": "Graph Explanation: Violin Plot",
-    "text": "Graph Explanation: Violin Plot"
+    "section": "Graph Explanation: Boxplot",
+    "text": "Graph Explanation: Boxplot"
   },
   {
-    "objectID": "content/slides_data-viz-basics.html#violin-plot-example",
-    "href": "content/slides_data-viz-basics.html#violin-plot-example",
+    "objectID": "content/slides_data-viz-basics.html#boxplot-variant-violin-plot",
+    "href": "content/slides_data-viz-basics.html#boxplot-variant-violin-plot",
     "title": "Data Visualization Basics",
-    "section": "Violin Plot Example",
-    "text": "Violin Plot Example"
+    "section": "Boxplot Variant: Violin Plot",
+    "text": "Boxplot Variant: Violin Plot"
   },
   {
-    "objectID": "content/slides_data-viz-basics.html#violin-plot-vs.-boxplot",
-    "href": "content/slides_data-viz-basics.html#violin-plot-vs.-boxplot",
+    "objectID": "content/slides_data-viz-basics.html#graph-example-bar-graph",
+    "href": "content/slides_data-viz-basics.html#graph-example-bar-graph",
     "title": "Data Visualization Basics",
-    "section": "Violin Plot vs. Boxplot",
-    "text": "Violin Plot vs. Boxplot\n\nWhy use one versus the other?"
+    "section": "Graph Example: Bar Graph",
+    "text": "Graph Example: Bar Graph"
   },
   {
-    "objectID": "content/slides_data-viz-basics.html#graph-explanation-bar-graph",
-    "href": "content/slides_data-viz-basics.html#graph-explanation-bar-graph",
+    "objectID": "content/slides_data-viz-basics.html#bar-graph-expansion-with-error-bars",
+    "href": "content/slides_data-viz-basics.html#bar-graph-expansion-with-error-bars",
     "title": "Data Visualization Basics",
-    "section": "Graph Explanation: Bar Graph",
-    "text": "Graph Explanation: Bar Graph"
+    "section": "Bar Graph Expansion: With Error Bars",
+    "text": "Bar Graph Expansion: With Error Bars"
   },
   {
-    "objectID": "content/slides_data-viz-basics.html#bar-graph-example",
-    "href": "content/slides_data-viz-basics.html#bar-graph-example",
+    "objectID": "content/slides_data-viz-basics.html#bar-graph-variant-with-points",
+    "href": "content/slides_data-viz-basics.html#bar-graph-variant-with-points",
     "title": "Data Visualization Basics",
-    "section": "Bar Graph Example",
-    "text": "Bar Graph Example"
+    "section": "Bar Graph Variant: With Points!",
+    "text": "Bar Graph Variant: With Points!"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#graph-example-scatterplot",
+    "href": "content/slides_data-viz-basics.html#graph-example-scatterplot",
+    "title": "Data Visualization Basics",
+    "section": "Graph Example: Scatterplot",
+    "text": "Graph Example: Scatterplot"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#scatterplot-expansion-with-trendline",
+    "href": "content/slides_data-viz-basics.html#scatterplot-expansion-with-trendline",
+    "title": "Data Visualization Basics",
+    "section": "Scatterplot Expansion: With Trendline",
+    "text": "Scatterplot Expansion: With Trendline"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#graph-warning-hidden-variables",
+    "href": "content/slides_data-viz-basics.html#graph-warning-hidden-variables",
+    "title": "Data Visualization Basics",
+    "section": "Graph Warning: Hidden Variables",
+    "text": "Graph Warning: Hidden Variables"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#temperature-check-1",
+    "href": "content/slides_data-viz-basics.html#temperature-check-1",
+    "title": "Data Visualization Basics",
+    "section": "Temperature Check",
+    "text": "Temperature Check\nHow are you Feeling?"
   },
   {
     "objectID": "content/slides_data-viz-basics.html#pop-quiz-graph-choices",
