@@ -679,7 +679,7 @@
     "href": "content/slides_data-viz-basics.html#todays-learning-objectives",
     "title": "Data Visualization Basics",
     "section": "Today’s Learning Objectives",
-    "text": "Today’s Learning Objectives\nAfter today’s session you will be able to:\n\nDefine two major types of data\nIdentify characteristics of “tidy” data\nDefine fundamental anatomy of a graph\nExplain how visualization is affected by what message you want to convey\nParaphrase how you can choose what type of graph to use"
+    "text": "Today’s Learning Objectives\nAfter today’s session you will be able to:\n\n\nDefine two major types of data\nIdentify characteristics of “tidy” data\nDefine fundamental anatomy of a graph\nExplain how visualization is affected by what message you want to convey\nParaphrase how you can choose what type of graph to use"
   },
   {
     "objectID": "content/slides_data-viz-basics.html#graphing-overview",
@@ -691,6 +691,20 @@
   {
     "objectID": "content/slides_data-viz-basics.html#types-of-data",
     "href": "content/slides_data-viz-basics.html#types-of-data",
+    "title": "Data Visualization Basics",
+    "section": "Types of Data",
+    "text": "Types of Data\n\n\nContinuous\n\n\n\nCategorical"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#types-of-data-1",
+    "href": "content/slides_data-viz-basics.html#types-of-data-1",
+    "title": "Data Visualization Basics",
+    "section": "Types of Data",
+    "text": "Types of Data\n\n\nContinuous\n\nData must be numbers\n\n\n\n\nInfinite options within possible range\n\n\n\n\nFor example: height, length, profit\n\n\n\n\nCategorical"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#types-of-data-2",
+    "href": "content/slides_data-viz-basics.html#types-of-data-2",
     "title": "Data Visualization Basics",
     "section": "Types of Data",
     "text": "Types of Data\n\n\nContinuous\n\nData must be numbers\n\n\n\n\nInfinite options within possible range\n\n\n\n\nFor example: height, length, profit\n\n\n\n\nCategorical\n\nData may be numbers\n\n\n\n\nOptions limited to particular intervals\n\n\n\n\nFor example: counts, satisfaction ratings"
@@ -728,11 +742,25 @@
     "href": "content/slides_data-viz-basics.html#un-tidy-example-1",
     "title": "Data Visualization Basics",
     "section": "Un-Tidy Example 1",
+    "text": "Un-Tidy Example 1\n\n\nIs every column a variable?\nIs every row an observation?"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#un-tidy-example-1-1",
+    "href": "content/slides_data-viz-basics.html#un-tidy-example-1-1",
+    "title": "Data Visualization Basics",
+    "section": "Un-Tidy Example 1",
     "text": "Un-Tidy Example 1\n\n\nIs every column a variable? No!\nIs every row an observation? No!"
   },
   {
     "objectID": "content/slides_data-viz-basics.html#un-tidy-example-2",
     "href": "content/slides_data-viz-basics.html#un-tidy-example-2",
+    "title": "Data Visualization Basics",
+    "section": "Un-Tidy Example 2",
+    "text": "Un-Tidy Example 2\n\n\n\n\n\n\nIs every column a variable?\nIs every row an observation?"
+  },
+  {
+    "objectID": "content/slides_data-viz-basics.html#un-tidy-example-2-1",
+    "href": "content/slides_data-viz-basics.html#un-tidy-example-2-1",
     "title": "Data Visualization Basics",
     "section": "Un-Tidy Example 2",
     "text": "Un-Tidy Example 2\n\n\n\n\n\n\nIs every column a variable? Yep\nIs every row an observation? No!"
@@ -742,7 +770,7 @@
     "href": "content/slides_data-viz-basics.html#fixing-un-tidy-data",
     "title": "Data Visualization Basics",
     "section": "Fixing Un-Tidy Data",
-    "text": "Fixing Un-Tidy Data\n\nWhat if you realize your data are not tidy?\n\n\n\n\nIdeally, you’d use some sort of code language (e.g., R, Python) to fix the data\n\nThis is called wrangling\n\n\n\n\n\nIf you don’t speak code, carefully copy/pasting things is okay\n\nI strongly recommend making a copy that you don’t touch before doing this!\nThat way you can check your work if you make a mistake"
+    "text": "Fixing Un-Tidy Data\n\nWhat if you realize your data are not tidy?\n\n\n\n\n\nIdeally, you’d use some sort of code language (e.g., R, Python) to fix the data\n\nThis is called wrangling\n\n\n\n\n\n\n\nIf you don’t speak code, carefully copy/pasting things is okay\n\nI strongly recommend making a copy of the file that you don’t touch before doing this!\nThat way you can check your work if you make a mistake"
   },
   {
     "objectID": "content/slides_data-viz-basics.html#anatomy-of-a-graph---p1",
@@ -770,7 +798,7 @@
     "href": "content/slides_data-viz-basics.html#choosing-the-right-graph",
     "title": "Data Visualization Basics",
     "section": "Choosing the Right Graph",
-    "text": "Choosing the Right Graph\n\nThere are a lot of different types of graphs you can make\n\n\n\n\nAs you work more with data, you will hone your intuition for which is correct for a given context\n\n\n\n\nFor now, let’s consider a simplified ‘roadmap’ to help you as you start your data visualization journey!"
+    "text": "Choosing the Right Graph\n\nThere are a lot of different types of graphs you can make\n\n\n\n\n\nAs you practice, your intuition will improve\n\n\n\n\n\n\nFor now, we’ll use a simplified ‘roadmap’"
   },
   {
     "objectID": "content/slides_data-viz-basics.html#graph-choice-roadmap",
@@ -812,7 +840,7 @@
     "href": "content/slides_data-viz-basics.html#aside-categorical-response-variable",
     "title": "Data Visualization Basics",
     "section": "Aside: Categorical Response Variable",
-    "text": "Aside: Categorical Response Variable\n\nYou may notice that the prior slide excluded the possibility of a categorical response\n\n\n\n\nIf both your explanatory and response are categorical, you likely want a table instead of a graph\n\n\n\n\nOr something that is technically a scatterplot but has relatively few points"
+    "text": "Aside: Categorical Response Variable\n\nWhat if you have a categorical response\n\n\n\n\n\nIf both your explanatory and response variables are categorical:\n\nYou likely want a table instead of a graph\n\n\n\n\n\n\n\nOr something that is technically a scatterplot but has relatively few points"
   },
   {
     "objectID": "content/slides_data-viz-basics.html#temperature-check",
@@ -903,21 +931,21 @@
     "href": "content/slides_data-viz-basics.html#question-1",
     "title": "Data Visualization Basics",
     "section": "Question 1",
-    "text": "Question 1\n\nYou want to know the effect of fertilizer on sunflower size. You grow 40 sunflowers, half in regular soil and the other half in soil with added fertilizer. You’re interested mostly in the average response, not the variation among individuals.\n\n\n\n\nWhat kind of graph should I make?\n\n \n\n\nA bar graph, but I might consider adding error bars"
+    "text": "Question 1\n\nYou want to know the effect of fertilizer on sunflower size\n\nYou grow 40 sunflowers, half in regular soil and the other half in soil with added fertilizer\nYou’re interested mostly in the average response, not the variation among individuals\n\n\n\n\n\nWhat kind of graph should you make?\n\n \n\n\nA bar graph, but you might consider adding error bars"
   },
   {
     "objectID": "content/slides_data-viz-basics.html#question-2",
     "href": "content/slides_data-viz-basics.html#question-2",
     "title": "Data Visualization Basics",
     "section": "Question 2",
-    "text": "Question 2\n\nYou are helping an entomologist with their field research. You go to a bunch of sites in the desert, capture scorpions, and measure their length (before releasing them unharmed). Later, the entomologist also gives you hourly temperature data from those same sites. Her hypothesis is that bigger scorpions can be found at warmer temperatures.\n\n\n\n\nWhat kind of graph should I make?\n\n \n\n\nLikely a scatterplot, with a trendline"
+    "text": "Question 2\n\nYou are helping an entomologist with her field research\n\nYou go to a bunch of sites in the desert, capture scorpions, and measure their length (before releasing them unharmed)\nLater, the entomologist also gives you hourly temperature data from those same sites\nHer hypothesis is that bigger scorpions can be found at warmer temperatures\n\n\n\n\n\nWhat kind of graph should you make?\n\n \n\n\nLikely a scatterplot, with a trendline"
   },
   {
     "objectID": "content/slides_data-viz-basics.html#question-3",
     "href": "content/slides_data-viz-basics.html#question-3",
     "title": "Data Visualization Basics",
     "section": "Question 3",
-    "text": "Question 3\n\nYour client has recently upgraded their website to be more inviting and accessible to users. They provide you with web traffic data including how long each user spent on their website for a week before and a week after they implemented their changes. The client is interested especially in how their changes affected the range of durations of stay at their website.\n\n\n\n\nWhat kind of graph should you make?\n\n \n\n\nA boxplot or violin plot will be best!"
+    "text": "Question 3\n\nYour client has recently upgraded their website to be more inviting and accessible to users\n\nThey provide you with web traffic data including how long each user spent on their website for a week before and a week after they implemented their changes\nThe client is interested especially in how their changes affected the variation in how long users remain at their website\n\n\n\n\n\nWhat kind of graph should you make?\n\n \n\n\nA boxplot or violin plot will be best!"
   },
   {
     "objectID": "content/slides_data-viz-basics.html#thanks-questions",
@@ -1220,7 +1248,7 @@
     "href": "content/visualization.html#data-visualization-basics",
     "title": "Data Visualization Tutorials",
     "section": "Data Visualization Basics",
-    "text": "Data Visualization Basics\nThis slide deck includes:\n\nTBD\n\nData Visualization Basics Slides –  Full Screen",
+    "text": "Data Visualization Basics\nThis slide deck includes:\n\nContinuous versus categorical data\nCharacteristics of “tidy” data\nFundamental structure of standard graphs\nChoosing the ‘right’ graph type roadmap\n\nData Visualization Basics Slides –  Full Screen",
     "crumbs": [
       "Data Science",
       "Visualization"

@@ -163,6 +163,7 @@ Nick J Lyon
 <section id="todays-learning-objectives" class="slide level2">
 <h2><span class="purple">Today’s Learning Objectives</span></h2>
 <p>After today’s session you will be able to:</p>
+<div class="fragment">
 <ul>
 <li><strong>Define</strong> two major types of data</li>
 <li><strong>Identify</strong> characteristics of “tidy” data</li>
@@ -170,6 +171,7 @@ Nick J Lyon
 <li><strong>Explain</strong> how visualization is affected by what message you want to convey</li>
 <li><strong>Paraphrase</strong> how you can choose what type of graph to use</li>
 </ul>
+</div>
 </section>
 <section id="graphing-overview" class="slide level2">
 <h2><span class="orange">Graphing Overview</span></h2>
@@ -192,6 +194,17 @@ Nick J Lyon
 <div class="columns">
 <div class="column" style="width:48%;">
 <h3 id="continuous">Continuous</h3>
+</div><div class="column" style="width:4%;">
+
+</div><div class="column" style="width:48%;">
+<h3 id="categorical">Categorical</h3>
+</div></div>
+</section>
+<section id="types-of-data-1" class="slide level2">
+<h2><span class="purple">Types of Data</span></h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<h3 id="continuous-1">Continuous</h3>
 <ul>
 <li>Data <em>must</em> be numbers</li>
 </ul>
@@ -208,7 +221,31 @@ Nick J Lyon
 </div><div class="column" style="width:4%;">
 
 </div><div class="column" style="width:48%;">
-<h3 id="categorical">Categorical</h3>
+<h3 id="categorical-1">Categorical</h3>
+</div></div>
+</section>
+<section id="types-of-data-2" class="slide level2">
+<h2><span class="purple">Types of Data</span></h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<h3 id="continuous-2">Continuous</h3>
+<ul>
+<li>Data <em>must</em> be numbers</li>
+</ul>
+<p><br>
+</p>
+<ul>
+<li>Infinite options within possible range</li>
+</ul>
+<p><br>
+</p>
+<ul>
+<li>For example: height, length, profit</li>
+</ul>
+</div><div class="column" style="width:4%;">
+
+</div><div class="column" style="width:48%;">
+<h3 id="categorical-2">Categorical</h3>
 <ul>
 <li>Data <em>may</em> be numbers</li>
 </ul>
@@ -276,23 +313,43 @@ Nick J Lyon
 
 <img data-src="images/visualization/untidy-cartoon.jpg" class="quarto-figure quarto-figure-center r-stretch" alt="Cartoon of several brightly-colored, anthropomorphic tables with a speech bubble saying 'we are all tidy' above several other tables in dull colors and various, irregular shapes with a speech bubble saying 'we are untidy in different ways'"></section>
 <section id="un-tidy-example-1" class="slide level2">
-<h2><span class="orange">Un-Tidy Example 1</span></h2>
+<h2><span class="gold">Un-Tidy Example 1</span></h2>
 
 <img data-src="images/visualization/untidy-example-01.png" class="quarto-figure quarto-figure-center r-stretch" alt="Screen capture of an untidy data table in MS Excel where several sub-tables are included in different places on the same sheet"><ul>
-<li>Is every column a variable? <em>No!</em></li>
-<li>Is every row an observation? <em>No!</em></li>
+<li>Is every column a variable?</li>
+<li>Is every row an observation?</li>
+</ul>
+</section>
+<section id="un-tidy-example-1-1" class="slide level2">
+<h2><span class="gold">Un-Tidy Example 1</span></h2>
+
+<img data-src="images/visualization/untidy-example-01.png" class="quarto-figure quarto-figure-center r-stretch" alt="Screen capture of an untidy data table in MS Excel where several sub-tables are included in different places on the same sheet"><ul>
+<li>Is every column a variable? <span class="purple"><em>No!</em></span></li>
+<li>Is every row an observation? <span class="purple"><em>No!</em></span></li>
 </ul>
 </section>
 <section id="un-tidy-example-2" class="slide level2">
-<h2><span class="orange">Un-Tidy Example 2</span></h2>
+<h2><span class="gold">Un-Tidy Example 2</span></h2>
 <p><br>
 </p>
 
-<img data-src="images/visualization/untidy-example-02.png" class="quarto-figure quarto-figure-center r-stretch" alt=""><p><br>
+<img data-src="images/visualization/untidy-example-02.png" class="quarto-figure quarto-figure-center r-stretch" alt="Untidy data table where each column is a variable but each row is not an observation because several variables are present in the same row"><p><br>
 </p>
 <ul>
-<li>Is every column a variable? <strong>Yep</strong></li>
-<li>Is every row an observation? <em>No!</em></li>
+<li>Is every column a variable?</li>
+<li>Is every row an observation?</li>
+</ul>
+</section>
+<section id="un-tidy-example-2-1" class="slide level2">
+<h2><span class="gold">Un-Tidy Example 2</span></h2>
+<p><br>
+</p>
+
+<img data-src="images/visualization/untidy-example-02.png" class="quarto-figure quarto-figure-center r-stretch" alt="Untidy data table where each column is a variable but each row is not an observation because several variables are present in the same row"><p><br>
+</p>
+<ul>
+<li>Is every column a variable? <span class="purple"><strong>Yep</strong></span></li>
+<li>Is every row an observation? <span class="purple"><em>No!</em></span></li>
 </ul>
 </section>
 <section id="fixing-un-tidy-data" class="slide level2 smaller">
@@ -302,6 +359,7 @@ Nick J Lyon
 </ul>
 <p><br>
 </p>
+<div class="fragment">
 <ul>
 <li>Ideally, you’d use some sort of code language (e.g., R, Python) to fix the data
 <ul>
@@ -310,13 +368,16 @@ Nick J Lyon
 </ul>
 <p><br>
 </p>
+</div>
+<div class="fragment">
 <ul>
 <li>If you don’t speak code, <em><u>carefully</u></em> copy/pasting things is okay
 <ul>
-<li>I <em><strong>strongly</strong></em> recommend making a copy that you don’t touch before doing this!</li>
+<li><span class="purple">I <em><strong>strongly</strong></em> recommend making a copy of the file <u>that you don’t touch</u> before doing this!</span></li>
 <li>That way you can check your work if you make a mistake</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="anatomy-of-a-graph---p1" class="slide level2">
 <h2><span class="orange">Anatomy of a Graph - P1</span></h2>
@@ -337,14 +398,18 @@ Nick J Lyon
 </ul>
 <p><br>
 </p>
+<div class="fragment">
 <ul>
-<li>As you work more with data, you will hone your intuition for which is correct for a given context</li>
+<li>As you practice, your intuition will improve</li>
 </ul>
 <p><br>
 </p>
+</div>
+<div class="fragment">
 <ul>
-<li>For now, let’s consider a simplified ‘roadmap’ to help you as you start your data visualization journey!</li>
+<li>For now, we’ll use a simplified ‘roadmap’</li>
 </ul>
+</div>
 </section>
 <section id="graph-choice-roadmap" class="slide level2">
 <h2><span class="purple">Graph Choice Roadmap</span></h2>
@@ -379,18 +444,25 @@ Nick J Lyon
 <section id="aside-categorical-response-variable" class="slide level2">
 <h2><span class="orange">Aside: Categorical Response Variable</span></h2>
 <ul>
-<li>You may notice that the prior slide excluded the possibility of a categorical <em>response</em></li>
+<li>What if you have a categorical <em>response</em></li>
 </ul>
 <p><br>
 </p>
+<div class="fragment">
 <ul>
-<li>If <em>both</em> your explanatory and response are categorical, <strong>you likely want a table instead of a graph</strong></li>
+<li>If <em>both</em> your explanatory and response variables are categorical:
+<ul>
+<li><strong><span class="purple">You likely want a table instead of a graph</span></strong></li>
+</ul></li>
 </ul>
 <p><br>
 </p>
+</div>
+<div class="fragment">
 <ul>
 <li>Or something that is technically a scatterplot but has relatively few points</li>
 </ul>
+</div>
 </section>
 <section id="temperature-check" class="slide level2">
 <h2><span class="purple">Temperature Check</span></h2>
@@ -537,29 +609,38 @@ Nick J Lyon
 <section id="question-1" class="slide level2 smaller">
 <h2><span class="gold">Question 1</span></h2>
 <ul>
-<li>You want to know the effect of fertilizer on sunflower size. You grow 40 sunflowers, half in regular soil and the other half in soil with added fertilizer. You’re interested mostly in the average response, not the variation among individuals.</li>
+<li>You want to know the effect of fertilizer on sunflower size
+<ul>
+<li>You grow 40 sunflowers, half in regular soil and the other half in soil with added fertilizer</li>
+<li>You’re interested mostly in the average response, not the variation among individuals</li>
+</ul></li>
 </ul>
 <p><br>
 </p>
 <ul>
-<li>What kind of graph should I make?</li>
+<li>What kind of graph should you make?</li>
 </ul>
 <p>&nbsp;</p>
 <div class="fragment">
 <ul>
-<li>A <span class="purple">bar graph</span>, but I might consider adding error bars</li>
+<li>A <span class="purple">bar graph</span>, but you might consider adding error bars</li>
 </ul>
 </div>
 </section>
 <section id="question-2" class="slide level2 smaller">
 <h2><span class="gold">Question 2</span></h2>
 <ul>
-<li>You are helping an entomologist with their field research. You go to a bunch of sites in the desert, capture scorpions, and measure their length (before releasing them unharmed). Later, the entomologist also gives you hourly temperature data from those same sites. Her hypothesis is that bigger scorpions can be found at warmer temperatures.</li>
+<li>You are helping an entomologist with her field research
+<ul>
+<li>You go to a bunch of sites in the desert, capture scorpions, and measure their length (before releasing them unharmed)</li>
+<li>Later, the entomologist also gives you hourly temperature data from those same sites</li>
+<li>Her hypothesis is that bigger scorpions can be found at warmer temperatures</li>
+</ul></li>
 </ul>
 <p><br>
 </p>
 <ul>
-<li>What kind of graph should I make?</li>
+<li>What kind of graph should you make?</li>
 </ul>
 <p>&nbsp;</p>
 <div class="fragment">
@@ -571,7 +652,11 @@ Nick J Lyon
 <section id="question-3" class="slide level2 smaller">
 <h2><span class="gold">Question 3</span></h2>
 <ul>
-<li>Your client has recently upgraded their website to be more inviting and accessible to users. They provide you with web traffic data including how long each user spent on their website for a week before and a week after they implemented their changes. The client is interested especially in how their changes affected the range of durations of stay at their website.</li>
+<li>Your client has recently upgraded their website to be more inviting and accessible to users
+<ul>
+<li>They provide you with web traffic data including how long each user spent on their website for a week before and a week after they implemented their changes</li>
+<li>The client is interested especially in how their changes affected the variation in how long users remain at their website</li>
+</ul></li>
 </ul>
 <p><br>
 </p>
