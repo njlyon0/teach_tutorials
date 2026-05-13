@@ -433,4 +433,46 @@ ggplot(peng_df, aes(x = bill_length_mm, y = bill_depth_mm, fill = species)) +
 
 - [Raise your hand]{.gold} if you think you know the proper graph type to use in each of the following examples
 
+## [Question 1]{.gold}{.smaller}
+
+- You want to know the effect of fertilizer on sunflower size. You grow 40 sunflowers, half in regular soil and the other half in soil with added fertilizer. You're interested mostly in the average response, not the variation among individuals.
+
+\
+
+- What kind of graph should I make?
+
+\ 
+
+. . . 
+
+- A [bar graph]{.purple}, but I might consider adding error bars
+
+## [Question 2]{.gold}{.smaller}
+
+- You are helping an entomologist with their field research. You go to a bunch of sites in the desert, capture scorpions, and measure their length (before releasing them unharmed). Later, the entomologist also gives you hourly temperature data from those same sites. Her hypothesis is that bigger scorpions can be found at warmer temperatures.
+
+\
+
+- What kind of graph should I make?
+
+\ 
+
+. . . 
+
+- Likely a [scatterplot]{.purple}, with a [trendline]{.purple}
+
+## [Question 3]{.gold}{.smaller}
+
+- Your client has recently upgraded their website to be more inviting and accessible to users. They provide you with web traffic data including how long each user spent on their website for a week before and a week after they implemented their changes. The client is interested especially in how their changes affected the range of durations of stay at their website.
+
+\
+
+- What kind of graph should you make?
+
+\ 
+
+. . . 
+
+- A [boxplot]{.purple} or [violin plot]{.purple} will be best!
+
 ## [Thanks! Questions?]{.cream} {background-image="images/photo_question-mark-bfly.jpg"}
