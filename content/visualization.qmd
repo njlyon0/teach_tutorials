@@ -8,10 +8,12 @@ The below tutorials are all focused on data visualization. See sub-headings for 
 
 This slide deck includes:
 
-- TBD
+- Continuous versus categorical data
+- Characteristics of "tidy" data
+- Fundamental structure of standard graphs
+- Choosing the 'right' graph type roadmap
 
 Data Visualization Basics Slides -- {{< fa person-chalkboard >}} [Full Screen](slides_data-viz-basics.qmd){target="_blank"}
-
 
 ```{=html}
 <iframe class="slide-deck" src="slides_data-viz-basics.html" height="420" width="750" style="border: 1px solid #2e3846;"></iframe>
