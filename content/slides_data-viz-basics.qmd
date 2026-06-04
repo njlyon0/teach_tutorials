@@ -556,3 +556,13 @@ ggplot(peng_df, aes(x = bill_length_mm, y = bill_depth_mm, fill = species)) +
 - A [boxplot]{.purple} or [violin plot]{.purple} will be best!
 
 ## [Thanks! Questions?]{.cream} {background-image="images/photo_question-mark-bfly.jpg"}
+
+## More About Me
+
+\
+
+- Professional Portfolio: [{{< fa brands github >}}]{.blue} [**github.com/njlyon0**]{.gold}
+
+\
+
+- Personal Website: [{{< fa globe >}}]{.purple} [**njlyon0.github.io**]{.orange}
